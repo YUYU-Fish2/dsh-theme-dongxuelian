@@ -6,6 +6,8 @@
 
 **当前执行入口：**用户已选定B彩铅绘本抱书图reading.png，并要求先规划交接、新会话实现。按 [P8抱书氛围详细计划](superpowers/plans/2026-10-20-reading-atmosphere.md) 从Task 1接续；本轮不改运行代码、不导出/预览/打包。以下P0-P7为历史阶段，P7技术通过不代表P8审美需求已满足。
 
+2026-10-20按用户“梳理文件”请求补全[文件导航](PROJECT-MAP.md)，保留目录及既有草稿；未启动上述P8任务，实施范围与验收安排不变。
+
 **架构：**官方Theme覆盖仅在浅色激活，不改变用户偏好；品牌头像与背景样式走官方Slot，完整抱书场景在内容下绘制，独立资源走固定Host白名单路由，统一随生命周期释放。隔离测试不碰用户desktop profile。
 
 **技术栈：**原生 JavaScript、官方 `window.__ModuleLoader__.load` factory、Node 内置测试/VM/文件 API、DSH 自带 Electron 与官方 ModuleLoader；图片采用独立 PNG/WebP 文件。当前无第三方运行依赖，不为几百行主题引入编译框架。

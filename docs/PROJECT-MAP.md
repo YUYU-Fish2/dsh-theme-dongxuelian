@@ -1,101 +1,132 @@
 # 项目文件导航
 
-本页为文件职责索引；当前进度以HANDOFF/总计划/看板和Git为准。P0-P7为历史阶段，P8抱书氛围已规划、尚未实施。
+2026-10-20核对。当前分支`feat/theme-v1`，运行代码为P7；P8抱书氛围已规划，尚未实施。本文说明文件职责与保留范围；进度以[HANDOFF](HANDOFF.md)、计划、看板和Git为准。
 
-## 从哪里开始
+## 阅读入口
 
-| 要做的事 | 阅读入口 |
+| 目的 | 入口 |
 | --- | --- |
-| 了解项目与当前交付范围 | [README](../README.md) |
-| 新会话继续开发 | [HANDOFF](HANDOFF.md) → [实施计划](IMPLEMENTATION-PLAN.md) → [协作看板](coordination/WORKBOARD.md)，同时遵守根 [AGENTS.md](../AGENTS.md) |
-| 实施已选抱书图氛围 | [P8详细计划](superpowers/plans/2026-10-20-reading-atmosphere.md)，从Task 1开始 |
-| 找最终选定母版 | [抱书reading.png](../assets/scenes/b-series/reading.png)、[四图说明](../assets/scenes/b-series/README.md)；其他图仅备选 |
-| 找主题实现 | [client.js](../client.js)、[package.json](../package.json) |
-| 找配色、角色设计与素材限制 | [视觉规范](design/P1-VISUAL-SPEC.md)、[配色核算](design/P1-COLOR-CHECK.md)、[素材审核](design/P1-REVIEW.md) |
-| 判断哪些行为已验证 | [P2 验证记录](validation/P2.md)及其截图；未完成项见 HANDOFF |
-| 给 DSH 派发限定任务 | [协作方法](coordination/DSH-COLLABORATION.md)与 `coordination/P*-A-task.md` 历史任务书 |
+| 新会话接续 | [HANDOFF](HANDOFF.md) → [P8详细计划](superpowers/plans/2026-10-20-reading-atmosphere.md) → [总计划](IMPLEMENTATION-PLAN.md) → [看板](coordination/WORKBOARD.md)，遵守根[AGENTS](../AGENTS.md) |
+| 找用户选定图片 | [reading.png](../assets/scenes/b-series/reading.png)及[四图说明](../assets/scenes/b-series/README.md) |
+| 查当前运行效果证据 | [P7验证](validation/P7.md)；真实聊天历史见[P5矩阵](validation/P5-MATRIX.md) |
+| 给DSH派发任务 | [协作方法](coordination/DSH-COLLABORATION.md)；现有任务书均为历史记录 |
+| 查安装和发行说明 | [README](../README.md)、[INSTALL](INSTALL.md)、[RELEASE](RELEASE.md)是保留的P6草稿，须在P8验收后更新 |
 
-目标宿主DSH `0.2.1-rc.2`；P2-P7技术基线已完成，运行代码仍为P7。package工作树为preview.2草稿，尚无满足最新P8需求的交付包。用户要求本轮仅规划、新会话实施，不能复用旧P7截图或旧tgz作为P8结果。
+**交付状态：**`package.json`工作树版本为`0.1.0-preview.2`，不代表该版本已经归档验收。`release/`仅有旧`preview.1`包，不能作为最新需求的交付物。当前没有`reading.webp`、P8验证报告或P8派发任务书。
 
-## 运行与开发文件
-
-| 文件 | 职责与边界 |
-| --- | --- |
-| [package.json](../package.json) | 包元信息、Host/client 入口、DSH 声明、发布文件白名单、`test`/`check` 命令；当前没有第三方运行依赖 |
-| [cordis.patch.yml](../cordis.patch.yml) | 注册唯一的 `dsh-theme-dongxuelian` Host entry |
-| [index.js](../index.js) | Host 入口，官方服务生命周期内注册两项 WebP 固定白名单路由 |
-| [client.js](../client.js) | 唯一客户端源：官方factory、26浅色token、明暗/停用事务；品牌头像与SceneStyle槽；目前画旧Q背景，P8尚未改 |
-| [test/theme.test.mjs](../test/theme.test.mjs) | 七项主题生命周期回归测试（夹具与 Slot 测试共用 `test/helpers/client-host.mjs`），使用模拟上下文；不能代替真实窗口验收 |
-| [test/assets.test.mjs](../test/assets.test.mjs) | 五项 Host 资源路由实际 HTTP 回归，需允许本地回环连接 |
-| [test/slots.test.mjs](../test/slots.test.mjs) | 五项品牌/SceneStyle Slot、明暗释放、owner恢复与失败回滚回归 |
-| [scripts/check.mjs](../scripts/check.mjs) | JS 语法、包契约、WebP 格式/体积与发布文件白名单检查 |
-| [scripts/runtime-smoke.mjs](../scripts/runtime-smoke.mjs) | 本机官方 ModuleLoader 导入与 token 存在性检查；通过 DSH Electron Run-as-Node 执行，不能代替 UI 验证 |
-| [.gitignore](../.gitignore) | 忽略 `.research/`、`node_modules/`、`release/*.tgz` |
-| [AGENTS.md](../AGENTS.md) | 项目协作规则、授权范围与新会话阅读顺序 |
-| [LICENSE](../LICENSE) | 项目代码许可证 |
-| [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md) | 真实 loader 检查脚本所参考代码的归属与许可；角色来源另见素材说明 |
-
-代码直接交付 JS，不需要编译；不要另建与根 `client.js` 等价的 `src/`、`lib/` 副本。
-
-## 素材与文档目录
+## 目录分工
 
 ```text
-assets/characters/
-  README.md                   素材来源、生成过程与使用边界
-  avatar.png                  简化头像母版候选
-  web/avatar.webp             192px透明无损WebP，实际头像
-  web/sidebar-character.webp  P7为512px透明WebP，计划P8撤出运行包但保留源码
-  sidebar-character.png       侧栏角色母版候选
-docs/
-  PROJECT-MAP.md              本文件：文件职责与阅读入口
-  HANDOFF.md                  当前状态、授权、命令与下一步
-  IMPLEMENTATION-PLAN.md      P0–P6 范围、步骤、验收与回退
-  superpowers/plans/
-    2026-10-20-reading-atmosphere.md  当前P8抱书氛围详细计划，新会话从Task 1执行
-  P0-REPORT.md                P0 调研结论及审核修订
-  coordination/
-    WORKBOARD.md             分工与任务状态
-    DSH-COLLABORATION.md      DSH 调用方法、实际贡献与日志索引
-    P0-A-task.md              P0 限定调研任务书
-    P1-A-task.md              P1 限定视觉规格任务书
-    P2-A-task.md              P2 限定实现任务书
-    P3-A-task.md              P3 Host 白名单路由任务书
-    P3-B-task.md              P3 小头像与事务生命周期任务书
-  design/
-    P1-VISUAL-SPEC.md         角色特征、画风、配色与界面约束
-    P1-COLOR-CHECK.md         配色与对比度核算
-    P1-REVIEW.md              素材尺寸、alpha、哈希与待验项
-  research/
-    DSH-P0-upstream.md        官方接口、参考仓库、兼容与许可证据
-    P0-character-source.md    原课表图标来源与检索证据
-  validation/
-    P2.md                    P2 测试、真实 loader 与窗口验证证据
-    P3.md                    P3 资源、Slot、测试与窗口证据
-    P3-DSH-NOTES.md           DSH 的 P3 分步实现记录
-    P2-DSH-NOTES.md           DSH 的 P2 实现说明，结合 P2.md 阅读
-    screenshots/
-      p2-light-1100.jpg       隔离 Web 浅色截图
-      p2-dark-1100.jpg        隔离 Web 深色截图
-      p2-disabled-1100.jpg    隔离 Web 停用截图
+项目根目录/
+  client.js                            唯一客户端入口
+  index.js、cordis.patch.yml            配套Host入口与注册配置
+  package.json                         包契约、脚本与发布白名单
+  README.md                            使用说明，当前为P6草稿
+  AGENTS.md、LICENSE、THIRD_PARTY_NOTICES.md
+  assets/
+    characters/                        Q版母版、当前运行WebP与来源
+    scenes/b-series/                   选定reading及三幅备选PNG母版
+    style-studies/                     A-F候选板与用户选B参考
+  docs/
+    HANDOFF.md                         当前状态、授权与下一步
+    PROJECT-MAP.md                     本文件：导航与分类
+    IMPLEMENTATION-PLAN.md             P0–P8总计划、验收与回退
+    INSTALL.md、RELEASE.md              尚未完成的P6发行草稿
+    P0-REPORT.md                        历史调研汇总
+    superpowers/plans/                 当前P8详细执行计划
+    coordination/                      看板、DSH协作方法、历史任务书
+    design/                            视觉规范与历史探索
+    research/                          随Git保存的调研证据
+    validation/                        阶段验证、DSH说明与截图
+  test/                                Node回归测试及共享夹具
+  scripts/                             语法/包契约与真实loader检查
+  release/                             本地归档，当前仅旧包
+  .research/                           忽略的缓存、隔离home、配置与日志
 ```
 
-上面的characters目录是早期Q版资产。新assets/scenes/b-series/有四幅B彩铅绘本PNG，用户已选reading.png，尚无对应运行WebP。assets/style-studies/保存六种探索/用户选B的参考，不打包。P7旧WebP合计151012B；P3的50862B仅为当时192px导出记录，不能套用P8。来源见[角色说明](../assets/characters/README.md)与[场景说明](../assets/scenes/b-series/README.md)。
+保持现有路径，避免破坏文档引用、测试与发布白名单。不另建与根`client.js`等价的`src/`或`lib/`副本。
 
-P0/P1 报告和历史任务书保留当时结论；其中的“尚未开始”不代表今天的进度。`docs/research/` 是随 Git 保存的调研证据，与下述本地 `.research/` 缓存不同。
+## 运行文件与检查工具
 
-## 本地缓存与打包边界
-
-`.research/` 已被 Git 忽略。本次仅核对其顶层名称，不读取凭据或认证链接内容，也不清理目录。
-
-| 本地内容 | 用途与处理原则 |
+| 文件 | 职责 |
 | --- | --- |
-| `oil-dsh-theme/`、`ethan-dsh-theme/`、`naniwet-dsh-themes/` | 参考项目源码缓存；不要作为本插件源码或发布资源 |
-| `dsh-*.events.jsonl`、`*.stderr.log`、`p2-web*.stdout.log` | 协作与运行日志，可能包含会话信息，保留本地排障 |
-| `dsh-worker.patch.yml`、`test-host.patch.yml`、`p2-web*.config.yml` | 本地临时启动覆盖与配置；不公开分发，不覆盖用户 profile |
-| `test-home/` | 官方模板创建的隔离测试 home，包含本次插件测试环境 |
-| `host-diagnostics/`、`announce-test-host.mjs`、`test-host-*` | 隔离宿主诊断、状态与连接辅助文件；旧认证链接不能复用 |
-| `jscpd-*/`、`p2-pack.json` | 历史查重和打包检查结果，不代表后续改动已验证 |
+| [client.js](../client.js) | 唯一客户端源；官方factory、26项浅色token、明暗/停用事务；品牌头像和SceneStyle槽；当前仍绘制旧Q版背景 |
+| [index.js](../index.js) | Host入口；官方生命周期内注册avatar和sidebar-character两项固定WebP白名单路由 |
+| [cordis.patch.yml](../cordis.patch.yml) | 注册唯一`dsh-theme-dongxuelian` Host entry |
+| [package.json](../package.json) | 包版本、入口、DSH声明、发布白名单及`test`/`check`命令；零第三方运行依赖 |
+| [test/theme.test.mjs](../test/theme.test.mjs) | 七项主题生命周期回归 |
+| [test/assets.test.mjs](../test/assets.test.mjs) | 五项Host实际HTTP路由回归，需本地回环连接 |
+| [test/slots.test.mjs](../test/slots.test.mjs) | 五项品牌/SceneStyle、明暗释放、owner恢复和回滚回归 |
+| [test/helpers/client-host.mjs](../test/helpers/client-host.mjs) | 主题与Slot测试共用的模拟宿主夹具 |
+| [scripts/check.mjs](../scripts/check.mjs) | JS语法、包契约、WebP格式/体积及白名单检查 |
+| [scripts/runtime-smoke.mjs](../scripts/runtime-smoke.mjs) | 通过DSH Electron Run-as-Node检查官方ModuleLoader与token；不能代替窗口验收 |
+| [.gitignore](../.gitignore) | 忽略`.research/`、`node_modules/`和`release/*.tgz` |
+| [LICENSE](../LICENSE)、[THIRD_PARTY_NOTICES](../THIRD_PARTY_NOTICES.md) | 代码许可与参考代码归属；角色来源另见素材说明，不声明官方授权 |
 
-后续清理缓存前确认测试进程状态，并保留追溯日志。release/中旧preview.1 tgz不是新方案；P8完成后P6须重新归档及隔离验收。
+表内测试数量来自当前文件和既有阶段记录；本次梳理不重新声明运行回归通过。
 
-现有 `package.json.files` 显式列出 `index.js`、`client.js`、`cordis.patch.yml`、`README.md`、`LICENSE`、两项 `web/*.webp` 与素材 README，npm 另按自身规则包含 `package.json` 等必要文件。本文是开发文档导航，开发文档链接依赖完整仓库；最终安装说明与归档内容仍须在 P6 完成核对。
+## 素材：当前运行、已选待接入、历史参考
+
+| 文件 | 状态与用途 | 发布边界 |
+| --- | --- | --- |
+| [characters/README](../assets/characters/README.md) | 早期角色来源与导出说明 | 当前白名单包含 |
+| [avatar.png](../assets/characters/avatar.png)、[sidebar-character.png](../assets/characters/sidebar-character.png) | Q版PNG母版，保留来源 | 不打包 |
+| [avatar.webp](../assets/characters/web/avatar.webp) | 当前192px头像，26864B；P8计划沿用 | 当前运行资源 |
+| [sidebar-character.webp](../assets/characters/web/sidebar-character.webp) | 当前512px Q版背景，124148B | P8计划撤出路由和包，保留源码 |
+| [b-series/README](../assets/scenes/b-series/README.md)、[reading.png](../assets/scenes/b-series/reading.png) | 用户选定的B彩铅抱书主视觉；1536×1024、2857637B | 仅母版，待按P8计划等比导出 |
+| [tea.png](../assets/scenes/b-series/tea.png)、[garden.png](../assets/scenes/b-series/garden.png)、[letter.png](../assets/scenes/b-series/letter.png) | 同系列备选 | 不默认接入或打包 |
+| [p8-abc.png](../assets/style-studies/p8-abc.png)、[p8-def.png](../assets/style-studies/p8-def.png) | A-F画法探索板，选择已结束 | 仅历史参考，不打包 |
+| [p8-b-selected-reference.png](../assets/style-studies/p8-b-selected-reference.png) | 用户选B的参考截图，含截图UI | 仅参考，不打包 |
+
+选定母版SHA256：`387d5998225c850660ffeda5347c1105d61b589109d6608ad33d121621ef1691`。当前两项运行WebP合计151012B；不能把P3早期的50862B或P8计划预算当作当前产物大小。
+
+## 文档：按用途查找
+
+### 当前状态与执行计划
+
+- [HANDOFF](HANDOFF.md)：当前事实、授权、环境、下一步与本次梳理记录。
+- [总计划](IMPLEMENTATION-PLAN.md)：历史阶段与P8→P6的验收安排。
+- [P8抱书氛围详细计划](superpowers/plans/2026-10-20-reading-atmosphere.md)：唯一当前视觉实现计划，从Task 1开始；本次整理未启动实施。
+- [WORKBOARD](coordination/WORKBOARD.md)：分工和任务状态。
+- [DSH-COLLABORATION](coordination/DSH-COLLABORATION.md)：调用方式、权限边界、历史贡献和日志位置。
+- [INSTALL](INSTALL.md)、[RELEASE](RELEASE.md)：未跟踪的P6草稿；保留原文，P8验收通过后再完成发行核对。
+
+### 历史设计与调研（保留追溯）
+
+| 阶段 | 文档与用途 |
+| --- | --- |
+| P0 | [调研报告](P0-REPORT.md)、[上游接口/许可](research/DSH-P0-upstream.md)、[原图来源](research/P0-character-source.md) |
+| P1 | [视觉规范](design/P1-VISUAL-SPEC.md)、[配色核算](design/P1-COLOR-CHECK.md)、[素材审核](design/P1-REVIEW.md)；其中旧配色和小头像范围不覆盖用户最新决定 |
+| P7 | [冷白雾蓝/Q版背景设计](design/P7-WINTER-SCENE.md)；对应当前运行基线，不是最终P8方向 |
+| P8历史探索 | [月色花房](design/P8-MOONLIT-ATELIER.md)、[A-F候选](design/P8-STYLE-CANDIDATES.md)；均已由B抱书方案取代，不再执行选择流程 |
+
+历史派发任务书：[P0-A](coordination/P0-A-task.md)、[P1-A](coordination/P1-A-task.md)、[P2-A](coordination/P2-A-task.md)、[P3-A](coordination/P3-A-task.md)、[P3-B](coordination/P3-B-task.md)、[P7-A](coordination/P7-A-task.md)。这些记录已完成的限定分工；P8任务书尚未创建。
+
+### 验证与截图
+
+| 阶段 | 证据入口 |
+| --- | --- |
+| P2 | [验证](validation/P2.md)、[DSH说明](validation/P2-DSH-NOTES.md) |
+| P3 | [验证](validation/P3.md)、[DSH说明](validation/P3-DSH-NOTES.md) |
+| P4 | [界面细节验证](validation/P4.md) |
+| P5 | [真实聊天与运行矩阵](validation/P5-MATRIX.md) |
+| P7 | [运行基线验证](validation/P7.md)、[DSH说明](validation/P7-DSH-NOTES.md) |
+
+`docs/validation/screenshots/`当前17张截图，以`p2-`、`p3-`、`p4-`、`p5-`、`p7-`标明阶段。结合对应报告看测试条件与限制；没有P8截图或验证报告。旧报告里的“尚未开始”只说明当时状态，历史通过也不能代替新改动验证。
+
+## 本地缓存、归档与维护规则
+
+`docs/research/`是入库证据，`.research/`是被忽略的本地工作目录，两者不要混用。
+
+| 内容 | 处理原则 |
+| --- | --- |
+| `.research/`参考仓缓存 | 本地调研辅助，不作为本插件源码或发布内容 |
+| `.research/`隔离home、临时patch、配置、日志、连接辅助文件 | 可能含认证或会话信息；不提交、不打包，不复用旧认证链接 |
+| `.research/`查重、打包和预览结果 | 仅证明记录对应版本；后续变更须重验 |
+| `release/dsh-theme-dongxuelian-0.1.0-preview.1.tgz` | 旧Q版包，保留本地追溯，不交付；P8后由P6重做归档验收 |
+
+本次没有删除、移动素材或清理缓存。后续清理`.research/`前，先确认隔离进程与日志保留需求。
+
+发布范围由`package.json.files`和npm实际归档共同确定；当前包括两项角色WebP及INSTALL/RELEASE草稿，不含场景PNG、候选板、测试和开发记录。P6须按实际包内容复核，不能仅凭白名单声明完成。
+
+维护时优先更新现有入口：状态写HANDOFF、步骤写计划、分工写看板、证据写validation、文件职责写本页；避免再建内容重复的总览。新增或移动文件后核对相对链接和发布白名单。
