@@ -4,13 +4,15 @@
 
 **目标：**交付可在 DSH `0.2.1-rc.2` 独立启停、轻量、可读、保留角色特征的主题插件。
 
-**架构：**官方 Theme 覆盖仅在浅色激活，不改变用户偏好；必要的小头像通过已存在 Slot 显示，独立资源由包内白名单 Host 路由提供，释放与插件生命周期绑定。所有宿主修改通过插件实现，隔离测试不碰用户 desktop profile。
+**当前执行入口：**用户已选定B彩铅绘本抱书图reading.png，并要求先规划交接、新会话实现。按 [P8抱书氛围详细计划](superpowers/plans/2026-10-20-reading-atmosphere.md) 从Task 1接续；本轮不改运行代码、不导出/预览/打包。以下P0-P7为历史阶段，P7技术通过不代表P8审美需求已满足。
+
+**架构：**官方Theme覆盖仅在浅色激活，不改变用户偏好；品牌头像与背景样式走官方Slot，完整抱书场景在内容下绘制，独立资源走固定Host白名单路由，统一随生命周期释放。隔离测试不碰用户desktop profile。
 
 **技术栈：**原生 JavaScript、官方 `window.__ModuleLoader__.load` factory、Node 内置测试/VM/文件 API、DSH 自带 Electron 与官方 ModuleLoader；图片采用独立 PNG/WebP 文件。当前无第三方运行依赖，不为几百行主题引入编译框架。
 
 ## 已确定的输入与取舍
 
-- P0/P1已获准继续。用户最新要求改为P7冷白雾蓝与适量人物背景，见 `docs/design/P7-WINTER-SCENE.md`；P1暖色与仅小头像是历史限制。深色继续释放覆盖。
+- 用户已选B彩铅绘本抱书图，最新目标为纸白/灰蓝/靛蓝、左侧阅读右侧人物的完整场景。见P8详细计划；P1暖色/仅小头像和P7放大Q版背景均为历史。深色继续释放覆盖。
 - 独立最小插件优于 Fork 大主题。P0 已检索与读三参考项目；P2 GitHub MCP 再查 oil 的 `overrideTokens` 返回未完整索引的空结果，不据此声称不存在实现。以已克隆固定 SHA 源码与本机官方 API 为证据。
 - 复用官方 factory 形式，不自造模块加载器/打包器、不依赖 React（仅在 P3 实际 Slot 组件需要时使用宿主 React）。直接交付 JS，无需 TypeScript/打包构建依赖，`npm run check` 承担语法和契约检查。
 - 手写入口 `client.js` 是唯一客户端源；不要同时维护等价 `src` 和 `lib` 副本。Host 入口 `index.js`；包名 `dsh-theme-dongxuelian`；Cordis entry id 同名，避免参考项目常用 `theme` 冲突。
@@ -75,9 +77,18 @@
 - [x] 17/17、check、真实loader、实际九组尺寸/CSS缩放、明暗/启停/收放/更多/历史代码，独立review无实质发现。证据 `docs/validation/P7.md`。
 - [x] 最终jscpd：本项目8文件855行0 clones；diff检查通过并独立提交P7。然后P6重新打包，不交旧preview.1包。
 
+## P8：选定抱书图后的氛围接入（新会话实施）
+
+- [x] A-F风格探索、用户选择B、四幅同系列生成、用户明确选定reading.png主视觉；母版已保存并提交b4e6e32。
+- [x] 确认最新上传图与母版像素一致；完整规划与交接已写入P8详细计划。
+- [ ] Task 1：按授权等比导出单项reading.webp；核对真实空态DOM，不猜hash选择器。
+- [ ] Task 2–3：路由/Slot契约RED，DSH限定接入，Codex审核与GREEN；保留P6草稿。
+- [ ] Task 4–5：实际空态/聊天布局、阅读面、窄屏/明暗/启停，测试/真实loader/查重/审核，P8独立记录提交。
+- [ ] Task 6：P8成立后重做P6归档及隔离安装/卸载/重启；不交旧包。
+
 ## P6：打包交付与安装/卸载说明
 
-**暂停提醒：**用户最新要求先生成多种人物风格供其选择。P8候选A-F已经展示，见 `docs/design/P8-STYLE-CANDIDATES.md`。P7技术通过不代表新审美已满足，选定并完成P8主辅场景/真实窗口后再继续本节，不能交旧包。
+**暂停提醒：**风格与主图已确定，不再等待A-F选择。用户要求新会话实现P8抱书氛围；完成P8真实窗口验证后再继续本节，不能交旧Q版包。
 
 **文件：** `README.md`（最终入口与安装），`docs/INSTALL.md`（版本/安装/停用/卸载/恢复），`docs/RELEASE.md`（验证/限制/素材出处），`LICENSE` 与必要 `THIRD_PARTY_NOTICES.md`，`release/`（最终可安装归档与 SHA256，按实际打包内容决定是否提交大文件）。
 

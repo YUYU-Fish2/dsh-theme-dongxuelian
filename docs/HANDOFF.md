@@ -1,45 +1,63 @@
 # 新会话接续记录
 
-更新2026-10-19，工作区E:\codex\dsh主题开发，分支feat/theme-v1。先读本文件、[总计划](IMPLEMENTATION-PLAN.md)、[看板](coordination/WORKBOARD.md)及根AGENTS；找文件见[项目导航](PROJECT-MAP.md)。
+当前状态：**规划交接已完成，P8实现留到用户新开的会话。** 本轮只核对素材、写计划/交接和收起旧隔离预览，没有修改运行代码、导出资源、派发DSH或打包。
 
-## 最新用户反馈（优先于下文旧状态）
+工作区：E:\codex\dsh主题开发；分支：feat/theme-v1。新会话先读本文件，再读[P8抱书氛围详细计划](superpowers/plans/2026-10-20-reading-atmosphere.md)、[总计划](IMPLEMENTATION-PLAN.md)、[看板](coordination/WORKBOARD.md)和根AGENTS。
 
-**已选B。** 用户上传B裁图并明确“就这个风格，多来点类似的”。不再等待A-F选择，不继续发散人物画法。当前任务先生成四张同系列B彩铅绘本人物：横幅抱书、竖幅喝茶、竖幅花园散步、横幅伏桌写信；固定圆润简化五官、半睁淡蓝眼、银白发/发束、蓝花白花/深蓝缎带、深蓝中式领口与宽白袖、可见彩铅排线和纸面留白。不能退回精细AI动漫脸或仅加纸纹。用户裁图已原样复制assets/style-studies/p8-b-selected-reference.png（含截图UI，生成时只参考B画面，不能把UI/字母复制到新图）。图片仍用imagegen，先让用户看同系列新图；P6暂缓。
+## 1. 用户已经决定，不再重问
 
-**本轮四图已生成并展示。** assets/scenes/b-series/ 下reading.png、tea.png、garden.png、letter.png为完整PNG母版，尺寸/字节/哈希和画法约束见同目录README.md。已实际目视查看，均保留B的人物与彩铅绘本画法；只复制生成文件，没有本地修画。未加入package.files、未新增路由、未替换现有P7运行背景。下一步结合用户反馈选用/微调这些图，进行P8接入、资源导出与回归，再继续P6；不能把图片生成成功当作实际主题已完成。
+- 用户嫌旧背景只有小图标，要求有完整人物/场景、整体融洽；又明确人物偏涂鸦、减少AI味，不能只给精细动漫脸加纸纹。
+- 已从A-F选择**B彩铅绘本**，随后四幅同系列中明确选定**抱书横幅reading.png**：“就这个，配合这个做一个恰当的氛围”。
+- 最新指令：“先列进计划，做好规划交接工作，我新开会话做”。本轮到此交接；新会话收到继续指令后按详细计划执行。
+- 视觉方向：温和纸白底、灰蓝线条、靛蓝重点色；主图右侧人物/蓝花清楚，左侧留白承接阅读和输入；侧栏只轻呼应。tea/garden/letter保留备选，不默认同时使用，不轮播、不再发散风格。
+- 用户已允许本地**仅等比缩放与格式编码**；不能本地裁切/修脸/去背景/合成。需要改画用imagegen，不改已选人物身份和B画法。
 
-用户看过P7后再次明确“背景要多点图片，不要全是这种小图标，多参考其他二创，主题融洽和谐”。P7只是技术通过，审美不满足，不能打包交付。P6再次暂停，先做P8完整人物/环境插画氛围，停止放大或重复Q版头像。应生成新场景/姿态并在真实UI预览；新插画用imagegen，本地仍只允许等比缩放/格式编码。README/package等P6未提交修改保留，发布描述须待P8重写。
+## 2. 唯一主视觉与素材
 
-最新用户又修订“偏涂鸦风一点，减少AI味”。P8已生成的两幅精细月色花房图被否定，不可直接用作最终素材；重画为松弛涂鸦、粗糙铅笔/蜡笔、简化衣饰/光影/环境。仍要完整人物和有整体氛围的场景，不退回小图标。已生成精细图留作未采用候选，不打包。
+选定母版：[reading.png](../assets/scenes/b-series/reading.png)，1536×1024、2857637B，SHA256：
 
-最新指令是“人物要减少AI味，多尝试其他风格”“多生成一些，我挑一个”。现已生成A-F六种人物画法，两张三联板在assets/style-studies/p8-abc.png、p8-def.png，均已实际展示/目视检查。见[六种风格候选](design/P8-STYLE-CANDIDATES.md)。当前等待用户挑选，不能代理自定最终风格或继续打包。选定后按所选人物画法重画主/辅场景，再做P8实现验证。先前精细画与彩铅纹理画不采用。P7可回退提交f96f68f。
+`387d5998225c850660ffeda5347c1105d61b589109d6608ad33d121621ef1691`
 
-## 当前状态
+本轮已只读核对：用户最新Temp上传图与该母版的解码RGBA像素**完全相同**，新会话直接用仓库文件，不依赖临时附件。四图目录与哈希见[素材说明](../assets/scenes/b-series/README.md)。其他精细月色花房、叠纸纹人物、A-F草案不作为最终图；外部二创只参考配色构图，不复制入包。
 
-P0/P1完成；P2 be6ee2a、导航e5b7cf2、P3 cb41a11、P4 7f96ad1、P5 91734ba。旧P6进行时用户要求改视觉，现P7冷白雾蓝与人物背景已实现并完成隔离验证，见[P7验证](validation/P7.md)、[设计与来源](design/P7-WINTER-SCENE.md)。下一步P6重新打包，不交旧preview.1包。
+## 3. Git与当前代码，勿把历史当现状
 
-浅色26token、24px品牌头像与两处主次人物背景，header重复头像已移除。shell.overlay承载style，官方main/sidebar根负层级伪元素绘图；无动画、不写用户偏好、深色/停用全释放。Host仍精确两文件Map。零第三方运行依赖、无编译。
+- 本次规划前HEAD `b4e6e32`：四幅B系列PNG；`4abd4f9`：六种候选；运行基线P7 `f96f68f`。
+- 更早：P5 `91734ba`、P4 `7f96ad1`、P3 `cb41a11`、P2 `be6ee2a`。
+- **当前client.js仍是P7**：26个浅色冷白雾蓝token、24px品牌头像、shell.overlay里的SceneStyle，以及官方main/sidebar根伪元素绘制的旧Q版背景。抱书图尚未接入。
+- 当前index.js仍只放行avatar.webp和sidebar-character.webp；新reading.webp未导出、未路由、未加入package.files。P8计划将最终白名单改为avatar+reading，保留旧文件源码但撤出包和运行路由。
+- 生命周期沿用官方Theme/Slot和原事务、微任务合并/串行收敛；深色/停用释放，不写主题偏好。零第三方运行依赖、无编译。
+- **保留现有未完成P6草稿：**README.md、package.json修改；未跟踪docs/INSTALL.md、docs/RELEASE.md。这些不是本轮规划产生的运行改动，不覆盖/回退/顺手提交为发行。package虽为0.1.0-preview.2，仍不是已验收交付。
+- 旧release/dsh-theme-dongxuelian-0.1.0-preview.1.tgz为Q头像方案，不交付，不复用旧SHA。
 
-avatar192px/26864B；趴边图从1254px原母版重新等比导出512px/124148B，两图151012B。用户明确允许“仅缩放与格式编码”，未裁切/改画。外部二创只参考颜色构图，不复制打包。
+## 4. 新会话从这里执行
 
-验证：17/17、check、真实loader/26token存在；独立reviewer12/12、无实质发现。实际浅深/停用重启用、侧栏收放/更多、P5历史长代码、800/1100/1440×CSSzoom九组通过。媒体/CSS模拟及viewport已恢复。截图docs/validation/screenshots/p7-hero.png与p7-chat.png。原生桌面/系统DPI/better-sidebar激活未确认，交付preview。
+详细计划有六个任务、具体文件、路由回归示例、命令、失败路径和视觉验收：
 
-## 授权与边界
+1. 核对素材与Git，等比导出reading.webp，单项初始预算550KB；读取真实空态DOM后再排版，**空态内部栈公开锚点尚未确认，不得猜hash类名**。
+2. 先写新资源GET/HEAD、旧路由撤出、Slot/owner释放的RED，再给DSH限定任务。
+3. Codex导出/测试/审核，DSH仅read/write改指定Host/client/package/notes；复用现有生命周期，不改核心/profile/测试/权限/模型。
+4. 真实隔离DSH：宽窗口左内容右人物、聊天不透明阅读面、窄屏、长代码/工具卡/菜单/侧栏；避免又把主图淡成水印或遮脸压字。
+5. 测试/check/真实ModuleLoader/明确本项目jscpd/独立审核；P8证据和阶段提交。
+6. P8成立后再继续P6：文档改为最终图、精确打包、新隔离home从tgz安装/卸载/重启及SHA，预览交付，不自动发布或装入日常profile。
 
-用户要求Codex审核派发、DSH限定read/write，授权P2→P6连续自主推进、分阶段验证记录提交。新要求增加适量人物背景、自主调研二创搭配色彩，修订P1仅小头像/不以蓝为主色限制。常规可逆步骤不循环确认。
+设计色值是**计划初稿**，尚未计算或实窗验收；导出尺寸/预算也不是已实现结果。新会话应核算对比度并依据真实截图微调，而不是把计划值写成通过。
 
-不改DSH核心、日常desktop profile、其他插件/模型/凭据；不推送发布。凭据由DSH自身服务解析，不读取/复制/打印密钥，不修ACL。DSH只read/write，Codex跑shell/测试。见[协作记录](coordination/DSH-COLLABORATION.md)。
+## 5. 既有验证与本轮证据
 
-## 接续P6
+历史P7：[P7验证](validation/P7.md)，17/17、check、真实loader/26token、独立reviewer12/12与0 clones；窗口九组CSS模拟、明暗/启停/更多/收放通过。P5曾完成真实两轮聊天/read/附件，可用其历史复核新背景，不必重新请求模型；必须写清是读取历史。
 
-1. 修订README/INSTALL/RELEASE/package旧暖色与两头像描述，更新preview版本。
-2. npm pack白名单/归档/SHA，新隔离home从tgz离线安装，核对client/index哈希，实际窗口/停用/卸载/重启。旧release/dsh-theme-dongxuelian-0.1.0-preview.1.tgz不能交付，旧SHA作废。
-3. 完成P6记录、独立提交及preview标签，不自动安装到日常profile或发布远端。
+上述不是P8通过证据。本轮仅验证选定图片像素身份、文档/链接/差异；没有运行测试或实际P8窗口。原生桌面/系统DPI/其他平台/better-sidebar实际激活仍未确认，保留preview边界。
 
-## 命令与进程
+## 6. 进程、工具与安全边界
 
-Node D:\node.exe，Python/Pillow E:\python\python.exe，DSH CLI E:\dsh\resources\runtime\cli\bin\dsh.cmd，runtime E:\dsh\resources\app.asar\dsh。npm test、npm run check；真实loader用Electron Run-as-Node执行scripts/runtime-smoke.mjs并用管道等待GUI进程。jscpd用AGENTS指定CLI明确扫本项目，排除.research/.git/node_modules/release。
+- 本轮未启动宿主或DSH模型任务；发现旧隔离theme-test进程PID25256、监听64067，核对其theme-test + p3-test-host.patch命令特征后已停止。旧端口/认证URL不可作为新连接；其他Node/DSH进程未操作。
+- DSH P7-A已退出0。新P8任务书/日志尚未创建或派发，不能把旧日志当新贡献。
+- DSH CLI：E:\dsh\resources\runtime\cli\bin\dsh.cmd；Node：D:\node.exe；Pillow：E:\python\python.exe；Electron：E:\dsh\DeepSeek Harness.exe；runtime：E:\dsh\resources\app.asar\dsh。
+- jscpd用AGENTS指定CLI扫明确本项目绝对路径，排除.research/.git/node_modules/release。MCP索引不明不要冒用。
+- 协作命令和凭据边界见[DSH协作方法](coordination/DSH-COLLABORATION.md)；沿用worker patch，由DSH自身服务解析密钥，不读/复制/打印凭据，不修ACL。
+- 只在隔离.research/test-home等测试；不改日常desktop profile/其他插件/模型/核心，不推送发布，不reset/clean。日志、配置、认证链接、用户数据不提交/打包。
 
-当前隔离Web为.research/test-home的theme-test，patch .research/p3-test-host.patch.yml；本轮exec session35220。认证URL仅.research/test-host-url.txt，不打印/提交。DSH P7-A已退出0。结束关闭自己IAB标签、停止自己的Web进程，不动用户DSH；中断可能已停进程，先查状态。
+## 7. 新会话启动语
 
-.research/及原始日志/临时配置/认证信息不提交打包。历史阶段证据只代表当时版本。
+> 先读docs/HANDOFF.md，再读docs/superpowers/plans/2026-10-20-reading-atmosphere.md和WORKBOARD。用户已选B系列reading.png抱书横幅，围绕纸白/灰蓝/靛蓝做氛围，从Task 1开始；不用重新选图或生成候选。保留P6草稿，Codex审核导出测试、DSH限定read/write。先做真实空态/聊天预览，再完成P8/P6记录和交付。
