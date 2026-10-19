@@ -19,13 +19,16 @@ for (const file of ['index.js', 'client.js', 'cordis.patch.yml', 'README.md', 'L
   assert.ok(pkg.files.includes(file), `发布文件白名单缺少 ${file}`);
 }
 assert.ok(pkg.dsh.client.inject.includes('@deepseek-ai/dsh-client-ui-renderer'));
-for (const name of ['avatar', 'sidebar-character']) {
-  const file = `assets/characters/web/${name}.webp`;
+for (const [file, budget] of [
+  ['assets/characters/web/avatar.webp', 40_000],
+  ['assets/scenes/web/reading.webp', 550_000],
+]) {
   assert.ok(pkg.files.includes(file), `发布文件白名单缺少 ${file}`);
   const bytes = readFileSync(new URL(file, root));
   assert.equal(bytes.toString('ascii', 0, 4), 'RIFF');
   assert.equal(bytes.toString('ascii', 8, 12), 'WEBP');
-  const budget = name === 'avatar' ? 40_000 : 180_000;
   assert.ok(bytes.length < budget, `${file} 超过独立资源预算 ${budget} bytes`);
 }
+assert.ok(!pkg.files.includes('assets/characters/web/sidebar-character.webp'), '旧Q版背景不再发布');
+assert.ok(pkg.files.includes('assets/scenes/README.md'), '发布文件白名单缺少场景来源说明');
 console.log('PASS: JS syntax, client/package contract and package allowlist');

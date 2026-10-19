@@ -54,7 +54,8 @@ test('品牌头像与背景样式走独立官方槽，不在前景覆盖人物�
       assert.equal(element.type, 'style', '背景在内容下方绘制，而不是高层可交互图片');
       assert.equal(element.props['data-dxl-scene'], '');
       assert.equal(typeof element.props.children, 'string');
-      assert.ok(element.props.children.includes('sidebar-character.webp'));
+      assert.ok(element.props.children.includes('/dongxuelian-theme/assets/reading.webp'));
+      assert.ok(!element.props.children.includes('sidebar-character.webp'));
       continue;
     }
     assert.equal(element.type, 'img');
@@ -90,18 +91,22 @@ test('深色完全释放头像和背景样式，回浅恢复，停用后监听�
   assert.equal(runtime.listeners.size, 0);
 });
 
-test('owner 子槽消失后释放，重新声明时只恢复一份', () => {
+for (const slot of [sidebar, scene]) test(`${slot} owner 消失后释放，重新声明时只恢复一份`, () => {
   const runtime = slots();
   loadPlugin().apply(runtime.context);
   assert.equal(runtime.entries.size, 2);
-  runtime.declare(sidebar, false);
+  runtime.declare(slot, false);
   assert.equal(runtime.entries.size, 1);
-  runtime.declare(sidebar, true);
+  assert.equal([...runtime.entries].filter((row) => row.options.name === slot).length, 0);
+  assert.equal(runtime.waiters.size, 2);
+  runtime.declare(slot, true);
   assert.equal(runtime.entries.size, 2);
+  assert.equal([...runtime.entries].filter((row) => row.options.name === slot).length, 1);
   runtime.stop();
-  runtime.declare(sidebar, false);
-  runtime.declare(sidebar, true);
+  runtime.declare(slot, false);
+  runtime.declare(slot, true);
   assert.equal(runtime.entries.size, 0);
+  assert.equal(runtime.waiters.size, 0);
 });
 
 test('背景注册失败会回滚品牌槽、主题覆盖与监听', () => {

@@ -1,6 +1,6 @@
 # 项目文件导航
 
-2026-10-20核对。当前分支`feat/theme-v1`，运行代码为P7；P8抱书氛围已规划，尚未实施。本文说明文件职责与保留范围；进度以[HANDOFF](HANDOFF.md)、计划、看板和Git为准。
+2026-10-20核对。当前分支`feat/theme-v1`，运行代码已接入P8抱书氛围，隔离Web预览已验收；P6归档安装验收正在接续。本文说明文件职责与保留范围；进度以[HANDOFF](HANDOFF.md)、计划、看板和Git为准。
 
 ## 阅读入口
 
@@ -12,7 +12,7 @@
 | 给DSH派发任务 | [协作方法](coordination/DSH-COLLABORATION.md)；现有任务书均为历史记录 |
 | 查安装和发行说明 | [README](../README.md)、[INSTALL](INSTALL.md)、[RELEASE](RELEASE.md)是保留的P6草稿，须在P8验收后更新 |
 
-**交付状态：**`package.json`工作树版本为`0.1.0-preview.2`，不代表该版本已经归档验收。`release/`仅有旧`preview.1`包，不能作为最新需求的交付物。当前没有`reading.webp`、P8验证报告或P8派发任务书。
+**交付状态：**P8工作树已通过预览验收，见[P8验证](validation/P8.md)和[P8-A任务](coordination/P8-A-task.md)。package工作树preview.2及安装说明仍待P6最终归档安装验收；旧preview.1包不能作为最新需求交付物。
 
 ## 目录分工
 
@@ -24,8 +24,8 @@
   README.md                            使用说明，当前为P6草稿
   AGENTS.md、LICENSE、THIRD_PARTY_NOTICES.md
   assets/
-    characters/                        Q版母版、当前运行WebP与来源
-    scenes/b-series/                   选定reading及三幅备选PNG母版
+    characters/                        Q版母版、保留的头像WebP及历史背景
+    scenes/b-series/                   选定reading及三幅备选PNG母版；web/为运行导出
     style-studies/                     A-F候选板与用户选B参考
   docs/
     HANDOFF.md                         当前状态、授权与下一步
@@ -50,13 +50,13 @@
 
 | 文件 | 职责 |
 | --- | --- |
-| [client.js](../client.js) | 唯一客户端源；官方factory、26项浅色token、明暗/停用事务；品牌头像和SceneStyle槽；当前仍绘制旧Q版背景 |
-| [index.js](../index.js) | Host入口；官方生命周期内注册avatar和sidebar-character两项固定WebP白名单路由 |
+| [client.js](../client.js) | 唯一客户端源；官方factory、26项浅色token、明暗/停用事务；品牌头像和SceneStyle槽；当前绘制抱书彩铅场景 |
+| [index.js](../index.js) | Host入口；官方生命周期内注册avatar和reading两项固定WebP白名单路由 |
 | [cordis.patch.yml](../cordis.patch.yml) | 注册唯一`dsh-theme-dongxuelian` Host entry |
 | [package.json](../package.json) | 包版本、入口、DSH声明、发布白名单及`test`/`check`命令；零第三方运行依赖 |
 | [test/theme.test.mjs](../test/theme.test.mjs) | 七项主题生命周期回归 |
 | [test/assets.test.mjs](../test/assets.test.mjs) | 五项Host实际HTTP路由回归，需本地回环连接 |
-| [test/slots.test.mjs](../test/slots.test.mjs) | 五项品牌/SceneStyle、明暗释放、owner恢复和回滚回归 |
+| [test/slots.test.mjs](../test/slots.test.mjs) | 六项品牌/SceneStyle、明暗释放、owner恢复和回滚回归 |
 | [test/helpers/client-host.mjs](../test/helpers/client-host.mjs) | 主题与Slot测试共用的模拟宿主夹具 |
 | [scripts/check.mjs](../scripts/check.mjs) | JS语法、包契约、WebP格式/体积及白名单检查 |
 | [scripts/runtime-smoke.mjs](../scripts/runtime-smoke.mjs) | 通过DSH Electron Run-as-Node检查官方ModuleLoader与token；不能代替窗口验收 |
@@ -71,14 +71,15 @@
 | --- | --- | --- |
 | [characters/README](../assets/characters/README.md) | 早期角色来源与导出说明 | 当前白名单包含 |
 | [avatar.png](../assets/characters/avatar.png)、[sidebar-character.png](../assets/characters/sidebar-character.png) | Q版PNG母版，保留来源 | 不打包 |
-| [avatar.webp](../assets/characters/web/avatar.webp) | 当前192px头像，26864B；P8计划沿用 | 当前运行资源 |
-| [sidebar-character.webp](../assets/characters/web/sidebar-character.webp) | 当前512px Q版背景，124148B | P8计划撤出路由和包，保留源码 |
-| [b-series/README](../assets/scenes/b-series/README.md)、[reading.png](../assets/scenes/b-series/reading.png) | 用户选定的B彩铅抱书主视觉；1536×1024、2857637B | 仅母版，待按P8计划等比导出 |
+| [avatar.webp](../assets/characters/web/avatar.webp) | 当前192px头像，26864B；P8沿用 | 当前运行资源 |
+| [sidebar-character.webp](../assets/characters/web/sidebar-character.webp) | 当前512px Q版背景，124148B | 已撤出路由和包，保留源码 |
+| [b-series/README](../assets/scenes/b-series/README.md)、[reading.png](../assets/scenes/b-series/reading.png) | 用户选定的B彩铅抱书主视觉；1536×1024、2857637B | 母版不打包；已有对应WebP运行导出 |
+| [web/reading.webp](../assets/scenes/web/reading.webp)、[场景说明](../assets/scenes/README.md) | 1280×853、222484B，等比缩放与quality90编码 | 当前唯一场景运行资源 |
 | [tea.png](../assets/scenes/b-series/tea.png)、[garden.png](../assets/scenes/b-series/garden.png)、[letter.png](../assets/scenes/b-series/letter.png) | 同系列备选 | 不默认接入或打包 |
 | [p8-abc.png](../assets/style-studies/p8-abc.png)、[p8-def.png](../assets/style-studies/p8-def.png) | A-F画法探索板，选择已结束 | 仅历史参考，不打包 |
 | [p8-b-selected-reference.png](../assets/style-studies/p8-b-selected-reference.png) | 用户选B的参考截图，含截图UI | 仅参考，不打包 |
 
-选定母版SHA256：`387d5998225c850660ffeda5347c1105d61b589109d6608ad33d121621ef1691`。当前两项运行WebP合计151012B；不能把P3早期的50862B或P8计划预算当作当前产物大小。
+选定母版SHA256：`387d5998225c850660ffeda5347c1105d61b589109d6608ad33d121621ef1691`。当前两项运行WebP合计249348B；151012B是P7历史值，不能当作当前产物大小。
 
 ## 文档：按用途查找
 
@@ -86,7 +87,7 @@
 
 - [HANDOFF](HANDOFF.md)：当前事实、授权、环境、下一步与本次梳理记录。
 - [总计划](IMPLEMENTATION-PLAN.md)：历史阶段与P8→P6的验收安排。
-- [P8抱书氛围详细计划](superpowers/plans/2026-10-20-reading-atmosphere.md)：唯一当前视觉实现计划，从Task 1开始；本次整理未启动实施。
+- [P8抱书氛围详细计划](superpowers/plans/2026-10-20-reading-atmosphere.md)：唯一当前视觉实现计划，Task 1–5已执行，P6归档安装验收见Task 6。
 - [WORKBOARD](coordination/WORKBOARD.md)：分工和任务状态。
 - [DSH-COLLABORATION](coordination/DSH-COLLABORATION.md)：调用方式、权限边界、历史贡献和日志位置。
 - [INSTALL](INSTALL.md)、[RELEASE](RELEASE.md)：未跟踪的P6草稿；保留原文，P8验收通过后再完成发行核对。
@@ -100,7 +101,7 @@
 | P7 | [冷白雾蓝/Q版背景设计](design/P7-WINTER-SCENE.md)；对应当前运行基线，不是最终P8方向 |
 | P8历史探索 | [月色花房](design/P8-MOONLIT-ATELIER.md)、[A-F候选](design/P8-STYLE-CANDIDATES.md)；均已由B抱书方案取代，不再执行选择流程 |
 
-历史派发任务书：[P0-A](coordination/P0-A-task.md)、[P1-A](coordination/P1-A-task.md)、[P2-A](coordination/P2-A-task.md)、[P3-A](coordination/P3-A-task.md)、[P3-B](coordination/P3-B-task.md)、[P7-A](coordination/P7-A-task.md)。这些记录已完成的限定分工；P8任务书尚未创建。
+历史派发任务书：[P0-A](coordination/P0-A-task.md)、[P1-A](coordination/P1-A-task.md)、[P2-A](coordination/P2-A-task.md)、[P3-A](coordination/P3-A-task.md)、[P3-B](coordination/P3-B-task.md)、[P7-A](coordination/P7-A-task.md)。这些记录已完成的限定分工；本次[P8-A](coordination/P8-A-task.md)也已交付。
 
 ### 验证与截图
 
@@ -110,9 +111,10 @@
 | P3 | [验证](validation/P3.md)、[DSH说明](validation/P3-DSH-NOTES.md) |
 | P4 | [界面细节验证](validation/P4.md) |
 | P5 | [真实聊天与运行矩阵](validation/P5-MATRIX.md) |
-| P7 | [运行基线验证](validation/P7.md)、[DSH说明](validation/P7-DSH-NOTES.md) |
+| P7 | [历史运行基线验证](validation/P7.md)、[DSH说明](validation/P7-DSH-NOTES.md) |
+| P8 | [当前抱书氛围验证](validation/P8.md)、[DSH首稿说明](validation/P8-DSH-NOTES.md)；以Codex最终实测为准 |
 
-`docs/validation/screenshots/`当前17张截图，以`p2-`、`p3-`、`p4-`、`p5-`、`p7-`标明阶段。结合对应报告看测试条件与限制；没有P8截图或验证报告。旧报告里的“尚未开始”只说明当时状态，历史通过也不能代替新改动验证。
+`docs/validation/screenshots/`含历史17张及P8新增5张截图，文件前缀标明阶段。结合对应报告看测试条件与限制。旧报告里的“尚未开始”只说明当时状态，历史通过也不能代替新改动验证。
 
 ## 本地缓存、归档与维护规则
 

@@ -10,7 +10,7 @@ const PREFIX = '/dongxuelian-theme/assets'
 // traversal spellings cannot reach the filesystem.
 const FILES = new Map([
   [`${PREFIX}/avatar.webp`, new URL('./assets/characters/web/avatar.webp', import.meta.url)],
-  [`${PREFIX}/sidebar-character.webp`, new URL('./assets/characters/web/sidebar-character.webp', import.meta.url)],
+  [`${PREFIX}/reading.webp`, new URL('./assets/scenes/web/reading.webp', import.meta.url)],
 ])
 
 // Short-lived revalidation instead of long immutable caching: the two files

@@ -22,42 +22,43 @@ window.__ModuleLoader__.load({
     const pair = (value) => ({ light: value, dark: value })
 
     const TOKENS = {
-      '--dsw-alias-bg-base': pair('#F3F6FC'),
-      '--dsw-alias-bg-layer-1': pair('#FCFDFF'),
-      '--dsw-alias-bg-layer-2': pair('#E8EEF8'),
-      '--dsw-alias-bg-layer-3': pair('#E8EEF8'),
-      '--dsw-alias-bg-overlay': pair('#FCFDFF'),
+      '--dsw-alias-bg-base': pair('#F7F3EB'),
+      '--dsw-alias-bg-layer-1': pair('#FFFDF8'),
+      '--dsw-alias-bg-layer-2': pair('#EDECE9'),
+      '--dsw-alias-bg-layer-3': pair('#EDECE9'),
+      '--dsw-alias-bg-overlay': pair('#FFFDF8'),
 
-      '--dsw-alias-label-primary': pair('#293750'),
-      '--dsw-alias-label-secondary': pair('#58647C'),
+      '--dsw-alias-label-primary': pair('#313A50'),
+      '--dsw-alias-label-secondary': pair('#5C6578'),
       // The palette fixes two text levels. Reusing the verified secondary for
-      // tertiary/caption keeps small text readable on the mist-blue surfaces
+      // tertiary/caption keeps small text readable on the paper surfaces
       // instead of falling back to the host's lower-contrast greys.
-      '--dsw-alias-label-tertiary': pair('#58647C'),
-      '--dsw-alias-label-caption': pair('#58647C'),
+      '--dsw-alias-label-tertiary': pair('#5C6578'),
+      '--dsw-alias-label-caption': pair('#5C6578'),
 
-      '--dsw-alias-border-l1': pair('#CED8E8'),
-      '--dsw-alias-border-l2': pair('#CED8E8'),
+      '--dsw-alias-border-l1': pair('#D4D7DE'),
+      '--dsw-alias-border-l2': pair('#D4D7DE'),
       // l3/l4 mark controls that must remain distinguishable, not decoration.
-      '--dsw-alias-border-l3': pair('#78879F'),
-      '--dsw-alias-border-l4': pair('#78879F'),
+      // #7D879B stays above 3:1 on both paper and sidebar fills.
+      '--dsw-alias-border-l3': pair('#7D879B'),
+      '--dsw-alias-border-l4': pair('#7D879B'),
 
-      '--dsw-alias-brand-primary': pair('#435D9D'),
+      '--dsw-alias-brand-primary': pair('#536B9E'),
       '--dsw-alias-brand-text': pair('#FFFFFF'),
-      '--dsw-alias-state-business-primary': pair('#435D9D'),
-      '--dsw-alias-button-primary-fill': pair('#435D9D'),
-      '--dsw-alias-button-primary-hover': pair('#354B82'),
+      '--dsw-alias-state-business-primary': pair('#536B9E'),
+      '--dsw-alias-button-primary-fill': pair('#536B9E'),
+      '--dsw-alias-button-primary-hover': pair('#435882'),
       // The official composer send button uses the info pair, not primary.
-      '--dsw-alias-button-info-fill': pair('#435D9D'),
-      '--dsw-alias-button-info-hover': pair('#354B82'),
-      '--dsw-alias-interactive-bg-hover': pair('#E8EEF8'),
+      '--dsw-alias-button-info-fill': pair('#536B9E'),
+      '--dsw-alias-button-info-hover': pair('#435882'),
+      '--dsw-alias-interactive-bg-hover': pair('#EDECE9'),
 
-      '--dsw-specific-input-major': pair('#FCFDFF'),
-      '--dsw-specific-sidebar-fill': pair('#E8EEF8'),
-      '--dsw-specific-bubble': pair('#E0E9F8'),
-      // Pale purple is a background only; label-primary stays dark on top.
-      '--dsw-specific-bubble-highlight': pair('#E4E0F2'),
-      '--dsw-specific-sidebar-nav-item-active': pair('#E4E0F2'),
+      '--dsw-specific-input-major': pair('#FFFDF8'),
+      '--dsw-specific-sidebar-fill': pair('#EDECE9'),
+      '--dsw-specific-bubble': pair('#DDE4EF'),
+      // Selection and highlight are backgrounds only; label-primary stays dark.
+      '--dsw-specific-bubble-highlight': pair('#E4E5EE'),
+      '--dsw-specific-sidebar-nav-item-active': pair('#E4E5EE'),
     }
 
     // Fixed 24px matches the official sidebar brand-mark owner prop and keeps
@@ -82,70 +83,99 @@ window.__ModuleLoader__.load({
 
     // Decoration lives in a stylesheet, not in the overlay layer: shell.overlay
     // paints above the app (its ancestor is z-index 20), so an <img> there
-    // would cover controls. Both official containers expose a direct layout
-    // root; only those roots get a background pseudo-element, so the artwork
-    // stays below their child content. No hash class names, no body/html
-    // layout rewrite, no DOM writes, no animation and no new settings.
+    // would cover controls. Only the official conversation content is painted;
+    // its direct children keep their own backgrounds and the stylesheet never
+    // replaces the message tree or writes DOM. The sidebar echoes the palette
+    // through tokens only, with no second character watermark.
     const SCENE_CSS = `
-[data-slot="main.conversation"] > div[data-phase],
-[data-slot="sidebar"] > div:first-child {
+[data-slot="main.conversation"] > div[data-phase] {
+  container-name: dxl-reading;
+  container-type: inline-size;
+}
+
+/* Query the root container from its content child, including the background
+   pseudo-element. This also keeps scene artwork out of the header chrome. */
+[data-slot="main.conversation"] > div[data-phase] [data-conversation-content] {
   position: relative;
   isolation: isolate;
 }
 
-[data-slot="main.conversation"] > div[data-phase]::before,
-[data-slot="sidebar"] > div:first-child::before {
+[data-slot="main.conversation"] > div[data-phase] [data-conversation-content]::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-repeat: no-repeat;
+  background: #F7F3EB url("/dongxuelian-theme/assets/reading.webp") no-repeat right -190px center;
+  background-size: auto min(100%, 800px);
+  mask-image: linear-gradient(90deg, transparent, #000 22%), linear-gradient(transparent, #000 64px, #000 calc(100% - 64px), transparent);
+  mask-composite: intersect;
 }
 
-/* Chat: bottom-right companion, present but quieter than the text. */
-[data-slot="main.conversation"] > div[data-phase]::before {
-  background-image: url("/dongxuelian-theme/assets/sidebar-character.webp");
-  background-size: 360px auto;
-  background-position: right -25px bottom 90px;
-  opacity: 0.24;
+/* The official chain adds two display:contents wrappers. Style its fallback
+   stack, not the wrapper box, to move both the headline and composer left. */
+[data-slot="main.conversation"] > div[data-phase="hero"] [data-chain-overlay-fallback="conversation.composer"] > div {
+  --dsh-composer-card-max-width: min(500px, 55cqi);
+  width: 100%;
+  max-width: var(--dsh-composer-card-max-width);
+  align-self: flex-start;
+  margin-inline: clamp(24px, 4cqi, 48px) auto;
 }
 
-/* Hero/empty state: more visible, still anchored away from the centred
-   title and composer. */
-[data-slot="main.conversation"] > div[data-phase="hero"]::before {
-  background-position: right -25px top calc(50vh + 24px);
-  opacity: 0.65;
+/* Reserve a scenic margin while keeping messages, tools and the composer on
+   opaque paper. The host still controls message structure and code scrolling. */
+[data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-content] {
+  --dxl-scene-gutter: clamp(220px, calc(var(--dsh-conversation-column-width) * 0.28), 340px);
+  --dsh-chat-content-width: min(var(--dsh-chat-user-width, 760px), calc(var(--dsh-conversation-column-width) - var(--dxl-scene-gutter) - 48px));
+  --dsh-composer-card-max-width: calc(var(--dsh-chat-content-width) + 32px);
 }
 
-/* Sidebar: a light echo, not a second protagonist. */
-[data-slot="sidebar"] > div:first-child::before {
-  background-image: url("/dongxuelian-theme/assets/avatar.webp");
-  background-size: 210px auto;
-  background-position: center bottom 75px;
-  opacity: 0.13;
+[data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-scroll] {
+  width: auto;
+  min-width: 0;
+  margin-right: var(--dxl-scene-gutter);
+  background: linear-gradient(90deg, #FFFDF8 calc(100% - 16px), transparent);
 }
 
-/* The official collapse state is announced by a data attribute on the
-   sidebar root or one of its ancestors; in that rail there is no room. */
-[data-sidebar-collapsed] [data-slot="sidebar"] > div:first-child::before,
-[data-slot="sidebar"][data-sidebar-collapsed] > div:first-child::before,
-[data-slot="sidebar"] > div[data-sidebar-collapsed]::before {
-  content: none;
+[data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-scroll] pre {
+  background-color: #FFFDF8;
 }
 
-@media (max-width: 900px) {
-  [data-slot="main.conversation"] > div[data-phase]::before {
-    background-size: 260px auto;
-    opacity: 0.16;
+[data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-content]::before {
+  background-size: auto min(100%, 720px);
+  background-position: right -150px center;
+}
+
+@container dxl-reading (max-width: 900px) {
+  [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-content] {
+    --dxl-scene-gutter: clamp(160px, calc(var(--dsh-conversation-column-width) * 0.26), 220px);
   }
 
-  [data-slot="main.conversation"] > div[data-phase="hero"]::before {
-    opacity: 0.32;
+  [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-content]::before {
+    background-size: auto 58%;
+    background-position: right -110px center;
+  }
+}
+
+@container dxl-reading (max-width: 760px) {
+  [data-slot="main.conversation"] > div[data-phase="hero"] [data-chain-overlay-fallback="conversation.composer"] > div {
+    --dsh-composer-card-max-width: min(680px, calc(100% - 32px));
+    max-width: calc(100% - 32px);
+    margin-inline: auto;
+    align-self: center;
   }
 
-  [data-slot="sidebar"] > div:first-child::before {
-    background-size: 180px auto;
+  [data-slot="main.conversation"] > div[data-phase="hero"] [data-conversation-content]::before {
+    background-size: auto 36%;
+    background-position: right 12px top;
+    mask-image: linear-gradient(#000 calc(36% - 32px), transparent 36%);
+  }
+}
+
+/* At large zoom or a very narrow column, reading takes the full width. */
+@container dxl-reading (max-width: 640px) {
+  [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-content] {
+    --dxl-scene-gutter: 0px;
   }
 }
 `
@@ -195,7 +225,8 @@ window.__ModuleLoader__.load({
 
           // shell.overlay is a list slot: a private id and an order coexist
           // with other overlays. It carries only the stylesheet; the artwork
-          // is painted by the two official containers below their content.
+          // is painted by the official conversation container below its
+          // content.
           owned.push(ctx.slots.inject(SCENE, () =>
             ctx.slots.register({ name: SCENE, id: OWNER, order: 100 }, SceneStyle)))
           if (stopped) return release

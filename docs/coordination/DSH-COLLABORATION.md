@@ -25,6 +25,10 @@ P3 初次 CLI 在沙箱内写 headless 启动配置遇到 EPERM；正常审批�
 
 P2 当前代码包含 Codex 审核修正；[DSH 首稿说明](../validation/P2-DSH-NOTES.md)保留历史，最终事实见 [P2 验证](../validation/P2.md)。独立审核发现 disposer 返回期间的同步切色/停用残留；真实窗口又发现宿主旧快照重涂，均先复现再修复。
 
+## P8接续（2026-10-20）
+
+[P8-A任务](P8-A-task.md)限定index/client/package及[P8首稿说明](../validation/P8-DSH-NOTES.md)，DSH沿用原通道、只做读取检索与编辑，headless退出0/final；日志`.research/dsh-p8-a.*`。Codex负责222484B素材导出、RED5失败13通过→GREEN18/18、官方真实DOM核对及修正包装选择器/容器查询/人物位置/对比度，真实Web和Host释放、loader、查重与独立审核。原生命周期未重构，不把DSH首稿中的理论布局判断当实窗事实。最终证据见[P8验证](../validation/P8.md)。
+
 ## 实际可用调用
 
 CLI `E:\dsh\resources\runtime\cli\bin\dsh.cmd`，版本 `0.2.1-rc.2`。在项目根目录运行，每个任务用独立短上下文与新日志名：

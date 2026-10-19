@@ -2,6 +2,8 @@
 
 > 执行者：新会话按 executing-plans 分步执行。用户本轮明确要求“先列进计划、做好规划交接，我新开会话做”，因此本轮仅规划，不导出资源、不改运行代码、不派发DSH、不启动预览或打包。新会话继续后使用既有Codex审核/测试、DSH限定read/write分工，无需重新讨论A-F风格。
 
+2026-10-20执行进展：用户已要求“继续干”，Task 1–5已完成，见[实际P8验证](../../validation/P8.md)。Codex实窗修正了链式Slot包装选择器，并把背景移到会话content子容器以使容器查询生效；原事务不变。Task 6的P6归档验收正在接续。以下创建时的“仅规划”仅描述此前会话。
+
 **Goal：**围绕用户选定的B系列抱书横幅，做出纸白、灰蓝、靛蓝的彩铅绘本氛围；人物与蓝花应是清楚的场景主视觉，阅读、代码与输入始终清晰。
 
 **Architecture：**复用当前官方Theme token、sidebar.brand.mark与shell.overlay/SceneStyle，以及Host固定Map路由和原事务清理。图片在官方会话容器内容下绘制；宽窗口空态优先左侧阅读/输入、右侧人物，聊天时用不透明阅读区保护内容。深色和停用继续完全释放，不改用户偏好或核心。
@@ -76,8 +78,8 @@
 
 ### Task 1：读取基线并导出选定资源（Codex）
 
-- [ ] 读HANDOFF→本计划→WORKBOARD与AGENTS，运行git status/log，保留上述P6草稿。检查当前CLI/DSH通道，不读凭据、不改模型/权限。
-- [ ] 重新核对reading.png哈希。用已授权的等比缩放/编码导出1280×853 WebP初稿，quality90、method6；PNG不变，不处理其他三图。
+- [x] 读HANDOFF→本计划→WORKBOARD与AGENTS，运行git status/log，保留上述P6草稿。检查当前CLI/DSH通道，不读凭据、不改模型/权限。
+- [x] 重新核对reading.png哈希。用已授权的等比缩放/编码导出1280×853 WebP初稿，quality90、method6；PNG不变，不处理其他三图。
 
 ```powershell
 New-Item -ItemType Directory -Path 'assets/scenes/web' -Force | Out-Null
@@ -85,12 +87,12 @@ New-Item -ItemType Directory -Path 'assets/scenes/web' -Force | Out-Null
 Get-FileHash -Algorithm SHA256 -LiteralPath 'assets/scenes/web/reading.webp'
 ```
 
-- [ ] 目视对照原图，检查脸、蓝花、书、袖子和彩铅排线。目标场景≤550000B、头像≤40000B；超预算优先在quality86–90间编码比较或等比缩到1152px，不裁切/修画，不以预算换明显糊脸。记录实际尺寸/字节/参数，不承诺计划值就是输出值。
-- [ ] 查看真实0.2.1-rc.2空态DOM与官方源码局部，确认可把空态内容移到左侧的公开锚点。已有main根为[data-slot="main.conversation"] > div[data-phase]、sidebar根为[data-slot="sidebar"] > div:first-child；**空态内部栈具体CSS锚点尚未确认**，不能猜hash类名或任意nth-child。查.research/p3-dsh-client-ui-conversation-lib-client.js对应hero/renderSlot片段即可，不重扫全盘。
+- [x] 目视对照原图，检查脸、蓝花、书、袖子和彩铅排线。目标场景≤550000B、头像≤40000B；超预算优先在quality86–90间编码比较或等比缩到1152px，不裁切/修画，不以预算换明显糊脸。记录实际尺寸/字节/参数，不承诺计划值就是输出值。
+- [x] 查看真实0.2.1-rc.2空态DOM与官方源码局部，确认可把空态内容移到左侧的公开锚点。已有main根为[data-slot="main.conversation"] > div[data-phase]、sidebar根为[data-slot="sidebar"] > div:first-child；**空态内部栈具体CSS锚点尚未确认**，不能猜hash类名或任意nth-child。查.research/p3-dsh-client-ui-conversation-lib-client.js对应hero/renderSlot片段即可，不重扫全盘。
 
 ### Task 2：新资源契约先RED（Codex）
 
-- [ ] 在test/assets.test.mjs现有fixture旁先新增以下直接回归，确认旧实现返回404而失败；不要先改index.js。
+- [x] 在test/assets.test.mjs现有fixture旁先新增以下直接回归，确认旧实现返回404而失败；不要先改index.js。
 
 ```js
 test('抱书场景支持GET和HEAD，响应与发布文件一致', async (t) => {
@@ -108,14 +110,14 @@ test('抱书场景支持GET和HEAD，响应与发布文件一致', async (t) => 
 });
 ```
 
-- [ ] 加一项旧sidebar-character.webp应404，并将既有两文件循环改成avatar/reading各自磁盘URL和预算，保留405、encoded traversal、Map原型键、停用后404等真实边界。停用检查覆盖两个URL。
-- [ ] 更新Slot场景资源断言为reading.webp，并明确不再引用sidebar-character.webp；保留两个Slot而非增加第三个装饰层。把现有owner消失/重声明用例分别覆盖sidebar与shell.overlay，确认等待者和条目不会残留。
-- [ ] 执行node --test test/assets.test.mjs test/slots.test.mjs，记录预期失败原因；CSS排版与小范围调色用预览验证，不写只镜像字符串的样式测试。
+- [x] 加一项旧sidebar-character.webp应404，并将既有两文件循环改成avatar/reading各自磁盘URL和预算，保留405、encoded traversal、Map原型键、停用后404等真实边界。停用检查覆盖两个URL。
+- [x] 更新Slot场景资源断言为reading.webp，并明确不再引用sidebar-character.webp；保留两个Slot而非增加第三个装饰层。把现有owner消失/重声明用例分别覆盖sidebar与shell.overlay，确认等待者和条目不会残留。
+- [x] 执行node --test test/assets.test.mjs test/slots.test.mjs，记录预期失败原因；CSS排版与小范围调色用预览验证，不写只镜像字符串的样式测试。
 
 ### Task 3：限定DSH接入（DSH实现，Codex审核）
 
-- [ ] 在P8-A任务单中只允许DSH改index.js、client.js、package.json、docs/validation/P8-DSH-NOTES.md。素材/测试由Codex处理；禁止shell/Git/profile/core/权限/模型/依赖安装/派生agent。
-- [ ] index.js仅改FILES：
+- [x] 在P8-A任务单中只允许DSH改index.js、client.js、package.json、docs/validation/P8-DSH-NOTES.md。素材/测试由Codex处理；禁止shell/Git/profile/core/权限/模型/依赖安装/派生agent。
+- [x] index.js仅改FILES：
 
 ```js
 const FILES = new Map([
@@ -124,10 +126,10 @@ const FILES = new Map([
 ])
 ```
 
-- [ ] client继续使用SceneStyle在shell.overlay挂style；主图在内容下，伪元素pointer-events:none、负层级。复用当前事务、微任务合并、读取最新scheme/stopped与逆序释放，不重构apply主循环。没有新库需求，属于现有路由/样式的局部扩展，不为其引入框架。
-- [ ] 按已核对的官方DOM做空态左排/右图、聊天不透明阅读面及窄屏收敛；不能直接替换root或整段消息组件，不能用body/html全局布局补丁或hash类名抢优先级。先保留函数/字体/代码行为。
-- [ ] package.files新增assets/scenes/web/reading.webp与assets/scenes/README.md，撤出旧sidebar-character.webp；其他未完成P6字段不能回退。scripts/check资源表同步改为头像/场景的独立预算。
-- [ ] 用新的本地日志名调用，不覆盖历史、不打印密钥；沿用现有worker patch由DSH自己解析凭据：
+- [x] client继续使用SceneStyle在shell.overlay挂style；主图在内容下，伪元素pointer-events:none、负层级。复用当前事务、微任务合并、读取最新scheme/stopped与逆序释放，不重构apply主循环。没有新库需求，属于现有路由/样式的局部扩展，不为其引入框架。
+- [x] 按已核对的官方DOM做空态左排/右图、聊天不透明阅读面及窄屏收敛；不能直接替换root或整段消息组件，不能用body/html全局布局补丁或hash类名抢优先级。先保留函数/字体/代码行为。
+- [x] package.files新增assets/scenes/web/reading.webp与assets/scenes/README.md，撤出旧sidebar-character.webp；其他未完成P6字段不能回退。scripts/check资源表同步改为头像/场景的独立预算。
+- [x] 用新的本地日志名调用，不覆盖历史、不打印密钥；沿用现有worker patch由DSH自己解析凭据：
 
 ```powershell
 Get-Content -LiteralPath 'docs/coordination/P8-A-task.md' -Raw |
@@ -135,7 +137,7 @@ Get-Content -LiteralPath 'docs/coordination/P8-A-task.md' -Raw |
     1> '.research/dsh-p8-a.events.jsonl' 2> '.research/dsh-p8-a.stderr.log'
 ```
 
-- [ ] Codex读实际diff/退出码与文件，再跑测试；DSH final只作交付信号。通道失败时记录具体错误，继续可独立的导出/预览准备，不重复修ACL或改密钥。
+- [x] Codex读实际diff/退出码与文件，再跑测试；DSH final只作交付信号。通道失败时记录具体错误，继续可独立的导出/预览准备，不重复修ACL或改密钥。
 
 ### Task 4：真实预览和视觉迭代（Codex）
 

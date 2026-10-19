@@ -14,8 +14,9 @@
     "index.js",
     "client.js",
     "assets/characters/web/avatar.webp",
-    "assets/characters/web/sidebar-character.webp",
+    "assets/scenes/web/reading.webp",
     "assets/characters/README.md",
+    "assets/scenes/README.md",
     "cordis.patch.yml",
     "README.md",
     "LICENSE"
