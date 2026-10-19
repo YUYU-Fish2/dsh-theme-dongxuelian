@@ -5,6 +5,14 @@ window.__ModuleLoader__.load({
     const exports = module.exports
 
     const OWNER = 'dsh-theme-dongxuelian'
+    const SIDEBAR_MARK = 'sidebar.brand.mark'
+    const HEADER_UTILITIES = 'conversation.session.header.utilities'
+    const AVATAR_SRC = '/dongxuelian-theme/assets/avatar.webp'
+    const AVATAR_SIZE = 24
+
+    // React is a host-shared module, not an npm runtime dependency. Do not
+    // register slots from render: both components are static img elements.
+    const { createElement } = require('react')
 
     // The Theme service requires every override to be a { light, dark } pair.
     // This layer is only registered while the active scheme is light, so the
@@ -48,32 +56,105 @@ window.__ModuleLoader__.load({
       '--dsw-specific-sidebar-nav-item-active': pair('#C9BED8'),
     }
 
-    const inject = ['theme']
+    // Fixed 24px fits the official sidebar brand-mark owner prop and the
+    // header utility row. Styles stay local: no font, radius, or padding.
+    function Avatar() {
+      return createElement('img', {
+        src: AVATAR_SRC,
+        alt: '冬雪莲头像',
+        width: AVATAR_SIZE,
+        height: AVATAR_SIZE,
+        draggable: false,
+        style: {
+          display: 'block',
+          width: '24px',
+          height: '24px',
+          objectFit: 'contain',
+          pointerEvents: 'none',
+        },
+      })
+    }
+
+    const inject = ['theme', 'slots']
 
     function apply(ctx) {
-      let releaseLayer = null
+      let releaseLight = null
       let syncing = false
       let stopped = false
       let queued = false
 
-      const dropLayer = () => {
-        const release = releaseLayer
-        releaseLayer = null
+      // A light setup owns the theme layer and both Slot controllers. Release
+      // in reverse creation order; the array is popped, so a repeated call is
+      // a no-op even if stop happens while the transaction is still running.
+      const releaseAll = (owned) => {
+        while (owned.length > 0) owned.pop()()
+      }
+
+      const dropLight = () => {
+        const release = releaseLight
+        releaseLight = null
         release?.()
+      }
+
+      const isLight = () =>
+        !stopped && ctx.theme.getTheme().active.colorScheme === 'light'
+
+      const setupLight = () => {
+        const owned = []
+        const release = () => releaseAll(owned)
+        try {
+          owned.push(ctx.theme.overrideTokens(OWNER, TOKENS))
+          if (stopped) return release
+
+          // The sidebar seat is single and ships an official brand default.
+          // -10 is a deliberate finite shadowing priority, not a layout hack.
+          owned.push(ctx.slots.inject(SIDEBAR_MARK, () =>
+            ctx.slots.register({ name: SIDEBAR_MARK, priority: -10 }, Avatar)))
+          if (stopped) return release
+
+          // The header utilities seat is additive. A private id and an order
+          // keep the shipped leading/header entries and buttons untouched.
+          owned.push(ctx.slots.inject(HEADER_UTILITIES, () =>
+            ctx.slots.register({ name: HEADER_UTILITIES, id: OWNER, order: 100 }, Avatar)))
+          if (stopped) return release
+
+          return release
+        } catch (error) {
+          release()
+          // A register callback can observe an already synchronous stop. Its
+          // returned controller was released above; do not surface a teardown
+          // failure from a lifecycle that is already inactive.
+          if (stopped) return () => {}
+          throw error
+        }
       }
 
       const sync = () => {
         if (syncing || stopped) return
         syncing = true
         try {
-          // Other listeners can switch schemes before an override returns.
-          // Finish the current operation, then read the latest service state;
-          // an event's captured snapshot may already be stale.
+          // Other listeners can switch schemes or stop the context before an
+          // override/register returns. Re-read both after every transaction
+          // and let this serial loop converge instead of trusting the event
+          // snapshot that triggered it.
           while (true) {
-            const light = !stopped && ctx.theme.getTheme().active.colorScheme === 'light'
-            if (light === (releaseLayer !== null)) break
-            if (light) releaseLayer = ctx.theme.overrideTokens(OWNER, TOKENS)
-            else dropLayer()
+            if (stopped) break
+            const light = isLight()
+            if (light === (releaseLight !== null)) break
+            if (!light) {
+              dropLight()
+              continue
+            }
+            const release = setupLight()
+            if (stopped) {
+              release()
+              break
+            }
+            if (!isLight()) {
+              release()
+              continue
+            }
+            releaseLight = release
           }
         } finally {
           syncing = false
@@ -94,14 +175,16 @@ window.__ModuleLoader__.load({
         // later presenters could otherwise repaint the stale outer snapshot.
         const stop = ctx.on('theme/change', schedule)
         const cleanup = () => {
+          // Stop observing first so releasing slots/theme cannot schedule a
+          // successor lifecycle from this package.
           stopped = true
           stop()
-          dropLayer()
+          dropLight()
         }
         try { sync() }
         catch (error) { cleanup(); throw error }
         return cleanup
-      }, 'theme: dongxuelian light tokens')
+      }, 'theme: dongxuelian light tokens and avatar slots')
     }
 
     exports.inject = inject

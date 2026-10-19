@@ -13,7 +13,7 @@
 | 判断哪些行为已验证 | [P2 验证记录](validation/P2.md)及其截图；未完成项见 HANDOFF |
 | 给 DSH 派发限定任务 | [协作方法](coordination/DSH-COLLABORATION.md)与 `coordination/P*-A-task.md` 历史任务书 |
 
-当前代码版本为 `0.1.0-preview.1`，目标宿主为 DSH `0.2.1-rc.2`。P2 基础主题已完成；P3–P6 尚未实施，没有最终发布包。本页是文件索引，后续进度以 HANDOFF、实施计划、看板、Git 和实际验证为准。
+当前代码版本为 `0.1.0-preview.1`，目标宿主为 DSH `0.2.1-rc.2`。P3 基础主题、资源路由与头像已完成；P4–P6 待实施，没有最终发布包。本页是文件索引，后续进度以 HANDOFF、实施计划、看板、Git 和实际验证为准。
 
 ## 运行与开发文件
 
@@ -21,10 +21,12 @@
 | --- | --- |
 | [package.json](../package.json) | 包元信息、Host/client 入口、DSH 声明、发布文件白名单、`test`/`check` 命令；当前没有第三方运行依赖 |
 | [cordis.patch.yml](../cordis.patch.yml) | 注册唯一的 `dsh-theme-dongxuelian` Host entry |
-| [index.js](../index.js) | Host 入口，目前仅导出名称与空 `apply`；P3 资源路由尚未实现 |
-| [client.js](../client.js) | 唯一客户端源文件：官方 module factory、24 个浅色 token、明暗切换与停用清理；当前没有角色 Slot 逻辑 |
-| [test/theme.test.mjs](../test/theme.test.mjs) | 七项主题生命周期回归测试，使用模拟上下文；不能代替真实窗口验收 |
-| [scripts/check.mjs](../scripts/check.mjs) | JS 语法、包契约与必要发布文件白名单检查 |
+| [index.js](../index.js) | Host 入口，官方服务生命周期内注册两项 WebP 固定白名单路由 |
+| [client.js](../client.js) | 唯一客户端源文件：官方 module factory、24 个浅色 token、明暗切换与停用清理；两处24px头像 Slot 与主题共同清理 |
+| [test/theme.test.mjs](../test/theme.test.mjs) | 七项主题生命周期回归测试（夹具与 Slot 测试共用 `test/helpers/client-host.mjs`），使用模拟上下文；不能代替真实窗口验收 |
+| [test/assets.test.mjs](../test/assets.test.mjs) | 五项 Host 资源路由实际 HTTP 回归，需允许本地回环连接 |
+| [test/slots.test.mjs](../test/slots.test.mjs) | 五项头像 Slot、明暗释放与失败回滚回归 |
+| [scripts/check.mjs](../scripts/check.mjs) | JS 语法、包契约、WebP 格式/体积与发布文件白名单检查 |
 | [scripts/runtime-smoke.mjs](../scripts/runtime-smoke.mjs) | 本机官方 ModuleLoader 导入与 token 存在性检查；通过 DSH Electron Run-as-Node 执行，不能代替 UI 验证 |
 | [.gitignore](../.gitignore) | 忽略 `.research/`、`node_modules/`、`release/*.tgz` |
 | [AGENTS.md](../AGENTS.md) | 项目协作规则、授权范围与新会话阅读顺序 |
@@ -39,6 +41,8 @@
 assets/characters/
   README.md                   素材来源、生成过程与使用边界
   avatar.png                  简化头像母版候选
+  web/avatar.webp             192px透明无损WebP，实际头像
+  web/sidebar-character.webp  192px透明无损WebP，趴边备选
   sidebar-character.png       侧栏角色母版候选
 docs/
   PROJECT-MAP.md              本文件：文件职责与阅读入口
@@ -51,6 +55,8 @@ docs/
     P0-A-task.md              P0 限定调研任务书
     P1-A-task.md              P1 限定视觉规格任务书
     P2-A-task.md              P2 限定实现任务书
+    P3-A-task.md              P3 Host 白名单路由任务书
+    P3-B-task.md              P3 小头像与事务生命周期任务书
   design/
     P1-VISUAL-SPEC.md         角色特征、画风、配色与界面约束
     P1-COLOR-CHECK.md         配色与对比度核算
@@ -60,6 +66,8 @@ docs/
     P0-character-source.md    原课表图标来源与检索证据
   validation/
     P2.md                    P2 测试、真实 loader 与窗口验证证据
+    P3.md                    P3 资源、Slot、测试与窗口证据
+    P3-DSH-NOTES.md           DSH 的 P3 分步实现记录
     P2-DSH-NOTES.md           DSH 的 P2 实现说明，结合 P2.md 阅读
     screenshots/
       p2-light-1100.jpg       隔离 Web 浅色截图
@@ -67,7 +75,7 @@ docs/
       p2-disabled-1100.jpg    隔离 Web 停用截图
 ```
 
-两张 PNG 均为 1254px 母版候选，总计 1,860,219 字节，尚未完成 P3 小尺寸、裁切与轻量导出验收。它们不是当前已启用的界面资源，也不在现有发布白名单中。来源见 [素材说明](../assets/characters/README.md)。
+两张 PNG 均为 1254px 母版候选，总计 1,860,219 字节，母版仍不打包；P3 已验证并导出 `web/` 下两项 WebP，共 50,862 字节，实际两处24px槽均使用简化头像。PNG 不是当前界面请求的文件。来源见 [素材说明](../assets/characters/README.md)。
 
 P0/P1 报告和历史任务书保留当时结论；其中的“尚未开始”不代表今天的进度。`docs/research/` 是随 Git 保存的调研证据，与下述本地 `.research/` 缓存不同。
 
@@ -82,8 +90,8 @@ P0/P1 报告和历史任务书保留当时结论；其中的“尚未开始”�
 | `dsh-worker.patch.yml`、`test-host.patch.yml`、`p2-web*.config.yml` | 本地临时启动覆盖与配置；不公开分发，不覆盖用户 profile |
 | `test-home/` | 官方模板创建的隔离测试 home，包含本次插件测试环境 |
 | `host-diagnostics/`、`announce-test-host.mjs`、`test-host-*` | 隔离宿主诊断、状态与连接辅助文件；旧认证链接不能复用 |
-| `jscpd-before-p2/`、`jscpd-p2/`、`jscpd-p2-final/`、`p2-pack.json` | 历史查重和打包检查结果，不代表后续改动已验证 |
+| `jscpd-*/`、`p2-pack.json` | 历史查重和打包检查结果，不代表后续改动已验证 |
 
 后续清理缓存前应先确认没有相关测试进程运行，并保留尚需追溯的日志与配置。当前没有 `release/` 目录或最终 tgz；P6 再按实际包内容打包验收。
 
-现有 `package.json.files` 显式列出 `index.js`、`client.js`、`cordis.patch.yml`、`README.md` 和 `LICENSE`，npm 另按自身规则包含 `package.json` 等必要文件。本文是开发文档导航，开发文档链接依赖完整仓库；最终安装说明与归档内容仍须在 P6 完成核对。
+现有 `package.json.files` 显式列出 `index.js`、`client.js`、`cordis.patch.yml`、`README.md`、`LICENSE`、两项 `web/*.webp` 与素材 README，npm 另按自身规则包含 `package.json` 等必要文件。本文是开发文档导航，开发文档链接依赖完整仓库；最终安装说明与归档内容仍须在 P6 完成核对。

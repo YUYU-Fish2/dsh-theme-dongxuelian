@@ -13,6 +13,9 @@
   "files": [
     "index.js",
     "client.js",
+    "assets/characters/web/avatar.webp",
+    "assets/characters/web/sidebar-character.webp",
+    "assets/characters/README.md",
     "cordis.patch.yml",
     "README.md",
     "LICENSE"
@@ -28,7 +31,8 @@
     "client": {
       "platform": "web",
       "inject": [
-        "@deepseek-ai/dsh-client-ui-theme"
+        "@deepseek-ai/dsh-client-ui-theme",
+        "@deepseek-ai/dsh-client-ui-renderer"
       ]
     }
   }

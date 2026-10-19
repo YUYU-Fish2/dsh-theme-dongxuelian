@@ -1,6 +1,8 @@
 # 冬雪莲角色素材候选
 
-当前只有 `sidebar-character.png` 和 `avatar.png`，均为 2026-10-19 使用内置 imagegen 按用户确认的原课表图标另绘的透明 PNG 母版；不是从课表原图直接裁切，也不是可直接发布的轻量导出版本。
+`sidebar-character.png` 和 `avatar.png` 为 2026-10-19 使用内置 imagegen 按用户确认的原课表图标另绘的透明 PNG 母版；不是从课表原图直接裁切。P3 新增 `web/` 下两项 192×192 透明无损 WebP，用户已明确授权仅做等比缩放与格式编码，母版未改。
+
+发布文件为 `web/avatar.webp`（26864 字节）及 `web/sidebar-character.webp`（23998 字节），只将 WebP 与本说明加入包白名单，PNG 不打包。当前两处24px槽均使用简化头像，趴边版为独立备选，不扩大布局。导出参数、哈希、小尺寸/三底色/裁切和真实窗口证据见 [P3 验证](../../docs/validation/P3.md)。
 
 原图出处见 [检索记录](../../docs/research/P0-character-source.md)，特征、尺寸、alpha、哈希与待验项目见 [P1 审核记录](../../docs/design/P1-REVIEW.md)。图片独立管理，不内联到 JavaScript。
 

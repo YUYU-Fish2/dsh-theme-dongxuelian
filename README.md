@@ -1,6 +1,6 @@
 # DSH 冬雪莲涂鸦主题
 
-当前已完成 P0/P1 与 P2 基础主题，七项回归测试及 DSH `0.2.1-rc.2` 隔离 Web 窗口明暗/启停验证通过。角色尚未接入，P3–P6 未完成；暂无最终发布包。
+当前已完成 P0–P3：基础主题、独立 WebP 资源与两处24px头像，17项回归及 DSH `0.2.1-rc.2` 隔离 Web 窗口明暗/启停验证通过。P4–P6 待完成，真实模型聊天与桌面载图尚未验收；暂无最终发布包。
 
 **新会话从 [接续记录](docs/HANDOFF.md) 开始；完整 P0–P6 范围、验收与回退见 [实施计划](docs/IMPLEMENTATION-PLAN.md)。**用户已授权后续自主按阶段推进，不必重新确认 P0/P1。
 
@@ -13,5 +13,6 @@
 - [DSH 与 Codex 协作看板](docs/coordination/WORKBOARD.md)
 - [DSH 派发方法、实际分工和协作记录](docs/coordination/DSH-COLLABORATION.md)
 - [P2 验证结果与真实截图](docs/validation/P2.md)
+- [P3 角色资源、Slot 与隔离窗口验证](docs/validation/P3.md)
 
 目标版本为本机 DSH `0.2.1-rc.2`。本项目不修改 DSH 核心源码；参考主题和图标的定位不代表已获得所有素材的发布许可。

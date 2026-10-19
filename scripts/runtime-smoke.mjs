@@ -17,17 +17,20 @@ async function main() {
   const exports = registration.factory((specifier) => { throw new Error(`Unexpected loader dependency ${specifier}`); });
   const modules = exports.createClientModuleSystem(facade, { id: registration.id, exports }, {
     boot: { rev: 'dongxuelian-smoke', entries: [], batches: [] },
-    staticModules: {},
+    // Only the real ModuleLoader is under test here. React and Cordis services
+    // are small adapters; actual rendering is verified in the isolated UI.
+    staticModules: { react: { createElement: (type, props) => ({ type, props }) } },
     loadBundle: async (url) => { throw new Error(`Unexpected network bundle ${url}`); },
   });
   const source = readFileSync(new URL('../client.js', import.meta.url), 'utf8');
   runInContext(source, context, { filename: 'dsh-theme-dongxuelian/client.js' });
   const plugin = await modules.import('dsh-theme-dongxuelian');
   assert.equal(typeof plugin.apply, 'function');
-  assert.deepEqual([...plugin.inject], ['theme']);
+  assert.deepEqual([...plugin.inject], ['theme', 'slots']);
   let tokens;
   let cleanup;
   plugin.apply({
+    slots: { inject() { return () => {}; }, register() { return () => {}; } },
     theme: {
       getTheme: () => ({ active: { colorScheme: 'light' } }),
       overrideTokens(owner, values) { tokens = values; return () => {}; },
@@ -40,7 +43,7 @@ async function main() {
   assert.ok(names.length > 0);
   for (const name of names) assert.ok(themeSource.includes(name), `宿主中未发现 token ${name}`);
   cleanup();
-  console.log(JSON.stringify({ runtimeVersion, imported: 'dsh-theme-dongxuelian', tokenNamesFound: names.length, result: 'PASS', scope: 'real ModuleLoader import + token presence, not window UI' }, null, 2));
+  console.log(JSON.stringify({ runtimeVersion, imported: 'dsh-theme-dongxuelian', tokenNamesFound: names.length, result: 'PASS', scope: 'real ModuleLoader import + token presence; React/services adapted, not window UI' }, null, 2));
 }
 
 main().catch((error) => { console.error(error.message); process.exitCode = 1; });

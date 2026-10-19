@@ -1,56 +1,48 @@
 # 新会话接续记录
 
-更新：2026-10-19，本轮因额度接近上限收尾到 P2。工作区 `E:\codex\dsh主题开发`，分支 `feat/theme-v1`。先读本文件、[完整计划](IMPLEMENTATION-PLAN.md)、[DSH 协作记录](coordination/DSH-COLLABORATION.md)和根 `AGENTS.md`，不用重做 P0。
+更新：2026-10-19，P3 已完成，继续 P4。工作区 `E:\codex\dsh主题开发`，分支 `feat/theme-v1`。先读本文件、[完整计划](IMPLEMENTATION-PLAN.md)、[看板](coordination/WORKBOARD.md)与根 AGENTS。找文件见 [项目导航](PROJECT-MAP.md)。
 
-文件整理补记（2026-10-19）：新增 [项目文件导航](PROJECT-MAP.md)，核对运行代码、素材候选、文档与本地缓存职责，并在 README 添加入口。仅修改文档，没有移动或删除文件，没有推进 P3；下一开发项仍为下述 P3。
+## 状态与授权
 
-本次文档验证：README、文件导航与本文件共 40 个本地链接目标存在；`npm run check` 与 `git diff --check` 退出 0。未重跑主题测试或真实窗口验收，P2 行为证据仍引用原阶段记录。
+- P0 调研：`b4b5edb` / `p0-research-2026-10-19`；P1 规范与候选：`4ebb417` / `p1-visual-2026-10-19`。
+- P2 基础主题：`be6ee2a` / `p2-base-2026-10-19`；文件导航整理：`e5b7cf2`。
+- **P3 独立 WebP、白名单路由与两处24px头像已完成并通过隔离 Web 验证**，本阶段独立提交与 `p3-characters-2026-10-19` 标签由 Git 保存。见 [P3 验证](validation/P3.md)。P4–P6 尚待完成。
+- 用户已要求 Codex 审核派发、DSH 限定实现，并授权自主按 P2→P6 连续推进、每阶段验证记录提交；常规可逆步骤不重问。
+- 本轮用户进一步明确授权图片“允许，仅缩放与格式编码”。只做等比缩放/透明无损 WebP，母版未改；重新绘图仍用 imagegen。
+- 不改 DSH 核心、用户 desktop profile、其他插件/模型/凭据；只在隔离 `.research/test-home` 测试。不推送、发布或执行 reset/clean。
 
-## 当前状态和授权
+## 当前实现与证据
 
-- P0：调研/版本/源码/许可，提交 `b4b5edb`，标签 `p0-research-2026-10-19`。
-- P1：规范、配色核算、两项新绘候选，提交 `4ebb417`，标签 `p1-visual-2026-10-19`。
-- 完整计划/接续入口/测试契约：提交 `8a668fb`。
-- **P2 基础主题已实现并通过隔离真实窗口验证**；最终代码/记录由本轮提交与标签 `p2-base-2026-10-19` 保存。见 [P2 验证](validation/P2.md)。P3 尚未开始，总计划已写完整 P3–P6。
-- 用户要求 Codex 审核派发、与 DSH 联合开发，已允许按原图风格新绘，并授权后续自主分阶段继续。最新要求额度收尾，且把协作写入项目；下一会话不必重问 P0/P1 或是否继续。
-- 没有修改 DSH 核心或用户 desktop profile，没有发布/推远端；只在隔离 `.research/test-home` 添加本包。
+- `dsh-theme-dongxuelian@0.1.0-preview.1`，直接 JS、零第三方运行依赖，无编译步骤。宿主共享 React 仅渲染头像。
+- 浅色24 token与两处头像共同存在；深色完全释放，回浅恢复，不写 preference。微任务合并与事务/串行收敛覆盖同步停止及失败回滚。
+- 两项192×192透明无损 WebP 共50862字节。PNG母版不打包。两处小槽用 `avatar.webp`，趴边版为独立备选，不放大布局。
+- Host 唯一路由 `/dongxuelian-theme/assets`，Map精确两文件，GET/HEAD、404/405、MIME/长度/HEAD空正文与卸载移除；客户端 `sidebar.brand.mark` 和 `conversation.session.header.utilities` 均经 `slots.inject`。
+- 本轮 `npm test` **17/17**、`npm run check`、Electron官方loader导入与24token检查通过。loader检查的React/服务为适配器，不能代替窗口渲染。
+- 实际隔离 Web：两处头像均24×24且加载成功，header更多操作与侧栏收放可用，浅/深/回浅、停用/重启用通过；实际Host GET200/HEAD200空正文/POST405/穿越404/停用404。捕获warn/error为空。
+- 会话视觉夹具通过官方 `sessionController.create` + `sessions.append` 在隔离home合成一条明确标注的user消息，使用 `surfaceOp: 'append'`。**没有模型请求**，不能当作真实聊天验收。
+- jscpd CLI本项目8文件763行0 clones；独立reviewer无实质发现、独立theme/slots12/12。截图及限制见P3记录。
 
-## 当前实现与验证
+## 下一项：P4 → P5 → P6
 
-- `dsh-theme-dongxuelian@0.1.0-preview.1`，直接交付两个 JS 与 patch，零第三方运行依赖，无编译步骤；`npm run check` 检查语法/包契约。
-- 浅色 24 token，深色释放；不写偏好。事件微任务合并，串行收敛并考虑 stopped，避免 disposer 返回窗口与宿主旧快照重涂。
-- `node --test test/theme.test.mjs`：**7/7**。最初4项 RED→GREEN，审核新增3项各自复现再修复；独立 reviewer 复查通过且独立重跑7/7。
-- `npm run check` 通过；Electron Run-as-Node `scripts/runtime-smoke.mjs` 使用本机真实 ModuleLoader `0.2.1-rc.2` 导入通过，24token名存在。
-- 隔离 Web / IAB 1100×800：浅色 `#F7F4EF`→原生深色 `#151517` / `#f9fafb`→回浅恢复；官方停用回 `#fff` / `#0f1115`→启用恢复；捕获的 warn/error 为空。截图已入 `docs/validation/screenshots/`。
-- jscpd CLI 最终扫描明确当前绝对路径：4个达到检测阈值的JS文件、357行、0 clones；MCP启动目录不明，不能拿其他目录的索引代替。
-- pack dry-run仅入口/patch/README/LICENSE/package，不带图片/缓存/依赖/测试。最终tgz与安装卸载说明属于P6，尚未发布。
+1. P4：以真实截图核对hover/focus/disabled/输入与正文对比；没有明显问题则不增加全局CSS或装饰。保留字体、布局与代码高亮。
+2. P5：冷启动/刷新/启停/卸载重启、浅深系统、800/1100/1440与100/125/150缩放、长代码/附件/工具消息、社区插件共存、真实聊天。区分合成夹具与真实模型，未测如实记录。
+3. P6：pack白名单检查、新隔离profile从tgz安装、说明停用卸载恢复、归档SHA256与preview/正式标签。不自动安装到用户真实profile或发布远端。
 
-## 下一项：P3（未开始）
+## 协作与命令
 
-1. 复核两项图片在16/24/32/48/64/96px、三种浅底及圆形裁切的实际渲染。母版1254px，总1860219字节，低alpha约1%，头像主体最小留白9.33%；不是发布级已验收资源。
-2. 按总计划先写 Host 白名单 GET/HEAD、404/405、MIME、HEAD空正文与卸载路由回归 RED，再派 DSH 实现。
-3. 图片独立文件，不内联JS；用小头像槽，不替换整sidebar/header、不扩大布局。深色释放策略、系统/代码字体保留。
-4. 新建 `docs/coordination/P3-A-task.md`，只给限定源码/文件；不要让 DSH 重搜全盘或重试 shell。之后按 P4/P5/P6 逐阶段验证提交。
-
-## 命令、分工与本地缓存
-
-Node：`D:\node.exe`；DSH CLI：`E:\dsh\resources\runtime\cli\bin\dsh.cmd`；实际运行时root：`E:\dsh\resources\app.asar\dsh`。普通Node不能直接读asar：
+DSH P3-A/P3-B 已退出0并交付；无待续模型任务。任务书和贡献见 [协作记录](coordination/DSH-COLLABORATION.md)。本轮连接故障已在用户通知恢复后解决；DSH只read/write，不再试shell/修ACL。沿用 `.research/dsh-worker.patch.yml`，凭据由DSH自身服务解析，不读取/复制/打印密钥。
 
 ```powershell
-node --test test/theme.test.mjs
+npm test
 npm run check
 $env:ELECTRON_RUN_AS_NODE='1'
-& 'E:\dsh\DeepSeek Harness.exe' scripts/runtime-smoke.mjs
+& 'E:\dsh\DeepSeek Harness.exe' scripts/runtime-smoke.mjs | Out-String
 ```
 
-DSH只read/write，Codex跑命令/审核。可复用 `.research/dsh-worker.patch.yml`，密钥由DSH自身凭据服务解析，禁止提取/复制密钥。调用、故障、任务范围、实际贡献和日志索引完整写在 [协作记录](coordination/DSH-COLLABORATION.md)。P0/P1/P2 worker及独立reviewer均已完成，无待续模型任务。
+Node `D:\node.exe`，CLI `E:\dsh\resources\runtime\cli\bin\dsh.cmd`，运行时 `E:\dsh\resources\app.asar\dsh`。Node HTTP测试需正常审批允许回环连接；沙箱内 `connect EACCES` 是环境限制。
 
-隔离 `.research/test-home/profiles/theme-test` 已由官方web模板建立并link当前包。不能使用 `--profile web --from-default-profile web`，内置名不允许当自定义目标。临时 `.research/host-diagnostics` 为独立包，正常调用 connection.authenticatedUrl 写 `.research/test-host-url.txt`，未关闭鉴权。本轮结束关闭IAB标签、重置viewport、停止自己创建的隔离进程；用户真实DSH不动。旧URL下次过期，不复用旧token。
+隔离 Web 启动：设置 `$env:DSH_HOME='E:\codex\dsh主题开发\.research\test-home'`，执行 CLI `--profile theme-test --patch '.research\test-host.patch.yml' --port 0 --no-open`。仅需视觉夹具时用 `.research/p3-test-host.patch.yml`（每次启动会创建一条新的合成会话）；不能用于正式profile。新日志名不要覆盖旧日志。
 
-如需恢复，设置 `$env:DSH_HOME='E:\codex\dsh主题开发\.research\test-home'`，执行 `dsh.cmd --profile theme-test --patch '.research\test-host.patch.yml' --port 0 --no-open`，输出使用新日志文件名，再使用新正常认证链接。
+`.research/host-diagnostics` 使用正常 connection.authenticatedUrl 写新 `.research/test-host-url.txt`，没有关闭鉴权；不复用旧token。当前本轮正在使用隔离fixture宿主与素材预览服务；结束前关闭自己创建的IAB标签、重置viewport并停止自己创建的进程，不动用户真实DSH。
 
-## 未完成的验收
-
-真实模型聊天、长代码高亮/滚动、完整窗口/缩放矩阵、社区插件共存、图片/Slot与tgz安装卸载重启尚未验收。P2通过不等于完整主题通过。主色奶油/玫瑰，次文字修订为 `#716860`，粉紫底深字，不增加完整深色设计。
-
-P0/P1文档写的是历史时点；本文件、总计划、看板和Git才是当前接续依据。
+本地原始日志/配置/合成会话/认证URL/参考缓存均在 `.research/`，不提交发布。历史报告的“未实施”只代表当时，当前状态以本文件、计划、看板、Git与实际证据为准。
