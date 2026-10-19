@@ -46,6 +46,9 @@ window.__ModuleLoader__.load({
       '--dsw-alias-state-business-primary': pair('#96536A'),
       '--dsw-alias-button-primary-fill': pair('#96536A'),
       '--dsw-alias-button-primary-hover': pair('#7E4257'),
+      // The official composer send button uses the info pair, not primary.
+      '--dsw-alias-button-info-fill': pair('#96536A'),
+      '--dsw-alias-button-info-hover': pair('#7E4257'),
       '--dsw-alias-interactive-bg-hover': pair('#F0ECE7'),
 
       '--dsw-specific-input-major': pair('#FFFDF9'),
