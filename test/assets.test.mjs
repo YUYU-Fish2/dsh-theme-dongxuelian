@@ -49,7 +49,7 @@ test('GET 仅提供两个独立 WebP 文件，MIME 与文件内容一致', async
     assert.equal(response.headers['x-content-type-options'], 'nosniff');
     const bytes = readFileSync(new URL(`../assets/characters/web/${file}`, import.meta.url));
     assert.deepEqual(response.body, bytes);
-    assert.ok(bytes.length < 40_000, '单项发布导出应小于 40KB');
+    assert.ok(bytes.length < (file === 'avatar.webp' ? 40_000 : 180_000), '发布导出应符合头像/背景独立预算');
   }
 });
 

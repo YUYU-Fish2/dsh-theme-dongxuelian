@@ -10,7 +10,7 @@
 
 ## 已确定的输入与取舍
 
-- P0/P1 已获准继续，角色与配色按 `docs/design/P1-VISUAL-SPEC.md`，次文字为修订后的 `#716860`。深色释放覆盖而非强制切换。
+- P0/P1已获准继续。用户最新要求改为P7冷白雾蓝与适量人物背景，见 `docs/design/P7-WINTER-SCENE.md`；P1暖色与仅小头像是历史限制。深色继续释放覆盖。
 - 独立最小插件优于 Fork 大主题。P0 已检索与读三参考项目；P2 GitHub MCP 再查 oil 的 `overrideTokens` 返回未完整索引的空结果，不据此声称不存在实现。以已克隆固定 SHA 源码与本机官方 API 为证据。
 - 复用官方 factory 形式，不自造模块加载器/打包器、不依赖 React（仅在 P3 实际 Slot 组件需要时使用宿主 React）。直接交付 JS，无需 TypeScript/打包构建依赖，`npm run check` 承担语法和契约检查。
 - 手写入口 `client.js` 是唯一客户端源；不要同时维护等价 `src` 和 `lib` 副本。Host 入口 `index.js`；包名 `dsh-theme-dongxuelian`；Cordis entry id 同名，避免参考项目常用 `theme` 冲突。
@@ -67,6 +67,13 @@
 4. [x] 检查控制台错误和网络资源失败；比较用户已装 better-sidebar/whale-widget/dshmarket 的源码占用与隔离共存，不能擅自启停用户 profile 的插件。
 5. [x] 发现缺陷先复现、写直接回归测试、最小修复、重跑受影响项。重大问题修复前不进入发布；环境导致的未测项如实保留，必要时交付候选而非“正式通过”。
 6. [x] 完成独立代码审核与 jscpd：检查生命周期、事件重入、资源访问边界、Slot 卸载、打包遗漏；采用 DSH 限定审查或 code-reviewer，避免重复全文分析。修复重要项后提交 P5。
+
+## P7：用户追加的配色与人物背景（先于P6完成）
+
+- [x] 实际查看アカババァ会员Q版、B站装扮、眠眠生日二创，只参考配色构图；设计/计划见 `docs/design/P7-WINTER-SCENE.md`。
+- [x] 新Slot契约RED→DSH限定实现→Codex对比度修订/素材导出；官方shell.overlay仅挂style，负层级背景、保留品牌、移除header重复图。
+- [x] 17/17、check、真实loader、实际九组尺寸/CSS缩放、明暗/启停/收放/更多/历史代码，独立review无实质发现。证据 `docs/validation/P7.md`。
+- [x] 最终jscpd：本项目8文件855行0 clones；diff检查通过并独立提交P7。然后P6重新打包，不交旧preview.1包。
 
 ## P6：打包交付与安装/卸载说明
 

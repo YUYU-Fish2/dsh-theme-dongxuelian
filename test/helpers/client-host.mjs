@@ -14,7 +14,9 @@ export function loadPlugin() {
   });
   assert.equal(registration.id, owner);
   return registration.factory((name) => {
-    if (name === 'react') return { createElement: (type, props) => ({ type, props }) };
+    if (name === 'react') return { createElement: (type, props, ...children) => ({
+      type, props: children.length ? { ...props, children: children.length === 1 ? children[0] : children } : props,
+    }) };
     throw new Error(`未声明的依赖 ${name}`);
   });
 }

@@ -19,6 +19,7 @@
 | [P2-A](P2-A-task.md) | client.js、index.js、package.json、patch、P2-DSH-NOTES | 测试 RED→实现 GREEN；审核后补三项回归并修复；7/7、真实 loader、隔离窗口明暗/启停通过 |
 | [P3-A](P3-A-task.md) | index.js 白名单资源路由、P3-DSH-NOTES | 先写5项RED，实际HTTP5/5；真实Host GET/HEAD/404/405/停用检查 |
 | [P3-B](P3-B-task.md) | client.js Slot事务、package.json 注入与资源白名单 | 先写5项RED，全部17/17；素材导出、真实loader、两处头像窗口验证与独立只读审核 |
+| [P7-A](P7-A-task.md) | client.js冷白雾蓝与SceneStyle、P7-DSH-NOTES | 新契约RED→17/17；对比修订、512px导出、真实窗口与独立审核；headless退出0，日志dsh-p7-a.* |
 
 P3 初次 CLI 在沙箱内写 headless 启动配置遇到 EPERM；正常审批调用后在模型请求前遇到 TRANSPORT 连接错误（用量0、无文件改动）。用户告知通道恢复后，新日志 `dsh-p3-a-resumed.events.jsonl` 的调用成功、退出0，之后 `dsh-p3-b.events.jsonl` 成功；错误流均对应同名 `.stderr.log`。未重试 DSH shell、未修 ACL、未改模型/凭据。Codex 的本地 HTTP 测试也需正常审批以允许回环连接。最终证据见 [P3 验证](../validation/P3.md)，DSH 说明保留各次交付时未验证项。
 

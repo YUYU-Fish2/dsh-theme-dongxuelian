@@ -25,6 +25,7 @@ for (const name of ['avatar', 'sidebar-character']) {
   const bytes = readFileSync(new URL(file, root));
   assert.equal(bytes.toString('ascii', 0, 4), 'RIFF');
   assert.equal(bytes.toString('ascii', 8, 12), 'WEBP');
-  assert.ok(bytes.length < 40_000, `${file} 应小于 40KB`);
+  const budget = name === 'avatar' ? 40_000 : 180_000;
+  assert.ok(bytes.length < budget, `${file} 超过独立资源预算 ${budget} bytes`);
 }
 console.log('PASS: JS syntax, client/package contract and package allowlist');

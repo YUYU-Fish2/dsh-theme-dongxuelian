@@ -1,6 +1,6 @@
 # 冬雪莲涂鸦主题协作看板
 
-当前阶段：P5 候选回归已完成，继续 P6 预览打包。用户已授权自主分阶段推进，并要求协作写入项目。见 [接续记录](../HANDOFF.md)、[总计划](../IMPLEMENTATION-PLAN.md)与 [DSH 协作方法](DSH-COLLABORATION.md)。
+当前阶段：P7冷白雾蓝与人物背景已验证，继续P6重新打包；旧头像版包不交付。用户已授权自主分阶段推进，并要求协作写入项目。见 [接续记录](../HANDOFF.md)、[总计划](../IMPLEMENTATION-PLAN.md)与 [DSH 协作方法](DSH-COLLABORATION.md)。
 
 | 任务 | 执行者 | 审核者 | 范围 | 状态 |
 | --- | --- | --- | --- | --- |
@@ -16,6 +16,7 @@
 | P4 | Codex | 实际窗口 | 官方发送按钮info pair、hover/focus/disabled核对 | 已完成，26token、17/17、真实窗口，见P4.md |
 | P5 | Codex / DSH运行时 | Codex | 真实聊天/read、尺寸/缩放模拟、社区共存 | 候选回归完成；桌面与better-sidebar激活未确认，见P5矩阵 |
 | P6 | Codex | 隔离归档安装 | 打包、安装/卸载/重启、说明 | 正在进行，交付preview |
+| P7 | DSH限定实现 / Codex | 独立reviewer / 实际窗口 | 冷白雾蓝、主次人物背景、去header重复头像 | 17/17、check、真实loader、九组CSS模拟、明暗启停通过，见P7.md |
 | 交接维护 | Codex | 新会话 | 完整计划、状态、命令、日志与授权 | 已建立 HANDOFF 与根 AGENTS 入口 |
 
 协作约定：DSH 处理限定文件内的调研与后续获准实施；Codex 负责拆分任务、验收标准、关键证据抽查、差异审核与阶段关口。避免双方重复完整研究；只在关键结论缺证或冲突时复查。
