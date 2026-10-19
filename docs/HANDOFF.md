@@ -2,6 +2,10 @@
 
 更新：2026-10-19，本轮因额度接近上限收尾到 P2。工作区 `E:\codex\dsh主题开发`，分支 `feat/theme-v1`。先读本文件、[完整计划](IMPLEMENTATION-PLAN.md)、[DSH 协作记录](coordination/DSH-COLLABORATION.md)和根 `AGENTS.md`，不用重做 P0。
 
+文件整理补记（2026-10-19）：新增 [项目文件导航](PROJECT-MAP.md)，核对运行代码、素材候选、文档与本地缓存职责，并在 README 添加入口。仅修改文档，没有移动或删除文件，没有推进 P3；下一开发项仍为下述 P3。
+
+本次文档验证：README、文件导航与本文件共 40 个本地链接目标存在；`npm run check` 与 `git diff --check` 退出 0。未重跑主题测试或真实窗口验收，P2 行为证据仍引用原阶段记录。
+
 ## 当前状态和授权
 
 - P0：调研/版本/源码/许可，提交 `b4b5edb`，标签 `p0-research-2026-10-19`。

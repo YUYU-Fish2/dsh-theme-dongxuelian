@@ -5,6 +5,7 @@
 **新会话从 [接续记录](docs/HANDOFF.md) 开始；完整 P0–P6 范围、验收与回退见 [实施计划](docs/IMPLEMENTATION-PLAN.md)。**用户已授权后续自主按阶段推进，不必重新确认 P0/P1。
 
 - [P0 调研报告与推荐方案](docs/P0-REPORT.md)
+- [项目文件导航：代码、素材、文档与本地缓存](docs/PROJECT-MAP.md)
 - [DSH 源码调研与兼容证据（审核修订版）](docs/research/DSH-P0-upstream.md)
 - [原课表图标检索记录](docs/research/P0-character-source.md)
 - [P1 角色与视觉规范](docs/design/P1-VISUAL-SPEC.md)
