@@ -2,6 +2,8 @@
 
 新会话先读 `docs/HANDOFF.md`，再读 `docs/IMPLEMENTATION-PLAN.md` 和 `docs/coordination/WORKBOARD.md`。当前状态只以这些文件、Git 与实际验证结果为准，不把历史阶段报告中的“尚未开始”误当成当前状态。
 
+与 DSH 的派发、实际分工、命令、故障与日志见 `docs/coordination/DSH-COLLABORATION.md`。最近因额度收尾到 P2，下会话从 P3 接续。
+
 ## 用户已授权的工作方式
 
 - 用户要求 Codex 做审核与派发，与本机 DSH 联合开发，以减少重复分析；DSH 接限定读写任务，Codex 执行命令、测试与审核。

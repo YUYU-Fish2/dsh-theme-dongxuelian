@@ -27,13 +27,13 @@
 
 **文件职责：** `package.json`（入口/文件白名单/脚本），`cordis.patch.yml`（唯一 Host entry），`index.js`（Host 最小入口），`client.js`（factory、令牌、事件/释放），`test/theme.test.mjs`（生命周期回归），`scripts/check.mjs`（语法与包契约），`scripts/runtime-smoke.mjs`（真实官方 loader 检查），`docs/validation/P2.md`（证据）。
 
-1. [ ] Codex 先编写测试：浅色存在一层、深色零层、回浅色恢复、同步 `theme/change` 不递归、重复同色事件不重叠、停止后监听与覆盖归零、外部插件覆盖保持、当前用户 preference 不被写入、重启只出现一份。运行 `node --test test/theme.test.mjs` 记录 RED。
-2. [ ] 派发 DSH 限定文件，不允许改测试、profile、权限。`client.js` 用官方 factory 返回 `inject: ['theme']` 与 `apply`。核心状态顺序必须先设置拥有的释放状态，再执行可同步发事件的 API；清理同样先清空拥有状态再释放，避免重入。
-3. [ ] 颜色映射使用 P1 核算值；背景、层级、文字、侧栏、主按钮、输入框、边界、选中态只用本机存在的 token。保留代码语法色/字体；必要的代码块底色不能破坏高亮对比。
-4. [ ] 完成 `package.json` 与唯一 Cordis entry，文件白名单先只带基础代码、说明和许可证，不带候选图片；无 import 的模块不添加 React/cordis 运行依赖。`npm test`、`npm run check` 应退出 0。
-5. [ ] `scripts/runtime-smoke.mjs` 从显式 `DSH_RUNTIME_ROOT`（默认本机 asar 路径）读取官方 loader，建立真实模块表并导入本插件。以 Electron Run-as-Node 执行，不修改安装包。记录真实版本与加载结果。
-6. [ ] 先用 `.research/test-home` 启动官方隔离 Web profile，临时加入本包，检查最终配置 entry 与页面计算值。查 CLI `web --help` 获取实际支持的 port/auth 参数，不猜命令或复用用户真实会话。若 UI 工具无法访问，记录模块级结论与 UI 限制，不伪造窗口验收。
-7. [ ] 用本地 jscpd CLI 扫当前绝对路径，检查新增文件与差异，修复实质问题，提交 `feat: add reversible light theme tokens` 并更新接续文档。P2 结束前不得把未运行的 UI 检查记为通过。
+1. [x] Codex 先编写测试：浅色存在一层、深色零层、回浅色恢复、同步 `theme/change` 不递归、重复同色事件不重叠、停止后监听与覆盖归零、外部插件覆盖保持、当前用户 preference 不被写入、重启只出现一份。运行 `node --test test/theme.test.mjs` 记录 RED。
+2. [x] 派发 DSH 限定文件，不允许改测试、profile、权限。`client.js` 用官方 factory 返回 `inject: ['theme']` 与 `apply`。最终实现经真窗口修订为微任务合并事件、串行收敛并读取最新 scheme，将 stopped 纳入目标状态；不能在宿主派发内嵌套发布快照。详见 `docs/validation/P2.md`。
+3. [x] 颜色映射使用 P1 核算值；背景、层级、文字、侧栏、主按钮、输入框、边界、选中态只用本机存在的 token。保留代码语法色/字体；必要的代码块底色不能破坏高亮对比。
+4. [x] 完成 `package.json` 与唯一 Cordis entry，文件白名单先只带基础代码、说明和许可证，不带候选图片；无 import 的模块不添加 React/cordis 运行依赖。`npm test`、`npm run check` 应退出 0。
+5. [x] `scripts/runtime-smoke.mjs` 从显式 `DSH_RUNTIME_ROOT`（默认本机 asar 路径）读取官方 loader，建立真实模块表并导入本插件。以 Electron Run-as-Node 执行，不修改安装包。记录真实版本与加载结果。
+6. [x] 先用 `.research/test-home` 启动官方隔离 Web profile，临时加入本包，检查最终配置 entry 与页面计算值。查 CLI `web --help` 获取实际支持的 port/auth 参数，不猜命令或复用用户真实会话。若 UI 工具无法访问，记录模块级结论与 UI 限制，不伪造窗口验收。
+7. [x] 用本地 jscpd CLI 扫当前绝对路径，检查新增文件与差异，修复实质问题，提交 `feat: add reversible light theme tokens` 并更新接续文档。P2 结束前不得把未运行的 UI 检查记为通过。
 
 ## P3：两项角色资源与显示逻辑
 

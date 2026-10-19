@@ -11,6 +11,7 @@ function loadPlugin() {
   let registration;
   runInNewContext(readFileSync(clientFile, 'utf8'), {
     window: { __ModuleLoader__: { load(value) { registration = value; } } },
+    queueMicrotask,
   });
   assert.equal(registration.id, owner);
   return registration.factory((name) => { throw new Error(`未声明的依赖 ${name}`); });
@@ -25,10 +26,15 @@ function host(scheme = 'light') {
   const effects = [];
   const publish = () => {
     assert.ok(++depth < 8, '同步 theme/change 造成了递归循环');
-    try { for (const listener of [...listeners]) listener(snapshot()); }
+    const value = snapshot();
+    try { for (const listener of [...listeners]) listener(value); }
     finally { depth--; }
   };
-  const snapshot = () => ({ preference: 'system', active: { colorScheme: current } });
+  const snapshot = () => ({ preference: 'system', active: {
+    colorScheme: current,
+    tokens: Object.assign({}, ...[...layers.values()].map((layer) =>
+      Object.fromEntries(Object.entries(layer.tokens ?? {}).map(([key, value]) => [key, value[current]])))),
+  } });
   return {
     layers, listeners,
     get overrideCalls() { return calls; },
@@ -77,16 +83,19 @@ test('浅色覆盖经过核算的正文、次文字和背景，不写用户偏�
   runtime.stop();
 });
 
-test('深色不覆盖，回到浅色恢复，重复同色事件不累加覆盖', () => {
+test('深色不覆盖，回到浅色恢复，重复同色事件不累加覆盖', async () => {
   const runtime = host('dark');
   loadPlugin().apply(runtime.context);
   assert.equal(runtime.layers.has(owner), false);
   runtime.change('light');
   runtime.change('light');
+  await Promise.resolve();
   assert.equal(runtime.overrideCalls, 1);
   runtime.change('dark');
+  await Promise.resolve();
   assert.equal(runtime.layers.has(owner), false);
   runtime.change('light');
+  await Promise.resolve();
   assert.equal(runtime.overrideCalls, 2);
   runtime.stop();
 });
@@ -116,4 +125,55 @@ test('反复启停后只保留一层与一个监听，最后完全释放', () =>
     assert.equal(runtime.layers.size, 1);
     assert.equal(runtime.listeners.size, 0);
   }
+});
+
+test('其他监听同步切换深色时不留下浅色层，停用不遗留旧 disposer 对应层', () => {
+  const runtime = host();
+  let redirected = false;
+  const stopForeign = runtime.context.on('theme/change', (value) => {
+    if (!redirected && value.active.colorScheme === 'light' && runtime.layers.has(owner)) {
+      redirected = true;
+      runtime.change('dark');
+    }
+  });
+  loadPlugin().apply(runtime.context);
+  const darkHasLayer = runtime.layers.has(owner);
+  runtime.stop();
+  const stoppedHasLayer = runtime.layers.has(owner);
+  stopForeign();
+  assert.deepEqual({ darkHasLayer, stoppedHasLayer }, { darkHasLayer: false, stoppedHasLayer: false });
+  assert.equal(runtime.listeners.size, 0);
+});
+
+test('注册覆盖的同步事件期间停用，返回的 disposer 仍被释放', async () => {
+  const runtime = host('dark');
+  loadPlugin().apply(runtime.context);
+  let stopped = false;
+  const stopForeign = runtime.context.on('theme/change', () => {
+    if (!stopped && runtime.layers.has(owner)) {
+      stopped = true;
+      runtime.stop();
+    }
+  });
+  runtime.change('light');
+  await Promise.resolve();
+  stopForeign();
+  assert.equal(stopped, true);
+  assert.equal(runtime.layers.has(owner), false);
+  assert.equal(runtime.listeners.size, 0);
+});
+
+test('深色切换后的呈现层不会被外层旧快照重新涂成浅色', async () => {
+  const runtime = host();
+  loadPlugin().apply(runtime.context);
+  let presented;
+  const stopPresenter = runtime.context.on('theme/change', (value) => {
+    presented = value.active.tokens['--dsw-alias-bg-base'] ?? 'native-dark';
+  });
+  runtime.change('dark');
+  await Promise.resolve();
+  assert.equal(runtime.layers.has(owner), false);
+  assert.equal(presented, 'native-dark');
+  runtime.stop();
+  stopPresenter();
 });
