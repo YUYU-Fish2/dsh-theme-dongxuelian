@@ -77,6 +77,8 @@
 
 ## P6：打包交付与安装/卸载说明
 
+**暂停提醒：**用户最新要求先生成多种人物风格供其选择。P8候选A-F已经展示，见 `docs/design/P8-STYLE-CANDIDATES.md`。P7技术通过不代表新审美已满足，选定并完成P8主辅场景/真实窗口后再继续本节，不能交旧包。
+
 **文件：** `README.md`（最终入口与安装），`docs/INSTALL.md`（版本/安装/停用/卸载/恢复），`docs/RELEASE.md`（验证/限制/素材出处），`LICENSE` 与必要 `THIRD_PARTY_NOTICES.md`，`release/`（最终可安装归档与 SHA256，按实际打包内容决定是否提交大文件）。
 
 1. [ ] `npm pack --dry-run --json` 核对只带入口、patch、必要独立资源、安装与许可说明；排除 `.research`、用户数据、测试夹具、母版大图和依赖目录。不执行无必要的安装生命周期脚本。
