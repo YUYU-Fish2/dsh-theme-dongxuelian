@@ -1,6 +1,6 @@
 # 新会话接续记录
 
-当前状态：**P8抱书氛围实现与隔离Web验收完成，正在接续P6归档交付。** 用户在文件梳理后明确“继续干”。工作区`E:/codex/dsh主题开发`，分支`feat/theme-v1`；不自动推送/发布，不装入日常profile。
+当前状态：**P8抱书氛围与P6本地preview.2归档安装/卸载验收均完成。** 用户在文件梳理后明确“继续干”。工作区`E:/codex/dsh主题开发`，分支`feat/theme-v1`；不自动推送/发布，不装入日常profile。
 
 先读本文件 → [P8详细计划](superpowers/plans/2026-10-20-reading-atmosphere.md) → [总计划](IMPLEMENTATION-PLAN.md) → [看板](coordination/WORKBOARD.md)，文件职责见[导航](PROJECT-MAP.md)。当前事实以Git及实际验证为准，历史报告保留当时状态。
 
@@ -23,17 +23,18 @@
 - 多行输入自动化误触一次提交，隔离宿主在模型请求前报NO_ADAPTER，未改变通道/凭据；已清空测试输入。P5历史用于阅读复核，本轮没有新模型请求成功记录。
 - 原生桌面/系统DPI/其他平台/better-sidebar激活/多主题顺序/长列表压力未验证，继续preview。
 
-## P6接续
+## P6交付与接续
 
-1. 更新README、INSTALL、RELEASE与package描述为最终抱书方案；保留原有P6草稿内容中仍有效的安装/卸载边界，不交旧preview.1包。
-2. 精确dry-run及打包preview.2，核对文件、尺寸与SHA；包仅包含入口/patch、两项WebP、必要安装/来源/许可说明。
-3. 新`.research/package-p8-home`、官方Web模板、`theme-pack` profile，从tgz离线安装；核对安装文件哈希，真实窗口停用/恢复/卸载/重启及资源404。
-4. 写P6证据、更新入口与看板，独立提交与preview标签。归档及校验文件留release本地，不推送/发布。
+- P8提交`bed364c`；P6阶段提交及`v0.1.0-preview.2`标签以Git为准。安装/发布说明已按最终抱书方案完成，见[INSTALL](INSTALL.md)、[RELEASE](RELEASE.md)。
+- 最终包[preview.2 tgz](../release/dsh-theme-dongxuelian-0.1.0-preview.2.tgz)，264794B；SHA256 `504d35a783fc0b200a36df15667f5bca83e7f1aa44067dfe724811d3e0e99e57`，见[校验清单](../release/SHA256SUMS.txt)和[逐文件manifest](../release/preview.2-manifest.json)。包仅13文件，没有母版/备选/旧图/缓存；旧preview.1不交付。
+- 新`.research/package-p8-home`/theme-pack从最终tgz离线安装，13文件与工作区/归档一致，真实窗口、启停、冷重启、plain remove及卸载后重启通过；完整证据[P6验证](validation/P6.md)。隔离profile最终已卸载本包。
+- 已修正旧草稿不被pnpm11支持的remove参数；安装可用`add --offline --ignore-scripts`，卸载用`remove dsh-theme-dongxuelian`，不照搬add参数。
+- 当前没有未完成的本轮实施项。后续如继续，按用户新增需求执行；原生桌面/系统DPI/其他平台等仍是preview限制，不自动安装到日常profile或发布。
 
 ## 协作、环境与安全边界
 
 - DSH按[P8-A](coordination/P8-A-task.md)仅限定文件read/write实现，headless已退出0；Codex负责导出、测试、命令、实窗修正和Git。方法见[DSH协作](coordination/DSH-COLLABORATION.md)。
-- 日志`.research/dsh-p8-a.*`，隔离Web当前日志`.research/p8-web-reload.log`（theme-test端口65409）；旧端口56814进程经标记确认已停止。P6结束只停止自己确认的测试进程、关闭自己标签。
+- 日志`.research/dsh-p8-a.*`，隔离Web日志`.research/p8-web-reload.log`及`.research/p6-*.log`仅本地保留；本次theme-test/theme-pack监听及两个自建标签均已收起，CSS zoom/媒体模拟/viewport已恢复。旧端口和认证链接不可复用。
 - Node `D:/node.exe`；Pillow `E:/python/python.exe`；DSH CLI `E:/dsh/resources/runtime/cli/bin/dsh.cmd`；Electron `E:/dsh/DeepSeek Harness.exe`；runtime `E:/dsh/resources/app.asar/dsh`。
 - DSH shell曾Win32 5，不重试ACL或绕过审批；沿用worker patch，由DSH服务解析密钥，不读取/复制/打印凭据，不改模型、用户desktop profile、其他插件或核心。
 - .research为忽略的隔离home/缓存/认证链接/日志，不提交或打包。不reset/clean，不删除历史母版。

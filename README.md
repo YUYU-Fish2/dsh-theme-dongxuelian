@@ -1,18 +1,38 @@
 # DSH 冬雪莲涂鸦主题
 
-当前已完成 P0–P3：基础主题、独立 WebP 资源与两处24px头像，17项回归及 DSH `0.2.1-rc.2` 隔离 Web 窗口明暗/启停验证通过。P4–P6 待完成，真实模型聊天与桌面载图尚未验收；暂无最终发布包。
+`0.1.0-preview.2`，面向DSH `0.2.1-rc.2`的轻量独立主题。以用户选定的彩铅抱书场景搭配纸白、灰蓝与靛蓝：宽空态左侧输入、右侧人物；聊天使用纸白阅读面，保留右侧观景带；窄列优先保证输入和正文宽度。深色/停用释放覆盖，恢复宿主品牌和颜色，不写主题偏好。
 
-**新会话从 [接续记录](docs/HANDOFF.md) 开始；完整 P0–P6 范围、验收与回退见 [实施计划](docs/IMPLEMENTATION-PLAN.md)。**用户已授权后续自主按阶段推进，不必重新确认 P0/P1。
+插件直接交付JavaScript和独立WebP，零第三方运行依赖，无构建或安装脚本。头像与场景共249348B；PNG母版及其他三幅备选不打包。来源和使用边界见[场景说明](assets/scenes/README.md)与[头像说明](assets/characters/README.md)。
 
-- [P0 调研报告与推荐方案](docs/P0-REPORT.md)
-- [项目文件导航：代码、素材、文档与本地缓存](docs/PROJECT-MAP.md)
-- [DSH 源码调研与兼容证据（审核修订版）](docs/research/DSH-P0-upstream.md)
-- [原课表图标检索记录](docs/research/P0-character-source.md)
-- [P1 角色与视觉规范](docs/design/P1-VISUAL-SPEC.md)
-- [P1 素材与审核记录](docs/design/P1-REVIEW.md)
-- [DSH 与 Codex 协作看板](docs/coordination/WORKBOARD.md)
-- [DSH 派发方法、实际分工和协作记录](docs/coordination/DSH-COLLABORATION.md)
-- [P2 验证结果与真实截图](docs/validation/P2.md)
-- [P3 角色资源、Slot 与隔离窗口验证](docs/validation/P3.md)
+## 安装与移除
 
-目标版本为本机 DSH `0.2.1-rc.2`。本项目不修改 DSH 核心源码；参考主题和图标的定位不代表已获得所有素材的发布许可。
+下载本项目的 `dsh-theme-dongxuelian-0.1.0-preview.2.tgz`，核对随包提供的 SHA256。通过官方 CLI 安装到明确的 profile；以下为本机 PowerShell 示例，请按实际位置替换路径：
+
+```powershell
+& 'E:\dsh\resources\runtime\cli\bin\dsh.cmd' plugin --profile desktop add 'E:\codex\dsh主题开发\release\dsh-theme-dongxuelian-0.1.0-preview.2.tgz' --ignore-scripts
+```
+
+Web使用者将 `desktop` 换成自己的Web profile名称。不要整文件覆盖 `cordis.yml` 或手工重复插入同一个插件。临时隐藏主题，使用官方插件管理里的启用开关。
+
+```powershell
+& 'E:\dsh\resources\runtime\cli\bin\dsh.cmd' plugin --profile desktop remove dsh-theme-dongxuelian
+```
+
+完整安装、停用、卸载与恢复步骤见 [安装说明](docs/INSTALL.md)；验证和预览限制见 [发布说明](docs/RELEASE.md)。
+
+## 验证范围
+
+已验证18项主题/Slot/实际HTTP回归、真实官方ModuleLoader、隔离Web空态/聊天、深浅往返、停用/重启用与资源释放。空态和聊天分别检查800/1100/1440px及100/125/150% CSS缩放，长代码保持内部横滚。聊天/read内容复核使用P5历史，本轮未新增成功的模型请求。
+
+**这是预览版。**真实桌面窗口/系统缩放/长会话列表压力未实测；better-sidebar在隔离环境的激活尚未确认。市场与挂件已见入口，但不能据此保证所有社区插件与多主题顺序兼容。不会自动安装到你的实际profile或发布远端。
+
+## 源码开发入口
+
+在完整源码仓库中，先读 `docs/HANDOFF.md`、`docs/superpowers/plans/2026-10-20-reading-atmosphere.md`、`docs/IMPLEMENTATION-PLAN.md` 与 `docs/coordination/WORKBOARD.md`；文件索引为 `docs/PROJECT-MAP.md`。这些开发记录不随安装包全部分发。
+
+```powershell
+npm test
+npm run check
+```
+
+测试使用Node内置工具；HTTP回归需允许本机回环连接。许可证见 [LICENSE](LICENSE)，引用说明见 [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES.md)。角色素材不声明官方授权。

@@ -1,6 +1,6 @@
 # 冬雪莲涂鸦主题协作看板
 
-当前阶段：**P8实现与隔离Web预览验收完成，接续P6归档安装验收。** 用户已要求“继续干”；reading.webp已接入，18/18、check、真实loader、空态/聊天18组CSS模拟、明暗/启停及真实资源释放通过。证据见[P8验证](../validation/P8.md)。旧Q版包不交付。
+当前阶段：**P8与P6 preview.2本地交付完成。** 用户已要求“继续干”；reading.webp已接入，18/18、check、真实loader、空态/聊天18组CSS模拟、明暗/启停及真实资源释放通过。证据见[P8验证](../validation/P8.md)。新tgz在全新隔离home安装/启停/冷启动/卸载后重启通过，13文件清单和SHA见[P6验证](../validation/P6.md)；旧Q版包不交付。
 
 入口：[接续记录](../HANDOFF.md) → [P8详细计划](../superpowers/plans/2026-10-20-reading-atmosphere.md) → [总计划](../IMPLEMENTATION-PLAN.md)，文件用途见[导航](../PROJECT-MAP.md)。
 
@@ -17,7 +17,7 @@
 | P3-A/B | DSH | Codex / 独立 reviewer | 白名单路由、轻量头像与生命周期 | 17/17、实际 Web 两处头像/明暗/启停、0 clones；见 P3.md |
 | P4 | Codex | 实际窗口 | 官方发送按钮info pair、hover/focus/disabled核对 | 已完成，26token、17/17、真实窗口，见P4.md |
 | P5 | Codex / DSH运行时 | Codex | 真实聊天/read、尺寸/缩放模拟、社区共存 | 候选回归完成；桌面与better-sidebar激活未确认，见P5矩阵 |
-| P6 | Codex | 隔离归档安装 | 打包、安装/卸载/重启、说明 | 正在接续；重写最终说明并从新tgz安装验收，旧包不交付 |
+| P6 | Codex | 隔离归档安装 | 打包、安装/卸载/重启、说明 | 已完成：最终13文件包、SHA、新home离线安装/启停/卸载/重启；见P6.md |
 | P7 | DSH限定实现 / Codex | 独立reviewer / 实际窗口 | 冷白雾蓝、主次人物背景、去header重复头像 | 17/17、check、真实loader、九组CSS模拟、明暗启停通过，见P7.md |
 | P8素材 | Codex / imagegen | 用户选择 | A-F→选B→四幅→选抱书横幅 | 已选定reading.png，与最新上传图像素一致 |
 | P8接入 | Codex审核/测试、DSH限定实现 | 实际窗口/独立审核 | 纸白灰蓝氛围、完整主图、阅读面、资源/生命周期 | 已完成：18/18、真实Web/loader、0 clones、独立审核；见P8.md |

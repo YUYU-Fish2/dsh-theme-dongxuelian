@@ -1,0 +1,75 @@
+{
+  "name": "dsh-theme-dongxuelian",
+  "version": "0.1.0-preview.2",
+  "filename": "dsh-theme-dongxuelian-0.1.0-preview.2.tgz",
+  "bytes": 264794,
+  "unpackedBytes": 281329,
+  "sha256": "504d35a783fc0b200a36df15667f5bca83e7f1aa44067dfe724811d3e0e99e57",
+  "files": [
+    {
+      "path": "LICENSE",
+      "bytes": 1317,
+      "sha256": "5c209105095c13a4a39f6402868af99712f3eebe6c45b08278a780f1367ac0ef"
+    },
+    {
+      "path": "client.js",
+      "bytes": 12148,
+      "sha256": "502a9f890fc43808224ec85038edd1c9741d8b7cf44ee783b30035292658e2a1"
+    },
+    {
+      "path": "index.js",
+      "bytes": 2930,
+      "sha256": "dccf3ce13414be01975c2a77c1baea1081cbefd71f89b24c4af70d254af08330"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1060,
+      "sha256": "17d49de3432109ea2ac114e7437d234d4e030fc68dab377d313cf8d0fa13e5aa"
+    },
+    {
+      "path": "docs/INSTALL.md",
+      "bytes": 3385,
+      "sha256": "b4380cf5a361a874155af202ada45b34a44544e86a05958ab7e809342d7ff39b"
+    },
+    {
+      "path": "assets/characters/README.md",
+      "bytes": 1968,
+      "sha256": "6d00bd5d6c50af6293c046e561d2eb8c85dde34e95ca8779d4446edd45b63251"
+    },
+    {
+      "path": "assets/scenes/README.md",
+      "bytes": 1573,
+      "sha256": "db3bcda0c553c222918430392714b49b123b6042f96eaeec87bb072735dd8b02"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2769,
+      "sha256": "1c60761c56a82542a780d07fb73e95f92f0a2632ee5dcf7952936e313bb4a1ed"
+    },
+    {
+      "path": "docs/RELEASE.md",
+      "bytes": 3151,
+      "sha256": "a1644856be792a7e4165a55a9cef5bd3990f2cad3ab8ec365aa934f03507de9f"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 1604,
+      "sha256": "7fe436ac4049317372eb5ab5dddbf240e8cc766f8c492d43b20bc8da8060d889"
+    },
+    {
+      "path": "assets/characters/web/avatar.webp",
+      "bytes": 26864,
+      "sha256": "fdd9165fde733caae3af652a3354aacc4ae3290f3abd353c886d96d2dc4a5ebc"
+    },
+    {
+      "path": "assets/scenes/web/reading.webp",
+      "bytes": 222484,
+      "sha256": "a0fc8241566b07187964719cba5caed72447655809456d1c126dccbe227a9592"
+    },
+    {
+      "path": "cordis.patch.yml",
+      "bytes": 76,
+      "sha256": "17b2561a09621a933393582cfee8b88dddba68f47e97c17b7563ab956fe36ca9"
+    }
+  ]
+}

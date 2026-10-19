@@ -2,17 +2,18 @@
 
 `avatar.png` 与 `sidebar-character.png` 是2026-10-19用内置imagegen按用户确认的原课表图标另绘的1254px透明PNG母版，不是从原图直接裁切；母版仅保留于源码仓库，不随安装包分发。
 
-本包包含两项透明无损WebP：
+当前P8包只保留以下头像；完整抱书场景见[场景说明](../scenes/README.md)。
 
 | 文件 | 字节 | 使用 |
 | --- | ---: | --- |
-| `web/avatar.webp`（192×192） | 26864 | 侧栏24px品牌头像与轻背景呼应 |
-| `web/sidebar-character.webp`（512×512） | 124148 | 聊天区与空白页的趴边人物背景 |
+| `web/avatar.webp`（192×192） | 26864 | 侧栏24px品牌头像 |
+
+旧`web/sidebar-character.webp`（512×512、124148B）是P7 Q版背景导出，仅留在源码中追溯，P8已撤出路由与包。以下保留早期两项素材的生成过程。
 
 两项均保留发束、半睁蓝眼、白花/蓝结/坠饰与深蓝不规则轮廓。先生成趴边版，再参考其与原图生成简化头像；侧栏版首稿曾通过imagegen增加留白。P3及P7在用户明确授权“允许，仅缩放与格式编码”后，用LANCZOS等比缩放并无损编码WebP，没有裁切、重绘、修alpha或改角色身份。P7为大背景从原母版重新导出512px，未将192px缩略图放大编码。
 
 P7另调研アカババァ作品集、眠眠生日二创与B站装扮展示，作为冷白/雾蓝/淡紫配色与留白参考；没有把这些作品的图片复制或打包。具体来源与观察见源码仓库 `docs/design/P7-WINTER-SCENE.md`。
 
-原图检索证据、母版哈希、生成记录和小尺寸验证保存在完整源码仓库的 `docs/research/P0-character-source.md`、`docs/design/P1-REVIEW.md` 与 `docs/validation/P3.md`。这些开发记录不随安装包分发。导出哈希及归档校验随本地release记录提供，发布范围见 [发布说明](../../docs/RELEASE.md)。
+原图检索证据、母版哈希、生成记录和小尺寸验证保存在完整源码仓库的 `docs/research/P0-character-source.md`、`docs/design/P1-REVIEW.md` 与 `docs/validation/P3.md`。这些开发记录不随安装包分发。头像SHA256为`fdd9165fde733caae3af652a3354aacc4ae3290f3abd353c886d96d2dc4a5ebc`；归档校验随本地release记录提供，发布范围见 [发布说明](../../docs/RELEASE.md)。
 
 用户授权本项目参考原图风格创作；此记录不声明角色官方授权或第三方图片的转许可。项目代码许可不代表对角色权利作额外保证。

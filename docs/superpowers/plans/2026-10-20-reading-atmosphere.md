@@ -2,7 +2,7 @@
 
 > 执行者：新会话按 executing-plans 分步执行。用户本轮明确要求“先列进计划、做好规划交接，我新开会话做”，因此本轮仅规划，不导出资源、不改运行代码、不派发DSH、不启动预览或打包。新会话继续后使用既有Codex审核/测试、DSH限定read/write分工，无需重新讨论A-F风格。
 
-2026-10-20执行进展：用户已要求“继续干”，Task 1–5已完成，见[实际P8验证](../../validation/P8.md)。Codex实窗修正了链式Slot包装选择器，并把背景移到会话content子容器以使容器查询生效；原事务不变。Task 6的P6归档验收正在接续。以下创建时的“仅规划”仅描述此前会话。
+2026-10-20执行进展：用户已要求“继续干”，Task 1–5已完成，见[实际P8验证](../../validation/P8.md)。Codex实窗修正了链式Slot包装选择器，并把背景移到会话content子容器以使容器查询生效；原事务不变。Task 6的P6最终归档安装/卸载验收也已通过，见[P6记录](../../validation/P6.md)。以下创建时的“仅规划”仅描述此前会话。
 
 **Goal：**围绕用户选定的B系列抱书横幅，做出纸白、灰蓝、靛蓝的彩铅绘本氛围；人物与蓝花应是清楚的场景主视觉，阅读、代码与输入始终清晰。
 
@@ -141,23 +141,23 @@ Get-Content -LiteralPath 'docs/coordination/P8-A-task.md' -Raw |
 
 ### Task 4：真实预览和视觉迭代（Codex）
 
-- [ ] 新隔离宿主启动，认证URL只本地读取后用于浏览器，不打印/提交。可复用test-home，但不能碰日常desktop profile。
+- [x] 新隔离宿主启动，认证URL只本地读取后用于浏览器，不打印/提交。可复用test-home，但不能碰日常desktop profile。
 
 ```powershell
 $env:DSH_HOME='E:/codex/dsh主题开发/.research/test-home'
 & 'E:/dsh/resources/runtime/cli/bin/dsh.cmd' --profile theme-test --patch '.research/p3-test-host.patch.yml' --port 0 --no-open *> '.research/p8-web.log'
 ```
 
-- [ ] 区分该patch会创建合成夹具与P5既有真实模型历史；P8不必重新花费模型请求验证相同聊天内容，使用已有长代码/read工具记录即可，但不得称“本轮新真实对话通过”。
-- [ ] 保存1100和1440空态截图：脸/蓝花/书可读、输入落留白、不遮标题。800下脸不被cover裁掉、无整页横溢。对照母版确认不是又一张小图标或低透明水印。
-- [ ] 正常聊天/中英文/长代码横滚/高亮/read工具卡/多行输入、附件菜单、更多菜单、侧栏收放与长列表、插件/设置页面无大图污染。
-- [ ] 800/1100/1440 × CSSzoom100/125/150九组检查；说明是CSS模拟，不写成系统DPI通过。直接检查document.scrollWidth、控件点击、pre内部横滚与图片加载状态，不只看截图。
-- [ ] 浅→深→浅、系统媒体模拟、官方插件停用/重启用：style1→0→1、品牌头像与背景正确释放、原主题恢复，Host停用reading/avatar均404。恢复viewport、CSSzoom与媒体模拟，结束关闭自己标签/自己的隔离进程。
-- [ ] 配色用WCAG公式算实际纯色，正文/次文字≥4.5:1，关键边界≥3:1；再看带图真实窗口，确保阅读面足够不透明。若无法兼顾人物与正文，修改布局/阅读面，不靠极淡图片掩盖。
+- [x] 区分该patch会创建合成夹具与P5既有真实模型历史；P8不必重新花费模型请求验证相同聊天内容，使用已有长代码/read工具记录即可，但不得称“本轮新真实对话通过”。
+- [x] 保存1100和1440空态截图：脸/蓝花/书可读、输入落留白、不遮标题。800下脸不被cover裁掉、无整页横溢。对照母版确认不是又一张小图标或低透明水印。
+- [ ] 正常聊天/中英文/长代码横滚/高亮/read工具卡/多行输入、附件菜单、更多菜单、侧栏收放与长列表、插件/设置页面无大图污染。（本轮其余窗口项已验证；长会话列表压力未执行，保留为preview限制，不据此声称完整覆盖。）
+- [x] 800/1100/1440 × CSSzoom100/125/150九组检查；说明是CSS模拟，不写成系统DPI通过。直接检查document.scrollWidth、控件点击、pre内部横滚与图片加载状态，不只看截图。
+- [x] 浅→深→浅、系统媒体模拟、官方插件停用/重启用：style1→0→1、品牌头像与背景正确释放、原主题恢复，Host停用reading/avatar均404。恢复viewport、CSSzoom与媒体模拟，结束关闭自己标签/自己的隔离进程。
+- [x] 配色用WCAG公式算实际纯色，正文/次文字≥4.5:1，关键边界≥3:1；再看带图真实窗口，确保阅读面足够不透明。若无法兼顾人物与正文，修改布局/阅读面，不靠极淡图片掩盖。
 
 ### Task 5：P8验证、审核、记录和独立提交
 
-- [ ] npm test、npm run check、真实官方loader（React/服务适配与窗口结论分开）：
+- [x] npm test、npm run check、真实官方loader（React/服务适配与窗口结论分开）：
 
 ```powershell
 npm test
@@ -168,17 +168,18 @@ $env:ELECTRON_RUN_AS_NODE='1'
 git diff --check
 ```
 
-- [ ] 查重必须明确本项目；MCP索引未知时用上述CLI。根据真实重复行为决定复用，不为了行数重构。独立只读审核重点看新CSS层级、路由/白名单/资源预算、生命周期与包遗漏，不把理论风险冒充已复现缺陷。
-- [ ] docs/validation/P8.md写RED→GREEN、导出哈希/字节、命令退出码、截图、尺寸矩阵与限制。HANDOFF/总计划/WORKBOARD更新为P8实际结果，旧审美失败/P7历史不冒充P8。
-- [ ] 独立提交P8运行改动和证据；提交前点名检查已有P6草稿，不能混入无关修改或把.research打包。若视觉还在迭代，明确记录，不写完成标签。
+- [x] 查重必须明确本项目；MCP索引未知时用上述CLI。根据真实重复行为决定复用，不为了行数重构。独立只读审核重点看新CSS层级、路由/白名单/资源预算、生命周期与包遗漏，不把理论风险冒充已复现缺陷。
+- [x] docs/validation/P8.md写RED→GREEN、导出哈希/字节、命令退出码、截图、尺寸矩阵与限制。HANDOFF/总计划/WORKBOARD更新为P8实际结果，旧审美失败/P7历史不冒充P8。
+- [x] 独立提交P8运行改动和证据；提交前点名检查已有P6草稿，不能混入无关修改或把.research打包。若视觉还在迭代，明确记录，不写完成标签。
 
-### Task 6：P8成立后才继续P6预览交付
 
-- [ ] 重写README/INSTALL/RELEASE的旧冷白/玫瑰/两小头像/旧图片体积，保留preview与原生桌面/系统DPI/第三方插件未测边界。明确正式采用抱书图，其他三母版不打包。
-- [ ] npm pack --dry-run --json核对精确白名单：只有入口/patch/最终WebP/安装许可文档；排除PNG、style-studies、.research、测试、凭据/聊天。
-- [ ] npm pack --pack-destination release生成新归档，列manifest、尺寸和SHA256；旧preview.1哈希作废，不重复交旧包。
-- [ ] 用新.research/package-p8-home、官方Web模板和独立theme-pack profile从tgz离线add，核对安装client/index/reading哈希；不能用工作树link替代。复验窗口/停用/卸载/重启，确认原品牌/背景恢复、资源404。
-- [ ] 写P6验证和最终交接，独立提交/preview标签；不自动推送、发布、装到日常profile或结束用户真实DSH。
+### Task 6：P8验收通过后继续P6预览交付（已完成）
+
+- [x] 重写README/INSTALL/RELEASE的旧冷白/玫瑰/两小头像/旧图片体积，保留preview与原生桌面/系统DPI/第三方插件未测边界。明确正式采用抱书图，其他三母版不打包。
+- [x] npm pack --dry-run --json核对精确白名单：只有入口/patch/最终WebP/安装许可文档；排除PNG、style-studies、.research、测试、凭据/聊天。
+- [x] npm pack --pack-destination release生成新归档，列manifest、尺寸和SHA256；旧preview.1哈希作废，不重复交旧包。
+- [x] 用新.research/package-p8-home、官方Web模板和独立theme-pack profile从tgz离线add，核对安装client/index/reading哈希；不能用工作树link替代。复验窗口/停用/卸载/重启，确认原品牌/背景恢复、资源404。
+- [x] 写P6验证和最终交接，独立提交/preview标签；不自动推送、发布、装到日常profile或结束用户真实DSH。
 
 ## 5. 新会话第一条可直接使用的指令
 
