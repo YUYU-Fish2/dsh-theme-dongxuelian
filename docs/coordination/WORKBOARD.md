@@ -1,6 +1,6 @@
 # 冬雪莲涂鸦主题协作看板
 
-当前阶段：P4 已完成，继续 P5 运行矩阵。用户已授权自主分阶段推进，并要求协作写入项目。见 [接续记录](../HANDOFF.md)、[总计划](../IMPLEMENTATION-PLAN.md)与 [DSH 协作方法](DSH-COLLABORATION.md)。
+当前阶段：P5 候选回归已完成，继续 P6 预览打包。用户已授权自主分阶段推进，并要求协作写入项目。见 [接续记录](../HANDOFF.md)、[总计划](../IMPLEMENTATION-PLAN.md)与 [DSH 协作方法](DSH-COLLABORATION.md)。
 
 | 任务 | 执行者 | 审核者 | 范围 | 状态 |
 | --- | --- | --- | --- | --- |
@@ -14,7 +14,8 @@
 | P2-B | Codex | 独立审查 | 生命周期/真实 loader/隔离运行/查重 | 7/7 + 真实窗口启停/明暗往返 + 查重通过，见 P2.md |
 | P3-A/B | DSH | Codex / 独立 reviewer | 白名单路由、轻量头像与生命周期 | 17/17、实际 Web 两处头像/明暗/启停、0 clones；见 P3.md |
 | P4 | Codex | 实际窗口 | 官方发送按钮info pair、hover/focus/disabled核对 | 已完成，26token、17/17、真实窗口，见P4.md |
-| P5/P6 | DSH / Codex | Codex | 运行矩阵/打包 | 下一项P5；真实模型聊天与桌面载图未验收 |
+| P5 | Codex / DSH运行时 | Codex | 真实聊天/read、尺寸/缩放模拟、社区共存 | 候选回归完成；桌面与better-sidebar激活未确认，见P5矩阵 |
+| P6 | Codex | 隔离归档安装 | 打包、安装/卸载/重启、说明 | 正在进行，交付preview |
 | 交接维护 | Codex | 新会话 | 完整计划、状态、命令、日志与授权 | 已建立 HANDOFF 与根 AGENTS 入口 |
 
 协作约定：DSH 处理限定文件内的调研与后续获准实施；Codex 负责拆分任务、验收标准、关键证据抽查、差异审核与阶段关口。避免双方重复完整研究；只在关键结论缺证或冲突时复查。
