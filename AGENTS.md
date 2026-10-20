@@ -4,9 +4,9 @@
 
 与DSH的派发、实际分工、命令、故障与日志见 `docs/coordination/DSH-COLLABORATION.md`。用户已选B彩铅绘本抱书图reading.png并要求“继续干”；P8实现和隔离Web预览验收已完成，P6新归档在隔离home的安装/启停/卸载/重启也已通过，本地preview.2交付完成。不重做风格选择、不交旧Q版包；证据见docs/validation/P8.md与P6.md。
 
-当前P9 preview.3已完成并按授权更新desktop：用户批准宽屏示意后又明确要求重新生成图像、聊天中间不要留大块空白、整体同色调但保阅读舒适。新母版为assets/scenes/p9/reading.png，旧B图保留历史；最新证据见docs/validation/P9.md。继续DSH限定实现与Codex实窗/审核分工，只做正常使用必要验证，不重复扩张压力/全平台矩阵。新版日常DSH未强制重启，本次P9已按用户明确要求推送GitHub。
+P9 preview.3历史交付已按授权更新desktop：用户批准宽屏示意后又明确要求重新生成图像、聊天中间不要留大块空白、整体同色调但保阅读舒适。新母版为assets/scenes/p9/reading.png，旧B图保留历史；P9证据见docs/validation/P9.md。继续DSH限定实现与Codex实窗/审核分工，只做正常使用必要验证，不重复扩张压力/全平台矩阵。日常DSH未强制重启，P9已按当次明确要求推送GitHub；当前P10以下方为准。
 
-P10用户已选A“同纸底＋柔边融合”，本轮要求写规划，尚未实施；计划见docs/superpowers/plans/2026-10-20-paper-blend.md，任务P10-A未派发。运行版仍preview.3，不把生成示意或规划中的CSS参数当实测。后续明确开始再按DSH限定CSS、Codex实窗/命令分工执行，不改图、不新增空白带、不淡化文字，保持阅读舒适。
+P10用户已选A“同纸底＋柔边融合”，随后明确“开始工作，记得跟dsh分工”；现已完成preview.4并更新desktop。DSH按P10-A限定CSS/首稿说明，Codex实窗/命令/归档验证；18/18、check、宽小正常聊天/焦点/菜单/明暗启停、归档与desktop13文件一致。计划见docs/superpowers/plans/2026-10-20-paper-blend.md，实测及离线缓存/安装器策略处理见docs/validation/P10.md。图片不变、不新增空白带、不淡化文字；日常DSH未强制重启，本轮未推送或发布。
 
 ## 用户已授权的工作方式
 

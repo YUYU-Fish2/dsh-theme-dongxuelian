@@ -37,6 +37,8 @@ Codex负责生成1536×1024场景、WebP编码、真实窗口、修正720px观�
 
 ## 实际可用调用（沿用）
 
+P10（2026-10-20）已按用户“开始工作，记得跟dsh分工”实施：[P10-A](P10-A-task.md)派发前确认真实DOM/::after与宽小基线。DSH在paper-blend隔离工作树仅改SCENE_CSS并写[P10首稿说明](../validation/P10-DSH-NOTES.md)，headless退出0；日志主工作区`.research/dsh-p10-a.*`。Codex完成实窗、18/18/check、归档与desktop13文件核对；未改图片/生命周期/Host。离线缓存及安装器策略变更的处理见[P10最终证据](../validation/P10.md)，不把首稿未测项当最终结果。
+
 CLI `E:\dsh\resources\runtime\cli\bin\dsh.cmd`，版本 `0.2.1-rc.2`。在项目根目录运行，每个任务用独立短上下文与新日志名：
 
 ```powershell

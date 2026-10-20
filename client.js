@@ -210,6 +210,12 @@ window.__ModuleLoader__.load({
 
   [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-content] {
     --dxl-scene-gutter: clamp(380px, calc(var(--dsh-conversation-column-width) * .36), 720px);
+    /* Positioning uses the host's published pixel column width, not cqi: the
+       inherited value would otherwise resolve again inside nested containers.
+       Only the blend width scales with the query container. */
+    --dxl-paper-inset: max(0px, (var(--dsh-conversation-column-width) - 1920px) / 2);
+    --dxl-paper-column: calc(min(var(--dsh-conversation-column-width), 1920px) - var(--dxl-scene-gutter));
+    --dxl-paper-blend: clamp(96px, 6cqi, 128px);
     --dsh-chat-content-width: min(
       var(--dsh-chat-user-width, 1040px),
       calc(min(var(--dsh-conversation-column-width), 1920px) - var(--dxl-scene-gutter) - 96px)
@@ -218,11 +224,30 @@ window.__ModuleLoader__.load({
   }
 
   [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-scroll] {
-    width: calc(min(100cqi, 1920px) - var(--dxl-scene-gutter));
-    margin-left: max(0px, calc((100cqi - 1920px) / 2));
+    width: var(--dxl-paper-column);
+    margin-left: var(--dxl-paper-inset);
     margin-right: 0;
     min-width: 0;
-    background: linear-gradient(90deg, #F7F3EB calc(100% - 32px), transparent);
+    background: #F7F3EB;
+  }
+
+  /* The bridge overlaps the opaque reading surface by 24px, then fades into
+     the scene gutter. It shares the negative layer with the artwork: ::before
+     paints first, this layer next, and the real message controls stay above. */
+  [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-content]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--dxl-paper-inset) + var(--dxl-paper-column) - 24px);
+    width: var(--dxl-paper-blend);
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(90deg,
+      #F7F3EB 24px,
+      rgb(247 243 235 / .82) 45%,
+      rgb(247 243 235 / .30) 75%,
+      transparent 100%);
   }
 
   [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-content]::before {
@@ -231,6 +256,12 @@ window.__ModuleLoader__.load({
       clamp(720px, calc(720px + (100cqi - 1100px) * 560 / 820), 1280px),
       calc(100% - clamp(0px, (100cqi - 1100px) * 64 / 820, 64px))
     );
+  }
+
+  /* A lighter resting shadow only. Focus, outline, borders and button states
+     remain the host's own. */
+  [data-slot="main.conversation"] > div[data-phase="active"] [data-composer-card]:not(:focus-within) {
+    box-shadow: 0 3px 14px rgb(49 58 80 / .06);
   }
 }
 

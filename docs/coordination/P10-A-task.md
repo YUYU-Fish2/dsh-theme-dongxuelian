@@ -1,8 +1,8 @@
-# P10-A 同纸底柔边融合（待派发）
+# P10-A 同纸底柔边融合（已交付）
 
-状态：本轮仅规划，未调用DSH。后续明确开始实施后，Codex先按P10计划确认实际DOM、伪元素未被占用和当前隔离基线，再派发本文。
+状态：2026-10-20用户明确要求开始实施。Codex确认隔离基线及伪元素未被占用后派发；DSH headless退出0，限定两文件已交付。首稿见docs/validation/P10-DSH-NOTES.md，最终实测见docs/validation/P10.md。事件与错误流保留主工作区.research/dsh-p10-a.*。
 
-工作区：E:/codex/dsh主题开发；如在独立工作树执行，Codex派发前将本文工作区替换为实际路径。
+实际执行工作区：C:/Users/sjtxd/.codex/worktrees/paper-blend/dsh主题开发；派发时已替换为此路径。主工作区E:/codex/dsh主题开发仅保留通道patch与日志。
 
 只使用read/write/edit。允许修改client.js内SCENE_CSS，并新增docs/validation/P10-DSH-NOTES.md；禁止改测试、图片、index.js、package版本、profile/模型/核心/权限，不使用shell、Git、网络或子agent，不读取凭据/用户聊天。Codex负责命令、浏览器、审核和后续交付。
 

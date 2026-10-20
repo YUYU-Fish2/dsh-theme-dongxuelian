@@ -1,20 +1,25 @@
 # 新会话接续记录
 
-当前状态：**P9大窗口与聊天构图已完成，preview.3已按授权更新到本机desktop。** 新图按批准示意重新生成，首页与聊天统一纸白氛围、缩小中间空白。工作区`E:/codex/dsh主题开发`，分支`feat/theme-v1`；本次P9已按用户明确要求同步GitHub，未发布Release/npm。没有强制重启用户DSH，新版日常窗口重载尚未目视确认。
+当前状态：**P10 A同纸底柔边融合已完成，preview.4已更新本机desktop。** DSH限定CSS首稿、Codex实窗和交付验证；图片、Host和生命周期不变。工作区`E:/codex/dsh主题开发`，分支`feat/theme-v1`。本轮只做本地提交，未推送或发布；没有强制重启用户DSH，日常窗口是否已重载未目视确认。
 
-先读本文件 → [P10 A方案计划](superpowers/plans/2026-10-20-paper-blend.md) → [总计划](IMPLEMENTATION-PLAN.md) → [看板](coordination/WORKBOARD.md)，文件职责见[导航](PROJECT-MAP.md)。当前运行证据仍为[P9验证](validation/P9.md)，P8/P6保留历史。
+先读本文件 → [P10 A方案计划](superpowers/plans/2026-10-20-paper-blend.md) → [总计划](IMPLEMENTATION-PLAN.md) → [看板](coordination/WORKBOARD.md)，文件职责见[导航](PROJECT-MAP.md)。当前证据为[P10验证](validation/P10.md)，P9为沿用的图片/首页基线，P8/P6保留历史。
 
-2026-10-20文件梳理：已按Git清单、源码入口、素材与归档核对并更新[文件导航](PROJECT-MAP.md)，修正其中残留的P8当前计划、旧WebP参数及任务分类，补全P9证据和P10待实施入口。本次仅维护导航与本交接记录，不移动/删除文件、不实施P10；功能和视觉验证仍以既有阶段报告为准。
+2026-10-20此前文件梳理：已按Git清单、源码入口、素材与归档核对并更新[文件导航](PROJECT-MAP.md)，修正其中残留的P8当前计划、旧WebP参数及任务分类，补全P9证据和当时P10待实施入口。该次仅维护导航与本交接记录，不移动/删除文件；随后P10实施结果见下方。
 
 梳理验证：导航与本文件121处本地链接存在；当前P9母版、WebP及preview.3归档大小/SHA256匹配，运行图片合计334994B，Git跟踪截图30张（P9为6张）；差异检查通过。仅文档修订，未重跑功能回归或窗口测试。
 
-## P10当前接续：A方案仅规划
+## P10最新交付
 
-用户已从三张过渡示意中选A“同纸底＋柔边融合”，并要求“写出规划”。已写[P10计划](superpowers/plans/2026-10-20-paper-blend.md)、[待派发任务](coordination/P10-A-task.md)及[规划状态](validation/P10.md)。本轮不修改主题代码/图片/版本、不派发DSH、不启动预览、不打包安装或推送。运行版保持preview.3，P10全部实施项尚未开始。
+用户明确要求“开始工作，记得跟dsh分工”后，已执行[P10计划](superpowers/plans/2026-10-20-paper-blend.md)。DSH按[P10-A](coordination/P10-A-task.md)仅改SCENE_CSS并写首稿说明，headless退出0；Codex在paper-blend隔离工作树完成真实DOM/宽小基线、正常使用检查、最终包与desktop核对。
 
-后续按DSH限定read/write、Codex实窗/命令分工实施：正文维持实色纸底，独立背景伪元素从阅读区右沿延伸约96–128px柔边，不淡化文字/控件，不增加中间空白，不重画人物。沿用P9几何和官方像素列宽，防止继承cqi重求值；小列保留阅读优先。只做正常使用必要检查，不重新发散B/C或复制生成图中的其他控件/侧栏/排版。
+- 阅读面实底#F7F3EB；宽列≥1100px时独立::after柔边96–128px，重叠24px，实际宽窗口123.073px；非聚焦输入卡轻阴影，人物/图片/字体/正文透明度不改。
+- 宽2331×1388和小1265×817：阅读座/输入宽度不变，无新增空白或整页横滚；菜单、两行输入清空、发送键盘焦点、侧栏收放、明暗/官方启停通过。18/18、check及diff检查通过，截图为真实隔离Chrome JPEG。
+- preview.4归档351902B、解包372585B、13文件，SHA256 `0df38f71a9aaa91be4cad23e5408d27aed120d8c305f6de80bc29804ff1d9056`。新home离线安装13文件一致，既有隔离home的新theme-pack-p10无源码链接profile实际聊天通过。
+- desktop官方CLI安装成功，13文件匹配；原五插件（含用户已有Hindsight0.8.2）版本/声明、三份主配置及dsh元数据保留。离线缓存缺0.8.2，先验证首次失败未改配置，再确认公开npm有该版本，正常联网安装成功。pnpm自动追加的一条release-age例外已核对撤销，原策略字节恢复。
+- 备份索引`.research/desktop-preview4-backup-location.txt`；安装结果和日志`.research/desktop-preview4-install-result.json`、`desktop-preview4-cli-install.log`。不强制退出用户DSH，不声称已目视日常窗口热加载。
+- 没有剩余P10实施项；后续按用户新增反馈继续。当前不自动推送GitHub，不创建Release/npm，不扩展压力/全平台矩阵。最终证据见[P10](validation/P10.md)。
 
-## P9最新交付（优先于下方P8历史）
+## P9历史交付（图片与首页基线）
 
 - 用户批准示意后要求重新生成图像，聊天中间不要大块空白、整体同色调且保阅读舒适，并明确DSH协同与正常使用必要测试即可。Codex图像/实窗/审核，DSH按P9-A/B限定read/write实现，两个调用退出0；没有改模型/核心/其他插件。
 - 当前图是`assets/scenes/p9/reading.png`新母版，发布`reading.webp`1536×1024、308130B，SHA256 `8ba35051b5bfc41ce67b473881c678b3061488e9fa46c4e44166ac276741e488`。旧B图留历史，不再把P8唯一图限制误用到新授权。

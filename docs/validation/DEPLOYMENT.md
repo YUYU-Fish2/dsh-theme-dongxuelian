@@ -1,5 +1,17 @@
 # GitHub上传与本机安装
 
+## P10 preview.4本机更新（2026-10-20）
+
+用户明确开始P10并要求DSH分工后，按已选A计划完成局部CSS融合、正常使用验收与preview.4归档。未推送GitHub/Release/npm。包351902B，SHA256 `0df38f71a9aaa91be4cad23e5408d27aed120d8c305f6de80bc29804ff1d9056`；13文件与desktop安装一致。
+
+安装前5配置备份为`.research/desktop-preview4-backup-20261020-201746/`，索引`.research/desktop-preview4-backup-location.txt`。首次离线add因Hindsight0.8.2离线元数据缺失失败，5配置字节未改；公开npm版本端点确认0.8.2存在后，官方CLI正常联网`plugin --profile desktop add <preview.4.tgz> --ignore-scripts`退出0。没有降级或修改其他插件版本声明。
+
+pnpm提示peer依赖、+2/-26，并自动追加一条Hindsight的minimumReleaseAgeExclude；核对唯一差异后撤销该新增例外，恢复原pnpm-workspace.yaml字节。原5插件实际版本/直接声明（含用户已有Hindsight0.8.2）、cordis.yml、cordis.patch.yml、pnpm-workspace.yaml及dsh元数据均保留。锁文件随现有依赖解析更新，未逐一运行传递依赖。
+
+最终安装报告`.research/desktop-preview4-install-result.json`、日志`.research/desktop-preview4-cli-install.log`；详情见[P10](P10.md)和[preview.4清单](../../release/preview.4-manifest.json)。没有强制退出用户DSH，安装不代表日常窗口已重载。以下P9/P8上传与安装记录保留历史。
+
+最终desktop归档依赖已通过官方离线add改为主工作区`E:/codex/dsh主题开发/release/dsh-theme-dongxuelian-0.1.0-preview.4.tgz`，不依赖临时工作树。该次自动追加的相同release-age例外也已撤销，最终主配置与13文件再次匹配。
+
 ## P9 preview.3更新（2026-10-20）
 
 用户继续授权实施批准示意、要求重新生成图像与收紧聊天中间空白；日常desktop更新沿用此前明确安装授权。最终包`dsh-theme-dongxuelian-0.1.0-preview.3.tgz`为351231B，SHA256 `16b55b1819c066564fd3851d0225f8d2a9622fd06a8c6d454cb13d97a25c8bde`。官方CLI执行`plugin --profile desktop add E:/codex/dsh主题开发/release/dsh-theme-dongxuelian-0.1.0-preview.3.tgz --offline --ignore-scripts`，退出0，从preview.2更新为preview.3。

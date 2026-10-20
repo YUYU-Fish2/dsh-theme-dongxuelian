@@ -1,6 +1,6 @@
 # 安装、停用与卸载
 
-目标宿主 DSH `0.2.1-rc.2`，包 `dsh-theme-dongxuelian@0.1.0-preview.3`。仅使用官方插件 CLI 和管理开关，不修改核心、不覆盖整份 profile 配置。
+目标宿主 DSH `0.2.1-rc.2`，包 `dsh-theme-dongxuelian@0.1.0-preview.4`。仅使用官方插件 CLI 和管理开关，不修改核心、不覆盖整份 profile 配置。
 
 ## 选择 profile
 
@@ -14,19 +14,19 @@
 先对下载的tgz计算SHA256，与归档旁的校验文件核对：
 
 ```powershell
-Get-FileHash -Algorithm SHA256 -LiteralPath 'E:\codex\dsh主题开发\release\dsh-theme-dongxuelian-0.1.0-preview.3.tgz'
+Get-FileHash -Algorithm SHA256 -LiteralPath 'E:\codex\dsh主题开发\release\dsh-theme-dongxuelian-0.1.0-preview.4.tgz'
 ```
 
 桌面示例：
 
 ```powershell
-& 'E:\dsh\resources\runtime\cli\bin\dsh.cmd' plugin --profile desktop add 'E:\codex\dsh主题开发\release\dsh-theme-dongxuelian-0.1.0-preview.3.tgz' --ignore-scripts
+& 'E:\dsh\resources\runtime\cli\bin\dsh.cmd' plugin --profile desktop add 'E:\codex\dsh主题开发\release\dsh-theme-dongxuelian-0.1.0-preview.4.tgz' --ignore-scripts
 ```
 
 Web示例（把 `my-web` 替换成已有的Web profile名称）：
 
 ```powershell
-& 'E:\dsh\resources\runtime\cli\bin\dsh.cmd' plugin --profile my-web add 'E:\codex\dsh主题开发\release\dsh-theme-dongxuelian-0.1.0-preview.3.tgz' --ignore-scripts
+& 'E:\dsh\resources\runtime\cli\bin\dsh.cmd' plugin --profile my-web add 'E:\codex\dsh主题开发\release\dsh-theme-dongxuelian-0.1.0-preview.4.tgz' --ignore-scripts
 ```
 
 插件没有运行依赖，本地验收另加 `--offline` 从tgz安装。CLI会按包内 `dsh.bundle.patch` 调整插件bundle栈，不要再手写第二条entry。安装后按宿主提示重载，或在下一次正常启动该profile后生效；不要强行结束正在工作的宿主。
@@ -51,4 +51,4 @@ Web同样换成目标profile名称。之后正常重载/重启，确认品牌头
 
 ## 本地验收方式
 
-preview.3归档使用隔离theme-test profile加载，通过官方CLI离线add并核对安装文件；正常使用窗口与启停见源码仓库的`docs/validation/P9.md`。历史preview.2完整安装/卸载/重启记录见`docs/validation/P6.md`。这些测试profile不是日常安装目标，不要复制其配置到用户profile。
+preview.4归档使用独立隔离home的theme-pack profile加载，通过官方CLI离线add并核对安装文件；正常使用窗口与启停见源码仓库的`docs/validation/P10.md`。历史preview.2完整安装/卸载/重启记录见`docs/validation/P6.md`。这些测试profile不是日常安装目标，不要复制其配置到用户profile。
