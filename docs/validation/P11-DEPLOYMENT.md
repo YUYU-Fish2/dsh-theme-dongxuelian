@@ -31,4 +31,6 @@
 
 目标为现有公开仓库[YUYU-Fish2/dsh-theme-dongxuelian](https://github.com/YUYU-Fish2/dsh-theme-dongxuelian)，分支`feat/theme-v1`。上传前远端为`45bb84a4f79d41cbe9133f1b2f0b66bff94d3565`。本次不改写历史、不覆盖旧标签、不发布Release/npm。
 
-推送状态：待执行并核对远端提交。
+`git push origin feat/theme-v1`退出0，远端从`45bb84a4f79d41cbe9133f1b2f0b66bff94d3565`更新至`14321d7382338d8d5d43a90d4905029af3567da3`；随后`git ls-remote origin refs/heads/feat/theme-v1`确认一致。该提交包含preview.5版本、包清单和安装证据，并带上尚未上传的P10/P11实现与记录。本段作为随后文档提交同步，旧标签保持。
+
+上传前核对222处本地文档链接、15项包文件及归档SHA256；增量文本凭据模式检查无命中，Git未跟踪.research。此为模式检查，不声称能证明任意秘密不存在。没有上传配置备份、聊天、日志或用户参考图。
