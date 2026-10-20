@@ -12,7 +12,7 @@
 | 给DSH派发任务 | [协作方法](coordination/DSH-COLLABORATION.md)；现有任务书均为历史记录 |
 | 查安装和发行说明 | [README](../README.md)、[INSTALL](INSTALL.md)、[RELEASE](RELEASE.md)为preview.3；归档/日常安装实测见[P9](validation/P9.md)及[部署](validation/DEPLOYMENT.md) |
 
-**交付状态：**P9最终4例正常窗口、明暗/启停、18项回归及独立审核通过，全新隔离归档加载和desktop13文件一致，见[P9](validation/P9.md)与[清单](../release/preview.3-manifest.json)。原5插件/主配置保留；日常DSH未强制重启，本次未推送。preview.2历史见P8/P6。
+**交付状态：**P9最终4例正常窗口、明暗/启停、18项回归及独立审核通过，全新隔离归档加载和desktop13文件一致，见[P9](validation/P9.md)与[清单](../release/preview.3-manifest.json)。原5插件/主配置保留；日常DSH未强制重启，本次P9已按用户明确要求推送GitHub。preview.2历史见P8/P6。
 
 ## 目录分工
 

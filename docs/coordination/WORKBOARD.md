@@ -1,6 +1,6 @@
 # 冬雪莲涂鸦主题协作看板
 
-当前阶段：**P9 preview.3已交付并更新本机desktop。** 按批准示意重新生成场景，宽屏首页与聊天共同构图，暖纸白阅读面；最终4例正常尺寸/场景、菜单/明暗/启停、18项回归及独立审核通过。新归档全新隔离home冷启动与desktop13文件一致，5插件/配置保留，见[P9验证](../validation/P9.md)。日常DSH未强制重启，本次尚未推送。
+当前阶段：**P9 preview.3已交付并更新本机desktop。** 按批准示意重新生成场景，宽屏首页与聊天共同构图，暖纸白阅读面；最终4例正常尺寸/场景、菜单/明暗/启停、18项回归及独立审核通过。新归档全新隔离home冷启动与desktop13文件一致，5插件/配置保留，见[P9验证](../validation/P9.md)。日常DSH未强制重启，本次P9已按用户明确要求推送GitHub。
 
 入口：[接续记录](../HANDOFF.md) → [P9计划](../superpowers/plans/2026-10-20-wide-window-composition.md) → [总计划](../IMPLEMENTATION-PLAN.md)，文件用途见[导航](../PROJECT-MAP.md)。
 

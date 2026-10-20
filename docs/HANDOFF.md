@@ -1,6 +1,6 @@
 # 新会话接续记录
 
-当前状态：**P9大窗口与聊天构图已完成，preview.3已按授权更新到本机desktop。** 新图按批准示意重新生成，首页与聊天统一纸白氛围、缩小中间空白。工作区`E:/codex/dsh主题开发`，分支`feat/theme-v1`；本次改动本地提交，不自动推送/发布。没有强制重启用户DSH，新版日常窗口重载尚未目视确认。
+当前状态：**P9大窗口与聊天构图已完成，preview.3已按授权更新到本机desktop。** 新图按批准示意重新生成，首页与聊天统一纸白氛围、缩小中间空白。工作区`E:/codex/dsh主题开发`，分支`feat/theme-v1`；本次P9已按用户明确要求同步GitHub，未发布Release/npm。没有强制重启用户DSH，新版日常窗口重载尚未目视确认。
 
 先读本文件 → [P9计划](superpowers/plans/2026-10-20-wide-window-composition.md) → [总计划](IMPLEMENTATION-PLAN.md) → [看板](coordination/WORKBOARD.md)，文件职责见[导航](PROJECT-MAP.md)。当前证据见[P9验证](validation/P9.md)，P8/P6保留历史。
 
@@ -11,7 +11,7 @@
 - 宽屏共同构图区最多1920px，首页输入最多880px；聊天正文默认最多1040px、阅读座与输入对齐，纸白实底保护内容，人物脸/书/双手完整。继承宽度使用宿主像素列宽，避免内层cqi重新求值；小分栏保留阅读优先。
 - 最终4例正常首页/聊天、菜单、明暗/官方启停与资源恢复通过；18/18、check、真实loader、0 clones及独立审核通过。首稿36组是历史，未重复扩大测试。截图与详细限制见P9。
 - preview.3归档351231B、13文件，SHA256 `16b55b1819c066564fd3851d0225f8d2a9622fd06a8c6d454cb13d97a25c8bde`；全新隔离home安装并冷启动实窗通过，desktop13文件一致。原5插件及主配置/dsh元数据保留；备份索引`.research/desktop-preview3-backup-location.txt`。不强制重启日常DSH，不声称已目视新原生界面。
-- GitHub此前已上传preview.2，本次P9尚未推送，旧包/标签不覆盖，不发布npm或Release。
+- P9实现提交fadc69a已于2026-10-20按用户明确要求推送现有GitHub仓库，并通过git ls-remote确认一致；旧包/标签不覆盖，不发布npm或Release。
 
 ## 最新上传与本机安装授权
 

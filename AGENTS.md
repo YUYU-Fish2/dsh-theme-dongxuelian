@@ -4,7 +4,7 @@
 
 与DSH的派发、实际分工、命令、故障与日志见 `docs/coordination/DSH-COLLABORATION.md`。用户已选B彩铅绘本抱书图reading.png并要求“继续干”；P8实现和隔离Web预览验收已完成，P6新归档在隔离home的安装/启停/卸载/重启也已通过，本地preview.2交付完成。不重做风格选择、不交旧Q版包；证据见docs/validation/P8.md与P6.md。
 
-当前P9 preview.3已完成并按授权更新desktop：用户批准宽屏示意后又明确要求重新生成图像、聊天中间不要留大块空白、整体同色调但保阅读舒适。新母版为assets/scenes/p9/reading.png，旧B图保留历史；最新证据见docs/validation/P9.md。继续DSH限定实现与Codex实窗/审核分工，只做正常使用必要验证，不重复扩张压力/全平台矩阵。新版日常DSH未强制重启，本次P9未推送。
+当前P9 preview.3已完成并按授权更新desktop：用户批准宽屏示意后又明确要求重新生成图像、聊天中间不要留大块空白、整体同色调但保阅读舒适。新母版为assets/scenes/p9/reading.png，旧B图保留历史；最新证据见docs/validation/P9.md。继续DSH限定实现与Codex实窗/审核分工，只做正常使用必要验证，不重复扩张压力/全平台矩阵。新版日常DSH未强制重启，本次P9已按用户明确要求推送GitHub。
 
 ## 用户已授权的工作方式
 
