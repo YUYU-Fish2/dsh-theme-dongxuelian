@@ -28,6 +28,7 @@
 | P9大窗口/聊天 | DSH限定read/write、Codex图像/实窗修正 | 独立只读审核 | 新图、1920px共同构图、阅读面、preview.3归档及desktop更新 | 已完成，正常使用检查通过；见[P9](../validation/P9.md)，不声称已目视日常窗口重载 |
 | P10 A柔边融合 | DSH限定CSS、Codex实窗/命令/交付 | Codex差异与实际窗口 | 实底阅读、独立背景柔边、轻纸卡阴影 | 已完成preview.4，headless退出0、18/18/check、隔离归档聊天与desktop13文件一致；[证据](../validation/P10.md) |
 | P11 按示例整页纸面 | DSH限定CSS/Map/files，Codex素材/实窗/修正 | 限定只读复核与真实窗口 | 复用母版、纸纹、阅读/输入构图 | preview.5已按新增授权安装desktop，15文件一致；视觉差异保留，见[P11](../validation/P11.md)与[部署](../validation/P11-DEPLOYMENT.md) |
+| preview.5文件信息梳理 | Codex | 文件/Git核对 | 导航、交接、总计划与看板 | 校正P11入口、三项运行资源、归档边界与P6复选框；验证范围见[交接](../HANDOFF.md)，未重跑功能/窗口验收 |
 
 协作约定：DSH 处理限定文件内的调研与后续获准实施；Codex 负责拆分任务、验收标准、关键证据抽查、差异审核与阶段关口。避免双方重复完整研究；只在关键结论缺证或冲突时复查。
 
