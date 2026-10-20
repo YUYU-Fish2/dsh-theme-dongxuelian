@@ -112,6 +112,7 @@
 | P4 | [界面细节验证](validation/P4.md) |
 | P5 | [真实聊天与运行矩阵](validation/P5-MATRIX.md) |
 | P7 | [历史运行基线验证](validation/P7.md)、[DSH说明](validation/P7-DSH-NOTES.md) |
+| 上传/本机安装 | [公开仓库上传与desktop安装记录](validation/DEPLOYMENT.md) |
 | P6交付 | [最终归档安装/卸载/重启验证](validation/P6.md) |
 | P8 | [当前抱书氛围验证](validation/P8.md)、[DSH首稿说明](validation/P8-DSH-NOTES.md)；以Codex最终实测为准 |
 

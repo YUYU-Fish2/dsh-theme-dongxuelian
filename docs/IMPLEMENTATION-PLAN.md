@@ -98,6 +98,12 @@
 4. [ ] 文档明确目标与已验证版本，角色图原创生成参考、第三方代码归属、未测平台/交互与多主题顺序限制。许可证仅覆盖本项目可授权部分，不虚构角色官方授权。
 5. [ ] 全部适用检查通过后提交 release 记录，建立 `v0.1.0`（正式）或 `v0.1.0-preview`（有重要运行未测项）标签，更新接续文件和准确最终说明。不自动发 GitHub Release、推远端或发布 npm。
 
+## 用户追加：GitHub与本机desktop安装（2026-10-20）
+
+- [x] 用户选择新建公开仓库YUYU-Fish2/dsh-theme-dongxuelian，上传feat/theme-v1及preview.2标签，远端引用与本地一致；不自动扩展到Release/npm。
+- [x] 用户明确要求本机安装；备份受影响配置，用官方CLI将最终tgz安装到desktop，13文件哈希一致，原五项插件和主配置保留。
+- 原生运行窗口热加载未目视验收，未强制退出用户DSH；必要时正常重启后查看。证据与备份索引见[部署记录](validation/DEPLOYMENT.md)。
+
 ## 统一命令与回退
 
 工作区：`E:\codex\dsh主题开发`。Node：`D:\node.exe`；DSH CLI：`E:\dsh\resources\runtime\cli\bin\dsh.cmd`；实际运行时 root：`E:\dsh\resources\app.asar\dsh`。

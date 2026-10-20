@@ -4,6 +4,10 @@
 
 先读本文件 → [P8详细计划](superpowers/plans/2026-10-20-reading-atmosphere.md) → [总计划](IMPLEMENTATION-PLAN.md) → [看板](coordination/WORKBOARD.md)，文件职责见[导航](PROJECT-MAP.md)。当前事实以Git及实际验证为准，历史报告保留当时状态。
 
+## 最新上传与本机安装授权
+
+用户已明确要求上传GitHub、选择公开仓库，并要求安装到本机DSH。已创建并推送[公开仓库](https://github.com/YUYU-Fish2/dsh-theme-dongxuelian)，默认分支feat/theme-v1；preview.2标签仍指向44b35db，未发布Release/npm。desktop已通过官方CLI离线安装最终包，13文件一致，原五项插件版本和主配置保留，备份留.research。原生运行窗口未强制重启，若未显示应正常重启后查看；不声称已目视确认热加载。完整命令、备份位置、上传验证及限制见[部署记录](validation/DEPLOYMENT.md)。本次明确授权替代下文“不自动推送/不装入日常profile”的默认限制。
+
 ## 用户决定与实现
 
 - 唯一主视觉是B彩铅绘本`assets/scenes/b-series/reading.png`，其他tea/garden/letter仅备选。保留完整人物/蓝花/书，纸白、灰蓝、靛蓝氛围，不重新选图或交旧Q版包。
