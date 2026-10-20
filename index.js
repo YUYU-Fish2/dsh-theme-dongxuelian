@@ -11,9 +11,10 @@ const PREFIX = '/dongxuelian-theme/assets'
 const FILES = new Map([
   [`${PREFIX}/avatar.webp`, new URL('./assets/characters/web/avatar.webp', import.meta.url)],
   [`${PREFIX}/reading.webp`, new URL('./assets/scenes/web/reading.webp', import.meta.url)],
+  [`${PREFIX}/paper.webp`, new URL('./assets/textures/web/paper.webp', import.meta.url)],
 ])
 
-// Short-lived revalidation instead of long immutable caching: the two files
+// Short-lived revalidation instead of long immutable caching: the three files
 // keep fixed names while their bytes may change between preview builds.
 const BASE_HEADERS = {
   'Cache-Control': 'no-cache',

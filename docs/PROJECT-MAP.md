@@ -1,6 +1,10 @@
 # 项目文件导航
 
+> 2026-10-20用户复核更正：P10功能/安装证据保留，但未达到用户示例视觉，撤回“视觉已达标”的判断。当前按[P11设计](superpowers/specs/2026-10-20-reference-paper-design.md)接续：复用P9母版，补独立纸纹，修正遮挡与构图；当前为隔离实验，不更新日常preview.4。
+
 2026-10-20核对。当前分支`feat/theme-v1`，当前交付为P10 preview.4，已更新本机desktop；DSH限定CSS、Codex实窗/命令/交付。本轮未推送，P9图片与首页作为沿用基线。进度以[HANDOFF](HANDOFF.md)、计划、看板和Git为准。
+
+P11当前开发入口：[设计](superpowers/specs/2026-10-20-reference-paper-design.md)、[执行计划](superpowers/plans/2026-10-20-reference-paper.md)、[实际预览与差异](validation/P11.md)、[纸纹来源](../assets/textures/README.md)。下方preview.4为既有安装归档记录，不能当P11视觉通过证据；源码目前含未发布实验改动。
 
 ## 阅读入口
 

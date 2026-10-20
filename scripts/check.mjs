@@ -22,6 +22,7 @@ assert.ok(pkg.dsh.client.inject.includes('@deepseek-ai/dsh-client-ui-renderer'))
 for (const [file, budget] of [
   ['assets/characters/web/avatar.webp', 40_000],
   ['assets/scenes/web/reading.webp', 550_000],
+  ['assets/textures/web/paper.webp', 80_000],
 ]) {
   assert.ok(pkg.files.includes(file), `发布文件白名单缺少 ${file}`);
   const bytes = readFileSync(new URL(file, root));

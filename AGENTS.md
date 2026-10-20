@@ -1,5 +1,7 @@
 # 项目协作与新会话入口
 
+> 2026-10-20用户复核更正：P10功能/安装证据保留，但未达到用户示例视觉，撤回“视觉已达标”的判断。当前按[P11设计](docs/superpowers/specs/2026-10-20-reference-paper-design.md)接续：复用P9母版，补独立纸纹，修正遮挡与构图；当前为隔离实验，不更新日常preview.4。
+
 新会话先读 `docs/HANDOFF.md`，再读当前P10计划 `docs/superpowers/plans/2026-10-20-paper-blend.md`、`docs/IMPLEMENTATION-PLAN.md` 和 `docs/coordination/WORKBOARD.md`。当前状态只以这些文件、Git 与实际验证结果为准，不把历史阶段报告中的“尚未开始”误当成当前状态。
 
 与DSH的派发、实际分工、命令、故障与日志见 `docs/coordination/DSH-COLLABORATION.md`。用户已选B彩铅绘本抱书图reading.png并要求“继续干”；P8实现和隔离Web预览验收已完成，P6新归档在隔离home的安装/启停/卸载/重启也已通过，本地preview.2交付完成。不重做风格选择、不交旧Q版包；证据见docs/validation/P8.md与P6.md。

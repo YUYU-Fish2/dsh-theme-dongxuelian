@@ -9,7 +9,7 @@ test('浅色覆盖经过核算的正文、次文字和背景，不写用户偏�
   plugin.apply(runtime.context);
   const tokens = runtime.layers.get(owner).tokens;
   assert.equal(tokens['--dsw-alias-bg-base'].light, '#F7F3EB');
-  assert.equal(tokens['--dsw-alias-label-primary'].light, '#313A50');
+  assert.equal(tokens['--dsw-alias-label-primary'].light, '#2C4268');
   assert.equal(tokens['--dsw-alias-label-secondary'].light, '#5C6578');
   runtime.stop();
 });

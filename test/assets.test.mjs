@@ -8,6 +8,7 @@ const prefix = '/dongxuelian-theme/assets';
 const files = [
   { name: 'avatar.webp', path: '../assets/characters/web/avatar.webp', budget: 40_000 },
   { name: 'reading.webp', path: '../assets/scenes/web/reading.webp', budget: 550_000 },
+  { name: 'paper.webp', path: '../assets/textures/web/paper.webp', budget: 80_000 },
 ];
 
 async function fixture(t) {
@@ -43,7 +44,7 @@ async function fixture(t) {
   return { fetch, stop, routes };
 }
 
-test('GET 仅提供两个独立 WebP 文件，MIME 与文件内容一致', async (t) => {
+test('GET 仅提供三个独立 WebP 文件，MIME 与文件内容一致', async (t) => {
   const host = await fixture(t);
   for (const file of files) {
     const response = await host.fetch(`${prefix}/${file.name}?v=preview`);
