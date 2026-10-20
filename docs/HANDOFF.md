@@ -1,14 +1,25 @@
 # 新会话接续记录
 
-当前状态：**P8抱书氛围与P6本地preview.2归档安装/卸载验收均完成。** 用户在文件梳理后明确“继续干”。工作区`E:/codex/dsh主题开发`，分支`feat/theme-v1`；不自动推送/发布，不装入日常profile。
+当前状态：**P9大窗口与聊天构图已完成，preview.3已按授权更新到本机desktop。** 新图按批准示意重新生成，首页与聊天统一纸白氛围、缩小中间空白。工作区`E:/codex/dsh主题开发`，分支`feat/theme-v1`；本次改动本地提交，不自动推送/发布。没有强制重启用户DSH，新版日常窗口重载尚未目视确认。
 
-先读本文件 → [P8详细计划](superpowers/plans/2026-10-20-reading-atmosphere.md) → [总计划](IMPLEMENTATION-PLAN.md) → [看板](coordination/WORKBOARD.md)，文件职责见[导航](PROJECT-MAP.md)。当前事实以Git及实际验证为准，历史报告保留当时状态。
+先读本文件 → [P9计划](superpowers/plans/2026-10-20-wide-window-composition.md) → [总计划](IMPLEMENTATION-PLAN.md) → [看板](coordination/WORKBOARD.md)，文件职责见[导航](PROJECT-MAP.md)。当前证据见[P9验证](validation/P9.md)，P8/P6保留历史。
+
+## P9最新交付（优先于下方P8历史）
+
+- 用户批准示意后要求重新生成图像，聊天中间不要大块空白、整体同色调且保阅读舒适，并明确DSH协同与正常使用必要测试即可。Codex图像/实窗/审核，DSH按P9-A/B限定read/write实现，两个调用退出0；没有改模型/核心/其他插件。
+- 当前图是`assets/scenes/p9/reading.png`新母版，发布`reading.webp`1536×1024、308130B，SHA256 `8ba35051b5bfc41ce67b473881c678b3061488e9fa46c4e44166ac276741e488`。旧B图留历史，不再把P8唯一图限制误用到新授权。
+- 宽屏共同构图区最多1920px，首页输入最多880px；聊天正文默认最多1040px、阅读座与输入对齐，纸白实底保护内容，人物脸/书/双手完整。继承宽度使用宿主像素列宽，避免内层cqi重新求值；小分栏保留阅读优先。
+- 最终4例正常首页/聊天、菜单、明暗/官方启停与资源恢复通过；18/18、check、真实loader、0 clones及独立审核通过。首稿36组是历史，未重复扩大测试。截图与详细限制见P9。
+- preview.3归档351231B、13文件，SHA256 `16b55b1819c066564fd3851d0225f8d2a9622fd06a8c6d454cb13d97a25c8bde`；全新隔离home安装并冷启动实窗通过，desktop13文件一致。原5插件及主配置/dsh元数据保留；备份索引`.research/desktop-preview3-backup-location.txt`。不强制重启日常DSH，不声称已目视新原生界面。
+- GitHub此前已上传preview.2，本次P9尚未推送，旧包/标签不覆盖，不发布npm或Release。
 
 ## 最新上传与本机安装授权
 
 用户已明确要求上传GitHub、选择公开仓库，并要求安装到本机DSH。已创建并推送[公开仓库](https://github.com/YUYU-Fish2/dsh-theme-dongxuelian)，默认分支feat/theme-v1；preview.2标签仍指向44b35db，未发布Release/npm。desktop已通过官方CLI离线安装最终包，13文件一致，原五项插件版本和主配置保留，备份留.research。原生运行窗口未强制重启，若未显示应正常重启后查看；不声称已目视确认热加载。完整命令、备份位置、上传验证及限制见[部署记录](validation/DEPLOYMENT.md)。本次明确授权替代下文“不自动推送/不装入日常profile”的默认限制。
 
 ## 用户决定与实现
+
+2026-10-20从[大窗口构图提案](superpowers/specs/2026-10-20-wide-window-composition-proposal.md)接续完成P9；用户新增授权及最终图/几何以上方P9为准。P8原矩阵未覆盖约2560px窗口，不能作为P9通过证据。以下保留P8决定与实现历史。
 
 - 唯一主视觉是B彩铅绘本`assets/scenes/b-series/reading.png`，其他tea/garden/letter仅备选。保留完整人物/蓝花/书，纸白、灰蓝、靛蓝氛围，不重新选图或交旧Q版包。
 - 已按授权仅等比缩放/格式编码导出`assets/scenes/web/reading.webp`，1280×853、222484B。母版SHA256 `387d5998225c850660ffeda5347c1105d61b589109d6608ad33d121621ef1691`；导出SHA256 `a0fc8241566b07187964719cba5caed72447655809456d1c126dccbe227a9592`。未裁切、修画、去背景或合成。

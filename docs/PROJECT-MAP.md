@@ -1,18 +1,18 @@
 # 项目文件导航
 
-2026-10-20核对。当前分支`feat/theme-v1`，运行代码已接入P8抱书氛围，隔离Web预览已验收；P6本地preview.2归档安装/卸载验收也已完成。本文说明文件职责与保留范围；进度以[HANDOFF](HANDOFF.md)、计划、看板和Git为准。
+2026-10-20核对。当前分支`feat/theme-v1`，P9新场景与宽屏/聊天共同构图已交付，preview.3已按授权更新本机desktop。本文说明文件职责与保留范围；进度以[HANDOFF](HANDOFF.md)、计划、看板和Git为准，P8/P6保留历史。
 
 ## 阅读入口
 
 | 目的 | 入口 |
 | --- | --- |
-| 新会话接续 | [HANDOFF](HANDOFF.md) → [P8详细计划](superpowers/plans/2026-10-20-reading-atmosphere.md) → [总计划](IMPLEMENTATION-PLAN.md) → [看板](coordination/WORKBOARD.md)，遵守根[AGENTS](../AGENTS.md) |
-| 找用户选定图片 | [reading.png](../assets/scenes/b-series/reading.png)及[四图说明](../assets/scenes/b-series/README.md) |
-| 查当前运行效果证据 | [P8验证](validation/P8.md)；真实聊天历史见[P5矩阵](validation/P5-MATRIX.md) |
+| 新会话接续 | [HANDOFF](HANDOFF.md) → [P9计划](superpowers/plans/2026-10-20-wide-window-composition.md) → [总计划](IMPLEMENTATION-PLAN.md) → [看板](coordination/WORKBOARD.md)，遵守根[AGENTS](../AGENTS.md) |
+| 找当前图片 | [P9新母版](../assets/scenes/p9/reading.png)及[来源说明](../assets/scenes/p9/README.md)；[原B系列](../assets/scenes/b-series/README.md)保留历史 |
+| 查当前运行效果证据 | [P9验证](validation/P9.md)；真实聊天历史见[P5矩阵](validation/P5-MATRIX.md) |
 | 给DSH派发任务 | [协作方法](coordination/DSH-COLLABORATION.md)；现有任务书均为历史记录 |
-| 查安装和发行说明 | [README](../README.md)、[INSTALL](INSTALL.md)、[RELEASE](RELEASE.md)已更新为最终抱书preview.2；归档实测见[P6记录](validation/P6.md) |
+| 查安装和发行说明 | [README](../README.md)、[INSTALL](INSTALL.md)、[RELEASE](RELEASE.md)为preview.3；归档/日常安装实测见[P9](validation/P9.md)及[部署](validation/DEPLOYMENT.md) |
 
-**交付状态：**P8工作树已通过预览验收，见[P8验证](validation/P8.md)和[P8-A任务](coordination/P8-A-task.md)。preview.2最终归档已通过新隔离home安装/启停/卸载/重启，见[P6记录](validation/P6.md)及[清单](../release/preview.2-manifest.json)；旧preview.1不交付。
+**交付状态：**P9最终4例正常窗口、明暗/启停、18项回归及独立审核通过，全新隔离归档加载和desktop13文件一致，见[P9](validation/P9.md)与[清单](../release/preview.3-manifest.json)。原5插件/主配置保留；日常DSH未强制重启，本次未推送。preview.2历史见P8/P6。
 
 ## 目录分工
 
@@ -21,26 +21,27 @@
   client.js                            唯一客户端入口
   index.js、cordis.patch.yml            配套Host入口与注册配置
   package.json                         包契约、脚本与发布白名单
-  README.md                            最终preview.2使用说明
+  README.md                            当前preview.3使用说明
   AGENTS.md、LICENSE、THIRD_PARTY_NOTICES.md
   assets/
     characters/                        Q版母版、保留的头像WebP及历史背景
-    scenes/b-series/                   选定reading及三幅备选PNG母版；web/为运行导出
+    scenes/p9/                         按批准示意重新生成的当前母版；web/为运行导出
+    scenes/b-series/                   原P8抱书与三幅备选PNG母版，保留历史
     style-studies/                     A-F候选板与用户选B参考
   docs/
     HANDOFF.md                         当前状态、授权与下一步
     PROJECT-MAP.md                     本文件：导航与分类
-    IMPLEMENTATION-PLAN.md             P0–P8总计划、验收与回退
-    INSTALL.md、RELEASE.md              最终preview.2安装与发行说明
+    IMPLEMENTATION-PLAN.md             P0–P9总计划、验收与回退
+    INSTALL.md、RELEASE.md              当前preview.3安装与发行说明
     P0-REPORT.md                        历史调研汇总
-    superpowers/plans/                 当前P8详细执行计划
+    superpowers/plans/                 当前P9执行计划与P8历史
     coordination/                      看板、DSH协作方法、历史任务书
     design/                            视觉规范与历史探索
     research/                          随Git保存的调研证据
     validation/                        阶段验证、DSH说明与截图
   test/                                Node回归测试及共享夹具
   scripts/                             语法/包契约与真实loader检查
-  release/                             最终preview.2 tgz/校验/manifest；旧包仅留历史
+  release/                             当前preview.3 tgz/校验/manifest；旧包留历史
   .research/                           忽略的缓存、隔离home、配置与日志
 ```
 

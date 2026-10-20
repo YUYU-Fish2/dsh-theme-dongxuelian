@@ -134,7 +134,7 @@ window.__ModuleLoader__.load({
   width: auto;
   min-width: 0;
   margin-right: var(--dxl-scene-gutter);
-  background: linear-gradient(90deg, #FFFDF8 calc(100% - 16px), transparent);
+  background: linear-gradient(90deg, #F7F3EB calc(100% - 32px), transparent);
 }
 
 [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-scroll] pre {
@@ -169,6 +169,68 @@ window.__ModuleLoader__.load({
     background-size: auto 36%;
     background-position: right 12px top;
     mask-image: linear-gradient(#000 calc(36% - 32px), transparent 36%);
+  }
+}
+
+/* Wide (>=1100px) composition uses a 1920px shared stage. The hero composer
+   grows from its 500px narrow-column width with an 880px cap; the artwork keeps
+   the source 3:2 ratio and moves from the old -190px offset to the stage's
+   right edge. Every narrow rule above stays untouched. */
+@container dxl-reading (min-width: 1100px) {
+  [data-slot="main.conversation"] > div[data-phase="hero"] [data-chain-overlay-fallback="conversation.composer"] > div {
+    --dsh-composer-card-max-width: clamp(500px, calc(500px + (var(--dsh-conversation-column-width) - 1100px) * .34), 880px);
+    margin-inline: calc(clamp(24px, 4cqi, 48px) + max(0px, (100cqi - 1920px) / 2)) auto;
+  }
+
+  /* One proportional artwork box for both wide phases: height is set per
+     phase, width follows the source 3:2 ratio, and the negative layer plus
+     pointer-events:none come from the base rule above. */
+  [data-slot="main.conversation"] > div[data-phase="hero"] [data-conversation-content]::before,
+  [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-content]::before {
+    inset: auto;
+    top: 50%;
+    width: auto;
+    aspect-ratio: 3 / 2;
+    transform: translateY(-50%);
+    background-position: center;
+    background-size: 100% 100%;
+    mask-image:
+      linear-gradient(90deg, transparent, #000 64px, #000 calc(100% - 64px), transparent),
+      linear-gradient(180deg, transparent, #000 64px, #000 calc(100% - 64px), transparent);
+    mask-composite: intersect;
+  }
+
+  [data-slot="main.conversation"] > div[data-phase="hero"] [data-conversation-content]::before {
+    right: calc(max(0px, (100cqi - 1920px) / 2) - clamp(0px, (1920px - 100cqi) * 190 / 820, 190px));
+    height: min(
+      clamp(800px, calc(800px + (100cqi - 1100px) * 480 / 820), 1280px),
+      calc(100% - clamp(0px, (100cqi - 1100px) * 64 / 820, 64px))
+    );
+  }
+
+  [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-content] {
+    --dxl-scene-gutter: clamp(380px, calc(var(--dsh-conversation-column-width) * .36), 720px);
+    --dsh-chat-content-width: min(
+      var(--dsh-chat-user-width, 1040px),
+      calc(min(var(--dsh-conversation-column-width), 1920px) - var(--dxl-scene-gutter) - 96px)
+    );
+    --dsh-composer-card-max-width: calc(var(--dsh-chat-content-width) + 32px);
+  }
+
+  [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-scroll] {
+    width: calc(min(100cqi, 1920px) - var(--dxl-scene-gutter));
+    margin-left: max(0px, calc((100cqi - 1920px) / 2));
+    margin-right: 0;
+    min-width: 0;
+    background: linear-gradient(90deg, #F7F3EB calc(100% - 32px), transparent);
+  }
+
+  [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-content]::before {
+    right: calc(max(0px, (100cqi - 1920px) / 2) - clamp(0px, (1920px - 100cqi) * 150 / 820, 150px));
+    height: min(
+      clamp(720px, calc(720px + (100cqi - 1100px) * 560 / 820), 1280px),
+      calc(100% - clamp(0px, (100cqi - 1100px) * 64 / 820, 64px))
+    );
   }
 }
 

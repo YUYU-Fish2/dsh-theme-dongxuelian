@@ -1,5 +1,13 @@
 # GitHub上传与本机安装
 
+## P9 preview.3更新（2026-10-20）
+
+用户继续授权实施批准示意、要求重新生成图像与收紧聊天中间空白；日常desktop更新沿用此前明确安装授权。最终包`dsh-theme-dongxuelian-0.1.0-preview.3.tgz`为351231B，SHA256 `16b55b1819c066564fd3851d0225f8d2a9622fd06a8c6d454cb13d97a25c8bde`。官方CLI执行`plugin --profile desktop add E:/codex/dsh主题开发/release/dsh-theme-dongxuelian-0.1.0-preview.3.tgz --offline --ignore-scripts`，退出0，从preview.2更新为preview.3。
+
+安装前5项配置备份在`.research/desktop-preview3-backup-20261020-132650/`，位置索引`.research/desktop-preview3-backup-location.txt`。13安装文件与归档manifest全同；原五项插件版本/依赖声明、cordis.yml、cordis.patch.yml、pnpm-workspace.yaml及package.json的dsh元数据均保留。pnpm提示peer依赖及+1/-26传递依赖整理，未安装脚本；没有逐一运行所有传递依赖。未强制重启用户DSH，安装不等于新版日常窗口已重载，正常重启后使用。
+
+新图与真实窗口证据见[P9](P9.md)。本次P9未推送GitHub，旧preview.2标签保持；下面是此前上传/初装历史。
+
 2026-10-20。P8/P6验收后，用户明确要求“上传github”“还有帮我装到电脑的dsh上”，并选择**新建公开仓库YUYU-Fish2/dsh-theme-dongxuelian**；后续又要求优先完成GitHub上传。这是针对本次上传和desktop安装的明确授权，替代此前“不自动推送/不自动安装”的默认边界。
 
 ## GitHub

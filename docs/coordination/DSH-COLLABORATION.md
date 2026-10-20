@@ -29,7 +29,13 @@ P2 当前代码包含 Codex 审核修正；[DSH 首稿说明](../validation/P2-D
 
 [P8-A任务](P8-A-task.md)限定index/client/package及[P8首稿说明](../validation/P8-DSH-NOTES.md)，DSH沿用原通道、只做读取检索与编辑，headless退出0/final；日志`.research/dsh-p8-a.*`。Codex负责222484B素材导出、RED5失败13通过→GREEN18/18、官方真实DOM核对及修正包装选择器/容器查询/人物位置/对比度，真实Web和Host释放、loader、查重与独立审核。原生命周期未重构，不把DSH首稿中的理论布局判断当实窗事实。最终证据见[P8验证](../validation/P8.md)。
 
-## 实际可用调用
+## P9接续（2026-10-20）
+
+本机DSH先按[P9-A](P9-A-task.md)实施1280px宽屏hero首稿；用户随后要求重新生成图像、聊天也减少空白且整体同色调，DSH再按[P9-B](P9-B-task.md)修改hero/active宽屏CSS及首稿说明，两个headless调用均退出0。仍只read/write/edit、不用shell、不派生agent、不读凭据/改profile。日志dsh-p9-a/b.events.jsonl及stderr留.research。
+
+Codex负责生成1536×1024场景、WebP编码、真实窗口、修正720px观景带/纸色阅读底/继承cqi在内层重新求值问题、独立审核与归档/安装。最终4例正常大小窗口首页/聊天及菜单/明暗/启停通过，按用户要求不再扩大压力测试。最终结论见[P9](../validation/P9.md)，DSH首稿说明不代替实窗。
+
+## 实际可用调用（沿用）
 
 CLI `E:\dsh\resources\runtime\cli\bin\dsh.cmd`，版本 `0.2.1-rc.2`。在项目根目录运行，每个任务用独立短上下文与新日志名：
 

@@ -1,8 +1,8 @@
 # 冬雪莲涂鸦主题协作看板
 
-当前阶段：**P8与P6 preview.2本地交付完成。** 用户已要求“继续干”；reading.webp已接入，18/18、check、真实loader、空态/聊天18组CSS模拟、明暗/启停及真实资源释放通过。证据见[P8验证](../validation/P8.md)。新tgz在全新隔离home安装/启停/冷启动/卸载后重启通过，13文件清单和SHA见[P6验证](../validation/P6.md)；旧Q版包不交付。
+当前阶段：**P9 preview.3已交付并更新本机desktop。** 按批准示意重新生成场景，宽屏首页与聊天共同构图，暖纸白阅读面；最终4例正常尺寸/场景、菜单/明暗/启停、18项回归及独立审核通过。新归档全新隔离home冷启动与desktop13文件一致，5插件/配置保留，见[P9验证](../validation/P9.md)。日常DSH未强制重启，本次尚未推送。
 
-入口：[接续记录](../HANDOFF.md) → [P8详细计划](../superpowers/plans/2026-10-20-reading-atmosphere.md) → [总计划](../IMPLEMENTATION-PLAN.md)，文件用途见[导航](../PROJECT-MAP.md)。
+入口：[接续记录](../HANDOFF.md) → [P9计划](../superpowers/plans/2026-10-20-wide-window-composition.md) → [总计划](../IMPLEMENTATION-PLAN.md)，文件用途见[导航](../PROJECT-MAP.md)。
 
 | 任务 | 执行者 | 审核者 | 范围 | 状态 |
 | --- | --- | --- | --- | --- |
@@ -23,6 +23,7 @@
 | P8接入 | Codex审核/测试、DSH限定实现 | 实际窗口/独立审核 | 纸白灰蓝氛围、完整主图、阅读面、资源/生命周期 | 已完成：18/18、真实Web/loader、0 clones、独立审核；见P8.md |
 | 上传/本机安装 | Codex | Git远端/文件哈希 | 用户明确授权公开仓库及desktop安装 | 公开分支/标签已上传，desktop13文件安装一致；原生热加载未目视，见DEPLOYMENT.md |
 | 交接维护 | Codex | 新会话 | 完整计划、状态、命令、日志与授权 | 已建立 HANDOFF 与根 AGENTS 入口 |
+| P9大窗口/聊天 | DSH限定read/write、Codex图像/实窗修正 | 独立只读审核 | 新图、1920px共同构图、阅读面、preview.3归档及desktop更新 | 已完成，正常使用检查通过；见[P9](../validation/P9.md)，不声称已目视日常窗口重载 |
 
 协作约定：DSH 处理限定文件内的调研与后续获准实施；Codex 负责拆分任务、验收标准、关键证据抽查、差异审核与阶段关口。避免双方重复完整研究；只在关键结论缺证或冲突时复查。
 
