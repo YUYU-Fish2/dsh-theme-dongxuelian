@@ -4,5 +4,5 @@
 
 - 母版paper.png：1254×1254、RGB，SHA256 `99c8dacdfe7ce52750eeac8eceb8a9b558f199e7fae366c65b88551382a74039`。
 - 发布web/paper.webp：原尺寸、Pillow quality82/method6、56518B，SHA256 `93a7c8708e5678b2a57bb29b24d8658700b349e680d6f93b5f437c4d491bef86`。仅格式编码，无本地修画。
-- CSS拟以640px平铺匹配细纸纤维尺度；生成的可平铺性须以实际浏览器确认，不能仅凭提示词宣称无接缝。
-- PNG母版及用户示例不进入运行包。纹理仅在浅色SceneStyle激活时使用，深色/停用释放。当前为P11实验素材，尚未替换日常安装。
+- CSS以640px平铺并叠35%淡纸色降低颗粒对比；真实浏览器目视未见明显接线，不声称数学无缝。
+- PNG母版及用户示例不进入运行包。纹理仅在浅色SceneStyle激活时使用，深色/停用释放。自preview.5纳入安装包，部署状态见源码docs/validation/P11-DEPLOYMENT.md。

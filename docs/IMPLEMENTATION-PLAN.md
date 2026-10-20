@@ -1,12 +1,12 @@
 # 冬雪莲涂鸦主题完整实施计划
 
-> 2026-10-20用户复核更正：P10功能/安装证据保留，但未达到用户示例视觉，撤回“视觉已达标”的判断。当前按[P11设计](superpowers/specs/2026-10-20-reference-paper-design.md)接续：复用P9母版，补独立纸纹，修正遮挡与构图；当前为隔离实验，不更新日常preview.4。
+> 2026-10-20用户复核更正：P10功能/安装证据保留，但未达到用户示例视觉，撤回“视觉已达标”的判断。当前按[P11设计](superpowers/specs/2026-10-20-reference-paper-design.md)接续：复用P9母版，补独立纸纹，修正遮挡与构图；用户随后明确要求安装并推送GitHub；已形成preview.5并安装desktop，上传证据以P11-DEPLOYMENT为准。
 
 > 执行方式：按阶段执行（executing-plans），DSH 承担受限实现，Codex 承担派发、测试与审核。用户已于 2026-10-19 授权自主继续；完成一个阶段的验证、记录与提交后再进入下一阶段，不合并成无法回退的大改动。新会话从 [HANDOFF](HANDOFF.md) 接续，不重复 P0/P1。
 
 **目标：**交付可在 DSH `0.2.1-rc.2` 独立启停、轻量、可读、保留角色特征的主题插件。
 
-**当前执行入口：**[P11按示例重做计划](superpowers/plans/2026-10-20-reference-paper.md)与[实验记录](validation/P11.md)。P10功能与安装成立，但视觉未符合示例，已撤回视觉达标判断。P11为已形成的本地隔离实验，不安装、不发布；日常仍preview.4。
+**当前执行入口：**[P11按示例重做计划](superpowers/plans/2026-10-20-reference-paper.md)与[实验记录](validation/P11.md)。P10功能与安装成立，但视觉未符合示例，已撤回视觉达标判断。用户随后要求安装/上传，P11已归档preview.5并安装desktop；见[P11部署](validation/P11-DEPLOYMENT.md)。不把交付等同示例完全一致，不发布Release/npm。
 
 **架构：**官方Theme覆盖仅在浅色激活，不改变用户偏好；品牌头像与背景样式走官方Slot，完整抱书场景在内容下绘制，独立资源走固定Host白名单路由，统一随生命周期释放。隔离测试不碰用户desktop profile。
 

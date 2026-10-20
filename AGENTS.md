@@ -1,14 +1,16 @@
 # 项目协作与新会话入口
 
-> 2026-10-20用户复核更正：P10功能/安装证据保留，但未达到用户示例视觉，撤回“视觉已达标”的判断。当前按[P11设计](docs/superpowers/specs/2026-10-20-reference-paper-design.md)接续：复用P9母版，补独立纸纹，修正遮挡与构图；当前为隔离实验，不更新日常preview.4。
+> 2026-10-20用户复核更正：P10功能/安装证据保留，但未达到用户示例视觉，撤回“视觉已达标”的判断。当前按[P11设计](docs/superpowers/specs/2026-10-20-reference-paper-design.md)接续：复用P9母版，补独立纸纹，修正遮挡与构图；用户随后明确要求安装并推送GitHub；已形成preview.5并安装desktop，上传证据以P11-DEPLOYMENT为准。
 
-新会话先读 `docs/HANDOFF.md`，再读当前P10计划 `docs/superpowers/plans/2026-10-20-paper-blend.md`、`docs/IMPLEMENTATION-PLAN.md` 和 `docs/coordination/WORKBOARD.md`。当前状态只以这些文件、Git 与实际验证结果为准，不把历史阶段报告中的“尚未开始”误当成当前状态。
+新会话先读 `docs/HANDOFF.md`，再读当前P11计划 `docs/superpowers/plans/2026-10-20-reference-paper.md` 与部署记录 `docs/validation/P11-DEPLOYMENT.md`、`docs/IMPLEMENTATION-PLAN.md` 和 `docs/coordination/WORKBOARD.md`。当前状态只以这些文件、Git 与实际验证结果为准，不把历史阶段报告中的“尚未开始”误当成当前状态。
 
 与DSH的派发、实际分工、命令、故障与日志见 `docs/coordination/DSH-COLLABORATION.md`。用户已选B彩铅绘本抱书图reading.png并要求“继续干”；P8实现和隔离Web预览验收已完成，P6新归档在隔离home的安装/启停/卸载/重启也已通过，本地preview.2交付完成。不重做风格选择、不交旧Q版包；证据见docs/validation/P8.md与P6.md。
 
 P9 preview.3历史交付已按授权更新desktop：用户批准宽屏示意后又明确要求重新生成图像、聊天中间不要留大块空白、整体同色调但保阅读舒适。新母版为assets/scenes/p9/reading.png，旧B图保留历史；P9证据见docs/validation/P9.md。继续DSH限定实现与Codex实窗/审核分工，只做正常使用必要验证，不重复扩张压力/全平台矩阵。日常DSH未强制重启，P9已按当次明确要求推送GitHub；当前P10以下方为准。
 
-P10用户已选A“同纸底＋柔边融合”，随后明确“开始工作，记得跟dsh分工”；现已完成preview.4并更新desktop。DSH按P10-A限定CSS/首稿说明，Codex实窗/命令/归档验证；18/18、check、宽小正常聊天/焦点/菜单/明暗启停、归档与desktop13文件一致。计划见docs/superpowers/plans/2026-10-20-paper-blend.md，实测及离线缓存/安装器策略处理见docs/validation/P10.md。图片不变、不新增空白带、不淡化文字；日常DSH未强制重启，本轮未推送或发布。
+P10历史：用户已选A“同纸底＋柔边融合”，随后明确“开始工作，记得跟dsh分工”；现已完成preview.4并更新desktop。DSH按P10-A限定CSS/首稿说明，Codex实窗/命令/归档验证；18/18、check、宽小正常聊天/焦点/菜单/明暗启停、归档与desktop13文件一致。计划见docs/superpowers/plans/2026-10-20-paper-blend.md，实测及离线缓存/安装器策略处理见docs/validation/P10.md。图片不变、不新增空白带、不淡化文字；日常DSH未强制重启，本轮未推送或发布。
+
+P11当前：按示例调整已归档preview.5并通过官方CLI安装desktop，15文件哈希一致，原五插件及主配置保留。用户明确要求本次GitHub推送；不强制退出DSH，不发Release/npm。详见docs/validation/P11-DEPLOYMENT.md。
 
 ## 用户已授权的工作方式
 

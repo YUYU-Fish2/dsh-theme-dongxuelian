@@ -1,10 +1,10 @@
 # 新会话接续记录
 
-> 2026-10-20用户复核更正：P10功能/安装证据保留，但未达到用户示例视觉，撤回“视觉已达标”的判断。当前按[P11设计](superpowers/specs/2026-10-20-reference-paper-design.md)接续：复用P9母版，补独立纸纹，修正遮挡与构图；当前为隔离实验，不更新日常preview.4。
+> 2026-10-20用户复核更正：P10功能/安装证据保留，但未达到用户示例视觉，撤回“视觉已达标”的判断。当前按[P11设计](superpowers/specs/2026-10-20-reference-paper-design.md)接续：复用P9母版，补独立纸纹，修正遮挡与构图；用户随后明确要求安装并推送GitHub；已形成preview.5并安装desktop，上传证据以P11-DEPLOYMENT为准。
 
-当前状态：**P11按用户示例重做的隔离实验稿已形成，尚未作为视觉达标版本交付。** 用户明确指出P10不符合示例，已撤回P10视觉验收；P10的功能/归档/安装事实保留。P11复用P9母版，新增纸纹、整页背景、蓝墨色及阅读/输入构图，DSH限定实现、Codex实窗/修正。当前日常DSH仍为preview.4，本轮未打包、安装、推送或发布。
+当前状态：**P11已按用户新增授权归档preview.5并安装desktop，视觉仍保留已知差异。** 用户明确指出P10不符合示例，已撤回P10视觉验收；P10的功能/归档/安装事实保留。P11复用P9母版，新增纸纹、整页背景、蓝墨色及阅读/输入构图，DSH限定实现、Codex实窗/修正。日常DSH已安装preview.5，15文件与归档一致，五插件及主配置保留；GitHub状态见[P11部署](validation/P11-DEPLOYMENT.md)，未发布Release/npm。
 
-先读本文件 → [P11计划](superpowers/plans/2026-10-20-reference-paper.md) → [P11证据与差异](validation/P11.md) → [总计划](IMPLEMENTATION-PLAN.md) → [看板](coordination/WORKBOARD.md)，文件职责见[导航](PROJECT-MAP.md)。P11真实预览见新记录；日常preview.4安装事实见P10，P9为复用母版来源。
+先读本文件 → [P11计划](superpowers/plans/2026-10-20-reference-paper.md) → [P11证据与差异](validation/P11.md) → [总计划](IMPLEMENTATION-PLAN.md) → [看板](coordination/WORKBOARD.md)，文件职责见[导航](PROJECT-MAP.md)。P11真实预览见新记录；最新安装/上传见[P11部署](validation/P11-DEPLOYMENT.md)，P9为复用母版来源。
 
 2026-10-20此前文件梳理：已按Git清单、源码入口、素材与归档核对并更新[文件导航](PROJECT-MAP.md)，修正其中残留的P8当前计划、旧WebP参数及任务分类，补全P9证据和当时P10待实施入口。该次仅维护导航与本交接记录，不移动/删除文件；随后P10实施结果见下方。
 
@@ -16,7 +16,13 @@
 - DSH按P11-A限定修改SCENE_CSS、Map、files白名单及首稿说明，headless退出0。Codex实测root伪元素可以容器查询，撤掉首稿固定280px侧栏的media代理；scroll回全列，session/输入座单独布局。
 - 示例同尺寸1625×968、宽2331×1388、小1265×817实窗已保存；同尺寸正文672px、输入832px。18/18、check、明确项目路径jscpd0 clones；限定只读复核两项宽度拖柄问题已修正。
 - 尚存差异/风险：宿主侧栏280px而示例约230px；代码卡沿用官方结构；首次宽度拖动有空程，672→640的实际拖动已验证，隔离偏好已恢复。不得把这些记录写成示例完全一致。
-- 下次先看docs/validation/P11.md和实际截图，结合用户视觉反馈继续；不重复生成整页示意，不依据测试数宣称视觉通过。日常preview.4和旧归档保持；新素材尚未发布。
+- 下次先看docs/validation/P11.md和实际截图，结合用户视觉反馈继续；不重复生成整页示意，不依据测试数宣称视觉通过。用户随后要求安装并上传，现以preview.5部署记录为准；旧归档保持。
+
+## P11安装与上传接续
+
+- 用户明确要求“做完了就帮我装上dsh，顺便推送github”。Codex接续既有DSH实现负责命令与部署，不重复派发已完成的视觉实现。
+- preview.5：409223B、解包431148B、15文件；新隔离home与desktop逐文件哈希一致。18/18/check/diff检查通过。
+- 安装前五配置备份；撤销安装器唯一新增的Hindsight0.8.2年龄例外，恢复原策略字节，原五插件/主配置/dsh元数据保持。未强制重启日常窗口，不把安装等同热加载。详见[P11部署](validation/P11-DEPLOYMENT.md)。
 
 ## P10历史交付（视觉判断已撤回）
 

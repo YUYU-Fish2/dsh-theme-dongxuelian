@@ -1,3 +1,4 @@
 504d35a783fc0b200a36df15667f5bca83e7f1aa44067dfe724811d3e0e99e57  dsh-theme-dongxuelian-0.1.0-preview.2.tgz
 16b55b1819c066564fd3851d0225f8d2a9622fd06a8c6d454cb13d97a25c8bde  dsh-theme-dongxuelian-0.1.0-preview.3.tgz
 0df38f71a9aaa91be4cad23e5408d27aed120d8c305f6de80bc29804ff1d9056  dsh-theme-dongxuelian-0.1.0-preview.4.tgz
+d1972360b105d194cb161321c504d10d2084e99cee06d8baa5afe21d7d08c929  dsh-theme-dongxuelian-0.1.0-preview.5.tgz

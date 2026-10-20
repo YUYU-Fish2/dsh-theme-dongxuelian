@@ -1,5 +1,7 @@
 # P11 按示例恢复整页纸面 Implementation Plan
 
+> 后续授权：用户明确要求安装本机DSH并推送GitHub；已按preview.5接续归档/安装，详见[部署](../../validation/P11-DEPLOYMENT.md)。以下不安装/推送限制为原实验阶段边界。
+
 > 使用executing-plans，沿用DSH限定read/write、Codex素材/命令/实窗分工。当前交付范围是可审阅隔离预览；不安装、不推送、不发布，待真实视觉反馈后确定preview.5。
 
 **Goal:** 让真实DSH在用户示例相同视口呈现统一纸面、自然插画边缘和清楚的聊天内容。

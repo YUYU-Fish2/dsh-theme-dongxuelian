@@ -1,5 +1,9 @@
 # GitHub上传与本机安装
 
+## P11 preview.5当前更新（2026-10-20）
+
+用户已明确要求安装与GitHub推送。preview.5归档409223B、15文件，隔离与desktop安装哈希一致；原五插件/主配置保留，安装器附加年龄例外已核对撤销。备份、命令、限制与上传状态见[P11部署](P11-DEPLOYMENT.md)。下方P10/P9保留历史。
+
 ## P10 preview.4本机更新（2026-10-20）
 
 用户明确开始P10并要求DSH分工后，按已选A计划完成局部CSS融合、正常使用验收与preview.4归档。未推送GitHub/Release/npm。包351902B，SHA256 `0df38f71a9aaa91be4cad23e5408d27aed120d8c305f6de80bc29804ff1d9056`；13文件与desktop安装一致。

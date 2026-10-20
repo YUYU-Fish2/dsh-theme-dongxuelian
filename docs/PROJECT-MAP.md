@@ -1,10 +1,10 @@
 # 项目文件导航
 
-> 2026-10-20用户复核更正：P10功能/安装证据保留，但未达到用户示例视觉，撤回“视觉已达标”的判断。当前按[P11设计](superpowers/specs/2026-10-20-reference-paper-design.md)接续：复用P9母版，补独立纸纹，修正遮挡与构图；当前为隔离实验，不更新日常preview.4。
+> 2026-10-20用户复核更正：P10功能/安装证据保留，但未达到用户示例视觉，撤回“视觉已达标”的判断。当前按[P11设计](superpowers/specs/2026-10-20-reference-paper-design.md)接续：复用P9母版，补独立纸纹，修正遮挡与构图；用户随后明确要求安装并推送GitHub；已形成preview.5并安装desktop，上传证据以P11-DEPLOYMENT为准。
 
-2026-10-20核对。当前分支`feat/theme-v1`，当前交付为P10 preview.4，已更新本机desktop；DSH限定CSS、Codex实窗/命令/交付。本轮未推送，P9图片与首页作为沿用基线。进度以[HANDOFF](HANDOFF.md)、计划、看板和Git为准。
+2026-10-20核对。当前分支`feat/theme-v1`，当前交付为P11 preview.5，已更新本机desktop；DSH限定CSS、Codex实窗/命令/交付。用户已要求本次推送，状态见[P11部署](validation/P11-DEPLOYMENT.md)；P9人物场景继续复用。进度以[HANDOFF](HANDOFF.md)、计划、看板和Git为准。
 
-P11当前开发入口：[设计](superpowers/specs/2026-10-20-reference-paper-design.md)、[执行计划](superpowers/plans/2026-10-20-reference-paper.md)、[实际预览与差异](validation/P11.md)、[纸纹来源](../assets/textures/README.md)。下方preview.4为既有安装归档记录，不能当P11视觉通过证据；源码目前含未发布实验改动。
+P11当前开发入口：[设计](superpowers/specs/2026-10-20-reference-paper-design.md)、[执行计划](superpowers/plans/2026-10-20-reference-paper.md)、[实际预览与差异](validation/P11.md)、[纸纹来源](../assets/textures/README.md)。preview.5归档与desktop15文件一致，详见[部署](validation/P11-DEPLOYMENT.md)；下方preview.4为历史记录，不能当P11视觉通过证据。
 
 ## 阅读入口
 
@@ -15,9 +15,9 @@ P11当前开发入口：[设计](superpowers/specs/2026-10-20-reference-paper-de
 | 查当前运行效果证据 | [P10验证](validation/P10.md)；沿用图片/首页见[P9](validation/P9.md)，真实聊天历史见[P5矩阵](validation/P5-MATRIX.md) |
 | 查A方案执行 | [P10已执行计划](superpowers/plans/2026-10-20-paper-blend.md)、[已交付任务](coordination/P10-A-task.md)、[实际验证](validation/P10.md) |
 | 给DSH派发任务 | [协作方法](coordination/DSH-COLLABORATION.md)；现有任务书均已交付，P10分工与日志见协作方法 |
-| 查安装和发行说明 | [README](../README.md)、[INSTALL](INSTALL.md)、[RELEASE](RELEASE.md)为preview.4；归档/日常安装实测见[P10](validation/P10.md)及[部署](validation/DEPLOYMENT.md) |
+| 查安装和发行说明 | [README](../README.md)、[INSTALL](INSTALL.md)、[RELEASE](RELEASE.md)为preview.5；归档/日常安装实测见[P11部署](validation/P11-DEPLOYMENT.md) |
 
-**交付状态：**P10宽/小聊天、输入/焦点/菜单、侧栏收放、明暗/官方启停、18项回归和check通过。preview.4归档351902B、13文件；新home安装、归档实际聊天及desktop哈希核对通过，见[P10](validation/P10.md)和[清单](../release/preview.4-manifest.json)。原五插件及主配置保留，离线缓存与安装器例外恢复见部署记录。日常DSH未强制重启，本轮未推送。
+**P10历史交付状态：**P10宽/小聊天、输入/焦点/菜单、侧栏收放、明暗/官方启停、18项回归和check通过。preview.4归档351902B、13文件；新home安装、归档实际聊天及desktop哈希核对通过，见[P10](validation/P10.md)和[清单](../release/preview.4-manifest.json)。原五插件及主配置保留，离线缓存与安装器例外恢复见部署记录。日常DSH未强制重启，本轮未推送。
 
 ## 目录分工
 
@@ -26,7 +26,7 @@ P11当前开发入口：[设计](superpowers/specs/2026-10-20-reference-paper-de
   client.js                            唯一客户端入口
   index.js、cordis.patch.yml            配套Host入口与注册配置
   package.json                         包契约、脚本与发布白名单
-  README.md                            当前preview.4使用说明
+  README.md                            当前preview.5使用说明
   AGENTS.md、LICENSE、THIRD_PARTY_NOTICES.md
   assets/
     characters/                        Q版母版、保留的头像WebP及历史背景
@@ -37,7 +37,7 @@ P11当前开发入口：[设计](superpowers/specs/2026-10-20-reference-paper-de
     HANDOFF.md                         当前状态、授权与下一步
     PROJECT-MAP.md                     本文件：导航与分类
     IMPLEMENTATION-PLAN.md             P0–P10总计划、验收与回退
-    INSTALL.md、RELEASE.md              当前preview.4安装与发行说明
+    INSTALL.md、RELEASE.md              当前preview.5安装与发行说明
     P0-REPORT.md                        历史调研汇总
     superpowers/plans/                 P10已执行计划、P9/P8历史计划
     coordination/                      看板、DSH协作方法、已交付任务书
@@ -46,7 +46,7 @@ P11当前开发入口：[设计](superpowers/specs/2026-10-20-reference-paper-de
     validation/                        阶段验证、DSH说明与截图
   test/                                Node回归测试及共享夹具
   scripts/                             语法/包契约与真实loader检查
-  release/                             当前preview.4 tgz/校验/manifest；旧包留历史
+  release/                             当前preview.5 tgz/校验/manifest；旧包留历史
   .research/                           忽略的缓存、隔离home、配置与日志
 ```
 
@@ -93,13 +93,14 @@ P11当前开发入口：[设计](superpowers/specs/2026-10-20-reference-paper-de
 ### 当前状态与执行计划
 
 - [HANDOFF](HANDOFF.md)：当前事实、授权、环境、下一步与本次梳理记录。
-- [总计划](IMPLEMENTATION-PLAN.md)：P0–P10阶段范围、验收与回退；P10已交付preview.4，P9为沿用图片/首页基线。
-- [P10同纸底柔边融合计划](superpowers/plans/2026-10-20-paper-blend.md)：当前已执行计划，用户已选A；Task1–4及desktop更新完成。
+- [总计划](IMPLEMENTATION-PLAN.md)：P0–P11阶段范围、验收与回退；P11已交付preview.5，P9为沿用图片/首页基线。
+- [P11整页纸面计划](superpowers/plans/2026-10-20-reference-paper.md)：当前已执行计划，后续安装/上传见部署记录。
+- [P10同纸底柔边融合计划](superpowers/plans/2026-10-20-paper-blend.md)：历史已执行计划；视觉判断已撤回。
 - [P9宽屏共同构图计划](superpowers/plans/2026-10-20-wide-window-composition.md)：历史preview.3实现计划；图片和首页构图继续沿用。
 - [P8抱书氛围详细计划](superpowers/plans/2026-10-20-reading-atmosphere.md)：preview.2历史计划，Task 1–5及Task 6归档验收已完成。
 - [WORKBOARD](coordination/WORKBOARD.md)：分工和任务状态。
 - [DSH-COLLABORATION](coordination/DSH-COLLABORATION.md)：调用方式、权限边界、历史贡献和日志位置。
-- [INSTALL](INSTALL.md)、[RELEASE](RELEASE.md)：当前preview.4安装与发行文档；历史P6命令已实测修订，最新交付证据见P10。
+- [INSTALL](INSTALL.md)、[RELEASE](RELEASE.md)：当前preview.5安装与发行文档；历史P6命令已实测修订，最新交付证据见P11及P11-DEPLOYMENT。
 
 ### 历史设计与调研（保留追溯）
 
@@ -127,9 +128,10 @@ P11当前开发入口：[设计](superpowers/specs/2026-10-20-reference-paper-de
 | P6交付 | [最终归档安装/卸载/重启验证](validation/P6.md) |
 | P8 | [preview.2抱书氛围验证](validation/P8.md)、[DSH首稿说明](validation/P8-DSH-NOTES.md)；以Codex最终实测为准 |
 | P9 | [历史preview.3验证与安装](validation/P9.md)、[DSH首稿说明](validation/P9-DSH-NOTES.md)、[聊天修订说明](validation/P9-B-DSH-NOTES.md) |
-| P10 | [当前preview.4验证与安装](validation/P10.md)、[DSH首稿说明](validation/P10-DSH-NOTES.md) |
+| P10 | [历史preview.4验证与安装](validation/P10.md)、[DSH首稿说明](validation/P10-DSH-NOTES.md) |
+| P11 | [真实预览与差异](validation/P11.md)、[preview.5安装与上传](validation/P11-DEPLOYMENT.md) |
 
-`docs/validation/screenshots/`本轮后共35张截图，其中P9为6张、P10为5张JPEG（前后宽/小及归档聊天），文件前缀标明阶段。结合对应报告看测试条件与限制。旧报告里的“尚未开始”只说明当时状态，历史通过也不能代替新改动验证。
+`docs/validation/screenshots/`本轮后共39张截图（含P11四张），其中P9为6张、P10为5张JPEG（前后宽/小及归档聊天），文件前缀标明阶段。结合对应报告看测试条件与限制。旧报告里的“尚未开始”只说明当时状态，历史通过也不能代替新改动验证。
 
 ## 本地缓存、归档与维护规则
 
@@ -140,13 +142,15 @@ P11当前开发入口：[设计](superpowers/specs/2026-10-20-reference-paper-de
 | `.research/`参考仓缓存 | 本地调研辅助，不作为本插件源码或发布内容 |
 | `.research/`隔离home、临时patch、配置、日志、连接辅助文件 | 可能含认证或会话信息；不提交、不打包，不复用旧认证链接 |
 | `.research/`查重、打包和预览结果 | 仅证明记录对应版本；后续变更须重验 |
-| `release/dsh-theme-dongxuelian-0.1.0-preview.4.tgz` | 当前本地归档，351902B；[清单](../release/preview.4-manifest.json)与[SHA256](../release/SHA256SUMS.txt)入Git，tgz被忽略 |
+| `release/dsh-theme-dongxuelian-0.1.0-preview.4.tgz` | 历史本地归档，351902B；[清单](../release/preview.4-manifest.json)与[SHA256](../release/SHA256SUMS.txt)入Git，tgz被忽略 |
 | `release/dsh-theme-dongxuelian-0.1.0-preview.3.tgz` | P9历史归档，351231B；[逐文件清单](../release/preview.3-manifest.json)与[SHA256](../release/SHA256SUMS.txt)入Git，tgz被忽略 |
 | `release/dsh-theme-dongxuelian-0.1.0-preview.2.tgz` | P8历史归档，264794B；保留[清单](../release/preview.2-manifest.json)与SHA追溯 |
 | `release/dsh-theme-dongxuelian-0.1.0-preview.1.tgz` | 旧Q版包，62271B，仅本地历史，不作为当前交付 |
 
 本次没有删除、移动素材或清理缓存。后续清理`.research/`前，先确认隔离进程与日志保留需求。
 
-发布范围由`package.json.files`和npm实际归档共同确定；当前包括头像/抱书两项WebP及最终INSTALL/RELEASE，不含场景PNG、候选板、测试和开发记录。P6已按实际tar和安装副本逐文件复核；校验清单不放进tgz。
+发布范围由`package.json.files`和npm实际归档共同确定；当前包括头像/抱书/纸纹三项WebP及最终INSTALL/RELEASE，不含PNG母版、候选板、测试和开发记录。P11已按实际tar和安装副本逐文件复核；校验清单不放进tgz。
 
 维护时优先更新现有入口：状态写HANDOFF、步骤写计划、分工写看板、证据写validation、文件职责写本页；避免再建内容重复的总览。新增或移动文件后核对相对链接和发布白名单。
+
+P11当前归档：`release/dsh-theme-dongxuelian-0.1.0-preview.5.tgz`，409223B、15文件；[manifest](../release/preview.5-manifest.json)，[部署记录](validation/P11-DEPLOYMENT.md)。

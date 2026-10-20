@@ -1,8 +1,8 @@
 # 冬雪莲涂鸦主题协作看板
 
-> 2026-10-20用户复核更正：P10功能/安装证据保留，但未达到用户示例视觉，撤回“视觉已达标”的判断。当前按[P11设计](../superpowers/specs/2026-10-20-reference-paper-design.md)接续：复用P9母版，补独立纸纹，修正遮挡与构图；当前为隔离实验，不更新日常preview.4。
+> 2026-10-20用户复核更正：P10功能/安装证据保留，但未达到用户示例视觉，撤回“视觉已达标”的判断。当前按[P11设计](../superpowers/specs/2026-10-20-reference-paper-design.md)接续：复用P9母版，补独立纸纹，修正遮挡与构图；用户随后明确要求安装并推送GitHub；已形成preview.5并安装desktop，上传证据以P11-DEPLOYMENT为准。
 
-当前阶段：**P11按示例重做的隔离实验稿已形成，待视觉反馈。** P10功能/安装证据保留，但视觉判断撤回。P11复用P9人物、增加独立纸纹，DSH限定实现，Codex实窗/修正；18/18/check/查重与限定复核通过，仅证明相应检查。日常preview.4不变，未打包安装或推送。
+当前阶段：**P11 preview.5已归档并安装desktop，用户已授权本次GitHub上传。** P10功能/安装证据保留，但视觉判断撤回。P11复用P9人物、增加独立纸纹，DSH限定实现，Codex实窗/修正；18/18/check/查重与限定复核通过，仅证明相应检查。隔离与desktop均匹配15文件，原五插件及主配置保持；上传状态见[P11部署](../validation/P11-DEPLOYMENT.md)。
 
 入口：[接续记录](../HANDOFF.md) → [P11计划](../superpowers/plans/2026-10-20-reference-paper.md) → [总计划](../IMPLEMENTATION-PLAN.md)，文件用途见[导航](../PROJECT-MAP.md)。
 
@@ -27,7 +27,7 @@
 | 交接维护 | Codex | 新会话 | 完整计划、状态、命令、日志与授权 | 已建立 HANDOFF 与根 AGENTS 入口 |
 | P9大窗口/聊天 | DSH限定read/write、Codex图像/实窗修正 | 独立只读审核 | 新图、1920px共同构图、阅读面、preview.3归档及desktop更新 | 已完成，正常使用检查通过；见[P9](../validation/P9.md)，不声称已目视日常窗口重载 |
 | P10 A柔边融合 | DSH限定CSS、Codex实窗/命令/交付 | Codex差异与实际窗口 | 实底阅读、独立背景柔边、轻纸卡阴影 | 已完成preview.4，headless退出0、18/18/check、隔离归档聊天与desktop13文件一致；[证据](../validation/P10.md) |
-| P11 按示例整页纸面 | DSH限定CSS/Map/files，Codex素材/实窗/修正 | 限定只读复核与真实窗口 | 复用母版、纸纹、阅读/输入构图 | 隔离实验已形成，视觉待反馈；日常未更新，见[P11](../validation/P11.md) |
+| P11 按示例整页纸面 | DSH限定CSS/Map/files，Codex素材/实窗/修正 | 限定只读复核与真实窗口 | 复用母版、纸纹、阅读/输入构图 | preview.5已按新增授权安装desktop，15文件一致；视觉差异保留，见[P11](../validation/P11.md)与[部署](../validation/P11-DEPLOYMENT.md) |
 
 协作约定：DSH 处理限定文件内的调研与后续获准实施；Codex 负责拆分任务、验收标准、关键证据抽查、差异审核与阶段关口。避免双方重复完整研究；只在关键结论缺证或冲突时复查。
 
