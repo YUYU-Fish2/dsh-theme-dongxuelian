@@ -1,14 +1,15 @@
 # 项目文件导航
 
-2026-10-20核对。当前分支`feat/theme-v1`，P9新场景与宽屏/聊天共同构图已交付，preview.3已按授权更新本机desktop。本文说明文件职责与保留范围；进度以[HANDOFF](HANDOFF.md)、计划、看板和Git为准，P8/P6保留历史。
+2026-10-20核对。当前分支`feat/theme-v1`，运行交付仍为P9 preview.3，已更新本机desktop并推送；P10 A柔边方案已选，仅完成规划。进度以[HANDOFF](HANDOFF.md)、计划、看板和Git为准。
 
 ## 阅读入口
 
 | 目的 | 入口 |
 | --- | --- |
-| 新会话接续 | [HANDOFF](HANDOFF.md) → [P9计划](superpowers/plans/2026-10-20-wide-window-composition.md) → [总计划](IMPLEMENTATION-PLAN.md) → [看板](coordination/WORKBOARD.md)，遵守根[AGENTS](../AGENTS.md) |
+| 新会话接续 | [HANDOFF](HANDOFF.md) → [P10计划](superpowers/plans/2026-10-20-paper-blend.md) → [总计划](IMPLEMENTATION-PLAN.md) → [看板](coordination/WORKBOARD.md)，遵守根[AGENTS](../AGENTS.md) |
 | 找当前图片 | [P9新母版](../assets/scenes/p9/reading.png)及[来源说明](../assets/scenes/p9/README.md)；[原B系列](../assets/scenes/b-series/README.md)保留历史 |
 | 查当前运行效果证据 | [P9验证](validation/P9.md)；真实聊天历史见[P5矩阵](validation/P5-MATRIX.md) |
+| 查A方案规划 | [P10计划](superpowers/plans/2026-10-20-paper-blend.md)、[待派发任务](coordination/P10-A-task.md)、[仅规划状态](validation/P10.md)；不作为效果通过证据 |
 | 给DSH派发任务 | [协作方法](coordination/DSH-COLLABORATION.md)；现有任务书均为历史记录 |
 | 查安装和发行说明 | [README](../README.md)、[INSTALL](INSTALL.md)、[RELEASE](RELEASE.md)为preview.3；归档/日常安装实测见[P9](validation/P9.md)及[部署](validation/DEPLOYMENT.md) |
 

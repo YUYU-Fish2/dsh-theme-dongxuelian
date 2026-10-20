@@ -2,7 +2,13 @@
 
 当前状态：**P9大窗口与聊天构图已完成，preview.3已按授权更新到本机desktop。** 新图按批准示意重新生成，首页与聊天统一纸白氛围、缩小中间空白。工作区`E:/codex/dsh主题开发`，分支`feat/theme-v1`；本次P9已按用户明确要求同步GitHub，未发布Release/npm。没有强制重启用户DSH，新版日常窗口重载尚未目视确认。
 
-先读本文件 → [P9计划](superpowers/plans/2026-10-20-wide-window-composition.md) → [总计划](IMPLEMENTATION-PLAN.md) → [看板](coordination/WORKBOARD.md)，文件职责见[导航](PROJECT-MAP.md)。当前证据见[P9验证](validation/P9.md)，P8/P6保留历史。
+先读本文件 → [P10 A方案计划](superpowers/plans/2026-10-20-paper-blend.md) → [总计划](IMPLEMENTATION-PLAN.md) → [看板](coordination/WORKBOARD.md)，文件职责见[导航](PROJECT-MAP.md)。当前运行证据仍为[P9验证](validation/P9.md)，P8/P6保留历史。
+
+## P10当前接续：A方案仅规划
+
+用户已从三张过渡示意中选A“同纸底＋柔边融合”，并要求“写出规划”。已写[P10计划](superpowers/plans/2026-10-20-paper-blend.md)、[待派发任务](coordination/P10-A-task.md)及[规划状态](validation/P10.md)。本轮不修改主题代码/图片/版本、不派发DSH、不启动预览、不打包安装或推送。运行版保持preview.3，P10全部实施项尚未开始。
+
+后续按DSH限定read/write、Codex实窗/命令分工实施：正文维持实色纸底，独立背景伪元素从阅读区右沿延伸约96–128px柔边，不淡化文字/控件，不增加中间空白，不重画人物。沿用P9几何和官方像素列宽，防止继承cqi重求值；小列保留阅读优先。只做正常使用必要检查，不重新发散B/C或复制生成图中的其他控件/侧栏/排版。
 
 ## P9最新交付（优先于下方P8历史）
 

@@ -2,7 +2,9 @@
 
 当前阶段：**P9 preview.3已交付并更新本机desktop。** 按批准示意重新生成场景，宽屏首页与聊天共同构图，暖纸白阅读面；最终4例正常尺寸/场景、菜单/明暗/启停、18项回归及独立审核通过。新归档全新隔离home冷启动与desktop13文件一致，5插件/配置保留，见[P9验证](../validation/P9.md)。日常DSH未强制重启，本次P9已按用户明确要求推送GitHub。
 
-入口：[接续记录](../HANDOFF.md) → [P9计划](../superpowers/plans/2026-10-20-wide-window-composition.md) → [总计划](../IMPLEMENTATION-PLAN.md)，文件用途见[导航](../PROJECT-MAP.md)。
+新增阶段：**P10 A方案已选，仅规划，尚未实施。** 运行交付仍为P9 preview.3；本轮不派发DSH、不改图/代码、不安装或推送。
+
+入口：[接续记录](../HANDOFF.md) → [P10计划](../superpowers/plans/2026-10-20-paper-blend.md) → [总计划](../IMPLEMENTATION-PLAN.md)，文件用途见[导航](../PROJECT-MAP.md)。
 
 | 任务 | 执行者 | 审核者 | 范围 | 状态 |
 | --- | --- | --- | --- | --- |
@@ -24,6 +26,7 @@
 | 上传/本机安装 | Codex | Git远端/文件哈希 | 用户明确授权公开仓库及desktop安装 | 公开分支/标签已上传，desktop13文件安装一致；原生热加载未目视，见DEPLOYMENT.md |
 | 交接维护 | Codex | 新会话 | 完整计划、状态、命令、日志与授权 | 已建立 HANDOFF 与根 AGENTS 入口 |
 | P9大窗口/聊天 | DSH限定read/write、Codex图像/实窗修正 | 独立只读审核 | 新图、1920px共同构图、阅读面、preview.3归档及desktop更新 | 已完成，正常使用检查通过；见[P9](../validation/P9.md)，不声称已目视日常窗口重载 |
+| P10 A柔边融合 | 待实施：DSH限定CSS、Codex实窗/命令 | Codex核对范围与真实效果 | 实底阅读、独立背景柔边、轻纸卡阴影 | 仅规划；[任务](P10-A-task.md)未派发，见[计划](../superpowers/plans/2026-10-20-paper-blend.md)与[状态](../validation/P10.md) |
 
 协作约定：DSH 处理限定文件内的调研与后续获准实施；Codex 负责拆分任务、验收标准、关键证据抽查、差异审核与阶段关口。避免双方重复完整研究；只在关键结论缺证或冲突时复查。
 

@@ -6,6 +6,8 @@
 
 **当前执行入口：**P9宽屏/聊天共同构图、新图与暖纸白氛围已交付，preview.3已按授权更新desktop，见[P9验证](validation/P9.md)与[P9计划](superpowers/plans/2026-10-20-wide-window-composition.md)。P8/P6为preview.2历史，不作为当前新图验收；新版日常窗口不强制重启。
 
+**P10仅规划：**用户已选A“同纸底＋柔边融合”，本轮只要求写规划。见[P10计划](superpowers/plans/2026-10-20-paper-blend.md)与[状态](validation/P10.md)：复用背景层在文字外侧做柔边，保留实底阅读和P9几何，DSH限定实现、Codex正常使用验收。代码、图像、preview.3安装和远端不变；后续明确开始再执行。
+
 **架构：**官方Theme覆盖仅在浅色激活，不改变用户偏好；品牌头像与背景样式走官方Slot，完整抱书场景在内容下绘制，独立资源走固定Host白名单路由，统一随生命周期释放。隔离测试不碰用户desktop profile。
 
 **技术栈：**原生 JavaScript、官方 `window.__ModuleLoader__.load` factory、Node 内置测试/VM/文件 API、DSH 自带 Electron 与官方 ModuleLoader；图片采用独立 PNG/WebP 文件。当前无第三方运行依赖，不为几百行主题引入编译框架。
