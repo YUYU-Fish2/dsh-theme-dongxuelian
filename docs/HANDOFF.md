@@ -4,6 +4,10 @@
 
 先读本文件 → [P10 A方案计划](superpowers/plans/2026-10-20-paper-blend.md) → [总计划](IMPLEMENTATION-PLAN.md) → [看板](coordination/WORKBOARD.md)，文件职责见[导航](PROJECT-MAP.md)。当前运行证据仍为[P9验证](validation/P9.md)，P8/P6保留历史。
 
+2026-10-20文件梳理：已按Git清单、源码入口、素材与归档核对并更新[文件导航](PROJECT-MAP.md)，修正其中残留的P8当前计划、旧WebP参数及任务分类，补全P9证据和P10待实施入口。本次仅维护导航与本交接记录，不移动/删除文件、不实施P10；功能和视觉验证仍以既有阶段报告为准。
+
+梳理验证：导航与本文件121处本地链接存在；当前P9母版、WebP及preview.3归档大小/SHA256匹配，运行图片合计334994B，Git跟踪截图30张（P9为6张）；差异检查通过。仅文档修订，未重跑功能回归或窗口测试。
+
 ## P10当前接续：A方案仅规划
 
 用户已从三张过渡示意中选A“同纸底＋柔边融合”，并要求“写出规划”。已写[P10计划](superpowers/plans/2026-10-20-paper-blend.md)、[待派发任务](coordination/P10-A-task.md)及[规划状态](validation/P10.md)。本轮不修改主题代码/图片/版本、不派发DSH、不启动预览、不打包安装或推送。运行版保持preview.3，P10全部实施项尚未开始。
