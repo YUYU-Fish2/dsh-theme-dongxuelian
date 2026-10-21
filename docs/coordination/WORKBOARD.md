@@ -1,6 +1,6 @@
 # 冬雪莲涂鸦主题协作看板
 
-> 2026-10-21当前：P12窗口模式修正preview.6已归档并安装desktop；移除小窗口残留实色scroll/gutter，复用全屏连续纸面。DSH限定CSS，Codex实窗/命令/审核；18/18/check和隔离/desktop15文件哈希通过。字号按用户明确要求延期。本轮未推送，详见[P12](../validation/P12.md)。以下P11/P10状态保留历史。
+> 2026-10-21当前：P12窗口模式修正preview.6已归档并安装desktop；移除小窗口残留实色scroll/gutter，复用全屏连续纸面。DSH限定CSS，Codex实窗/命令/审核；18/18/check和隔离/desktop15文件哈希通过。字号按用户明确要求延期。用户看图认可后已授权并完成本次GitHub推送，详见[P12](../validation/P12.md)。以下P11/P10状态保留历史。
 
 > 2026-10-20用户复核更正：P10功能/安装证据保留，但未达到用户示例视觉，撤回“视觉已达标”的判断。当前按[P11设计](../superpowers/specs/2026-10-20-reference-paper-design.md)接续：复用P9母版，补独立纸纹，修正遮挡与构图；用户随后明确要求安装并推送GitHub；已形成preview.5并安装desktop，上传证据以P11-DEPLOYMENT为准。
 
@@ -48,4 +48,4 @@
 
 ## P12当前交付
 
-DSH按P12-A限定SCENE_CSS和首稿说明；Codex修正窗口人物过淡、完成四种视口、菜单/输入/明暗、归档和desktop安装。preview.6、15文件一致，字号延期，未推送；见[P12](../validation/P12.md)。
+DSH按P12-A限定SCENE_CSS和首稿说明；Codex修正窗口人物过淡、完成四种视口、菜单/输入/明暗、归档和desktop安装。preview.6、15文件一致，字号延期，已按用户新增授权推送；见[P12](../validation/P12.md)。
