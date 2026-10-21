@@ -1,5 +1,7 @@
 # 冬雪莲涂鸦主题完整实施计划
 
+> 2026-10-21当前：P12窗口模式修正preview.6已归档并安装desktop；移除小窗口残留实色scroll/gutter，复用全屏连续纸面。DSH限定CSS，Codex实窗/命令/审核；18/18/check和隔离/desktop15文件哈希通过。字号按用户明确要求延期。本轮未推送，详见[P12](validation/P12.md)。以下P11/P10状态保留历史。
+
 > 2026-10-20用户复核更正：P10功能/安装证据保留，但未达到用户示例视觉，撤回“视觉已达标”的判断。当前按[P11设计](superpowers/specs/2026-10-20-reference-paper-design.md)接续：复用P9母版，补独立纸纹，修正遮挡与构图；用户随后明确要求安装并推送GitHub；已形成preview.5并安装desktop，上传证据以P11-DEPLOYMENT为准。
 
 > 执行方式：按阶段执行（executing-plans），DSH 承担受限实现，Codex 承担派发、测试与审核。用户已于 2026-10-19 授权自主继续；完成一个阶段的验证、记录与提交后再进入下一阶段，不合并成无法回退的大改动。新会话从 [HANDOFF](HANDOFF.md) 接续，不重复 P0/P1。

@@ -1,5 +1,7 @@
 # 项目文件导航
 
+> 2026-10-21当前：P12窗口模式修正preview.6已归档并安装desktop；移除小窗口残留实色scroll/gutter，复用全屏连续纸面。DSH限定CSS，Codex实窗/命令/审核；18/18/check和隔离/desktop15文件哈希通过。字号按用户明确要求延期。本轮未推送，详见[P12](validation/P12.md)。以下P11/P10状态保留历史。
+
 > 2026-10-20用户复核更正：P10功能/安装证据保留，但未达到用户示例视觉，撤回“视觉已达标”的判断。当前按[P11设计](superpowers/specs/2026-10-20-reference-paper-design.md)接续：复用P9母版，补独立纸纹，修正遮挡与构图；用户随后明确要求安装并推送GitHub；已形成preview.5并安装desktop，上传证据以P11-DEPLOYMENT为准。
 
 2026-10-20核对。当前分支`feat/theme-v1`，当前交付为P11 preview.5；既有部署记录确认已更新本机desktop并推送GitHub。本次梳理前本地HEAD与远端分支均为`ce5e7d0`，工作区干净；本次仅维护文档，不重新安装或验收日常窗口。P9人物场景继续复用，视觉差异见[P11](validation/P11.md)。进度以[HANDOFF](HANDOFF.md)、计划、看板和Git为准。

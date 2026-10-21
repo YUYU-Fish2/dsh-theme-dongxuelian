@@ -1,0 +1,85 @@
+{
+  "name": "dsh-theme-dongxuelian",
+  "version": "0.1.0-preview.6",
+  "filename": "dsh-theme-dongxuelian-0.1.0-preview.6.tgz",
+  "bytes": 410003,
+  "unpackedBytes": 433517,
+  "sha256": "b5569f17bb199ae1699041e1d2bff79bd573f5f2066fd4118bbe357606ba2710",
+  "files": [
+    {
+      "path": "LICENSE",
+      "bytes": 1342,
+      "sha256": "3ee3a59657ceb15d6da7210a98540e53990f8371968a6adc0f776236925f070f"
+    },
+    {
+      "path": "client.js",
+      "bytes": 19206,
+      "sha256": "e8937ea91b9f10d2955ab197e32d0c57dd7e152cf463928b6ff37c02df8c1785"
+    },
+    {
+      "path": "index.js",
+      "bytes": 3112,
+      "sha256": "93082109d35412b206b8bf2d6967dae7e99a0cc3454c25997e372fa5faf2d5a0"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1133,
+      "sha256": "2f291206fd37bf12696c4daeaca379d0dd4af51a95992aa54f9e3c55c393102a"
+    },
+    {
+      "path": "docs/INSTALL.md",
+      "bytes": 3449,
+      "sha256": "bb41d4af94600a5668dfdced57871f723982792fad5b076698264a3bee6d5bdf"
+    },
+    {
+      "path": "assets/characters/README.md",
+      "bytes": 1968,
+      "sha256": "6d00bd5d6c50af6293c046e561d2eb8c85dde34e95ca8779d4446edd45b63251"
+    },
+    {
+      "path": "assets/scenes/README.md",
+      "bytes": 1852,
+      "sha256": "5ec9f72f221f431162d3102ae834d70625b0ce83de289410ad6218759aeb5942"
+    },
+    {
+      "path": "assets/textures/README.md",
+      "bytes": 842,
+      "sha256": "c7dcdb5d32f04594791bcbe132bcb87a6a85b1518144343903d3bf491fbd9b0b"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3259,
+      "sha256": "7a1f47364bca2b1c6ad7b01db2ea6c7f0d52b70ba3ee45663f3c6bab34a8d295"
+    },
+    {
+      "path": "docs/RELEASE.md",
+      "bytes": 4128,
+      "sha256": "7b0f3e89f32d20dcda3e9ee20181f2ab223ca1fd5000f8247b41e157950e772b"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 1635,
+      "sha256": "449b50b388a0faf2d9beb4d08632d7ebd0aa173fed706b77f95479f81f9671db"
+    },
+    {
+      "path": "assets/characters/web/avatar.webp",
+      "bytes": 26864,
+      "sha256": "fdd9165fde733caae3af652a3354aacc4ae3290f3abd353c886d96d2dc4a5ebc"
+    },
+    {
+      "path": "assets/textures/web/paper.webp",
+      "bytes": 56518,
+      "sha256": "93a7c8708e5678b2a57bb29b24d8658700b349e680d6f93b5f437c4d491bef86"
+    },
+    {
+      "path": "assets/scenes/web/reading.webp",
+      "bytes": 308130,
+      "sha256": "8ba35051b5bfc41ce67b473881c678b3061488e9fa46c4e44166ac276741e488"
+    },
+    {
+      "path": "cordis.patch.yml",
+      "bytes": 79,
+      "sha256": "c555166e9eaec79ce69e3dbc67f07042866b80ebdebb131e33c77d2b2b9afc00"
+    }
+  ]
+}

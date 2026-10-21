@@ -1,17 +1,17 @@
 # DSH 冬雪莲涂鸦主题
 
-> 当前为P11整页纸面预览版preview.5。真实预览与已知差异见源码docs/validation/P11.md；用户已授权本次安装和GitHub推送，执行证据见docs/validation/P11-DEPLOYMENT.md。
+> 当前为P12窗口模式修正版preview.6。窗口与全屏共用连续纸面，撤掉小窗口残留的实色阅读板及场景预留带。实窗与安装证据见源码docs/validation/P12.md；本轮未自动推送或发布。
 
-`0.1.0-preview.5`，面向DSH `0.2.1-rc.2`的轻量独立主题。以用户批准的宽屏示意重新生成彩铅抱书场景，统一暖纸白、灰蓝与靛蓝：宽屏首页的输入和人物使用共同构图，聊天适度加宽阅读区并收紧中间空白；窄列优先保证输入和正文宽度。preview.5复用人物场景，新增整页纸纹；撤掉宽列实色阅读板，调整阅读区、输入卡和人物位置，滚动条回到窗口右缘。深色/停用释放覆盖，不写主题偏好。
+`0.1.0-preview.6`，面向DSH `0.2.1-rc.2`的轻量独立主题。以用户批准的宽屏示意重新生成彩铅抱书场景，统一暖纸白、灰蓝与靛蓝：宽屏首页的输入和人物使用共同构图，聊天适度加宽阅读区并收紧中间空白；窄列优先保证输入和正文宽度。preview.6继续复用人物场景与纸纹；所有窗口的滚动区域均为透明整列，聊天列900px起采用左阅读右人物构图，更窄时优先保证正文清楚。深色/停用释放覆盖，不写主题偏好。
 
 插件直接交付JavaScript和独立WebP，零第三方运行依赖，无构建或安装脚本。头像、场景与纸纹共391512B；PNG母版、用户截图和整页生成示意不打包。来源见[场景说明](assets/scenes/README.md)、[头像说明](assets/characters/README.md)与[纸纹说明](assets/textures/README.md)。
 
 ## 安装与移除
 
-下载本项目的 `dsh-theme-dongxuelian-0.1.0-preview.5.tgz`，核对随包提供的 SHA256。通过官方 CLI 安装到明确的 profile；以下为本机 PowerShell 示例，请按实际位置替换路径：
+下载本项目的 `dsh-theme-dongxuelian-0.1.0-preview.6.tgz`，核对随包提供的 SHA256。通过官方 CLI 安装到明确的 profile；以下为本机 PowerShell 示例，请按实际位置替换路径：
 
 ```powershell
-& 'E:\dsh\resources\runtime\cli\bin\dsh.cmd' plugin --profile desktop add 'E:\codex\dsh主题开发\release\dsh-theme-dongxuelian-0.1.0-preview.5.tgz' --ignore-scripts
+& 'E:\dsh\resources\runtime\cli\bin\dsh.cmd' plugin --profile desktop add 'E:\codex\dsh主题开发\release\dsh-theme-dongxuelian-0.1.0-preview.6.tgz' --ignore-scripts
 ```
 
 Web使用者将 `desktop` 换成自己的Web profile名称。不要整文件覆盖 `cordis.yml` 或手工重复插入同一个插件。临时隐藏主题，使用官方插件管理里的启用开关。
@@ -30,7 +30,7 @@ P11使用18项主题/Slot/HTTP回归和语法/包契约检查；实窗覆盖1625
 
 ## 源码开发入口
 
-在完整源码仓库中，先读 `docs/HANDOFF.md`、`docs/superpowers/plans/2026-10-20-reference-paper.md`、`docs/IMPLEMENTATION-PLAN.md` 与 `docs/coordination/WORKBOARD.md`；文件索引为 `docs/PROJECT-MAP.md`。这些开发记录不随安装包全部分发。
+在完整源码仓库中，先读 `docs/HANDOFF.md`、`docs/superpowers/plans/2026-10-20-window-paper.md`、`docs/IMPLEMENTATION-PLAN.md` 与 `docs/coordination/WORKBOARD.md`；文件索引为 `docs/PROJECT-MAP.md`。这些开发记录不随安装包全部分发。
 
 ```powershell
 npm test

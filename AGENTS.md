@@ -1,8 +1,10 @@
 # 项目协作与新会话入口
 
+> 2026-10-21当前：P12窗口模式修正preview.6已归档并安装desktop；移除小窗口残留实色scroll/gutter，复用全屏连续纸面。DSH限定CSS，Codex实窗/命令/审核；18/18/check和隔离/desktop15文件哈希通过。字号按用户明确要求延期。本轮未推送，详见[P12](docs/validation/P12.md)。以下P11/P10状态保留历史。
+
 > 2026-10-20用户复核更正：P10功能/安装证据保留，但未达到用户示例视觉，撤回“视觉已达标”的判断。当前按[P11设计](docs/superpowers/specs/2026-10-20-reference-paper-design.md)接续：复用P9母版，补独立纸纹，修正遮挡与构图；用户随后明确要求安装并推送GitHub；已形成preview.5并安装desktop，上传证据以P11-DEPLOYMENT为准。
 
-新会话先读 `docs/HANDOFF.md`，再读当前P11计划 `docs/superpowers/plans/2026-10-20-reference-paper.md` 与部署记录 `docs/validation/P11-DEPLOYMENT.md`、`docs/IMPLEMENTATION-PLAN.md` 和 `docs/coordination/WORKBOARD.md`。当前状态只以这些文件、Git 与实际验证结果为准，不把历史阶段报告中的“尚未开始”误当成当前状态。
+新会话先读 `docs/HANDOFF.md`，再读当前P12计划 `docs/superpowers/plans/2026-10-20-window-paper.md` 与验证记录 `docs/validation/P12.md`、`docs/IMPLEMENTATION-PLAN.md` 和 `docs/coordination/WORKBOARD.md`。当前状态只以这些文件、Git 与实际验证结果为准，不把历史阶段报告中的“尚未开始”误当成当前状态。
 
 与DSH的派发、实际分工、命令、故障与日志见 `docs/coordination/DSH-COLLABORATION.md`。用户已选B彩铅绘本抱书图reading.png并要求“继续干”；P8实现和隔离Web预览验收已完成，P6新归档在隔离home的安装/启停/卸载/重启也已通过，本地preview.2交付完成。不重做风格选择、不交旧Q版包；证据见docs/validation/P8.md与P6.md。
 

@@ -1,5 +1,7 @@
 # 冬雪莲涂鸦主题协作看板
 
+> 2026-10-21当前：P12窗口模式修正preview.6已归档并安装desktop；移除小窗口残留实色scroll/gutter，复用全屏连续纸面。DSH限定CSS，Codex实窗/命令/审核；18/18/check和隔离/desktop15文件哈希通过。字号按用户明确要求延期。本轮未推送，详见[P12](../validation/P12.md)。以下P11/P10状态保留历史。
+
 > 2026-10-20用户复核更正：P10功能/安装证据保留，但未达到用户示例视觉，撤回“视觉已达标”的判断。当前按[P11设计](../superpowers/specs/2026-10-20-reference-paper-design.md)接续：复用P9母版，补独立纸纹，修正遮挡与构图；用户随后明确要求安装并推送GitHub；已形成preview.5并安装desktop，上传证据以P11-DEPLOYMENT为准。
 
 当前阶段：**P11 preview.5已归档并安装desktop，用户已授权本次GitHub上传。** P10功能/安装证据保留，但视觉判断撤回。P11复用P9人物、增加独立纸纹，DSH限定实现，Codex实窗/修正；18/18/check/查重与限定复核通过，仅证明相应检查。隔离与desktop均匹配15文件，原五插件及主配置保持；上传状态见[P11部署](../validation/P11-DEPLOYMENT.md)。
@@ -43,3 +45,7 @@
 - 本仓库没有 Git 作者配置，提交命令临时使用 `Codex <codex@local.invalid>` 标注代理制作的本地记录，未修改全局 Git 配置。
 - P1-A 使用同一临时模型通道，独立短任务仅调用 read/write，4 次工具调用后交付；退出码 0。未重复调查 P0 源码或尝试修复 shell。
 - P1-A 事件与错误流位于 `.research/dsh-p1-a.events.jsonl`、`.research/dsh-p1-a.stderr.log`，不提交 Git。
+
+## P12当前交付
+
+DSH按P12-A限定SCENE_CSS和首稿说明；Codex修正窗口人物过淡、完成四种视口、菜单/输入/明暗、归档和desktop安装。preview.6、15文件一致，字号延期，未推送；见[P12](../validation/P12.md)。

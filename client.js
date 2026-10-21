@@ -142,10 +142,18 @@ window.__ModuleLoader__.load({
 /* Pseudo-elements are descendants for container queries. A real-browser probe
    confirmed the root ::before/::after can query dxl-reading, so artwork and
    reading layout both follow the actual column, including split/collapsed UI. */
-@container dxl-reading (max-width: 900px) {
+/* Below the reading-seat breakpoint the text uses the real column width minus
+   the ordinary 24px side margins. Only this illustration layer is weakened so
+   its ink does not sit behind the copy; messages, text, controls and the
+   native scrollbar keep their normal opacity and filters. */
+@container dxl-reading (max-width: 899.98px) {
   [data-slot="main.conversation"] > div[data-phase="active"]::before {
     background-size: auto 58%;
     background-position: right -110px center;
+    mask-image:
+      linear-gradient(90deg, transparent 60%, rgb(0 0 0 / .03) 76%, rgb(0 0 0 / .10) 90%, rgb(0 0 0 / .24)),
+      linear-gradient(transparent, #000 64px, #000 calc(100% - 64px), transparent);
+    mask-composite: intersect;
   }
 }
 
@@ -167,32 +175,24 @@ window.__ModuleLoader__.load({
   margin-inline: clamp(24px, 4cqi, 48px) auto;
 }
 
-/* Narrow columns keep a text-first reading surface. Keep the paper texture in
-   it for continuity; code and inputs keep their own light solid backgrounds. */
+/* The active scroll viewport is always the complete column and paints no paper
+   of its own: the root tile and the single scene remain visible from header to
+   composer at every width. Reading width is the real column minus the ordinary
+   24px side margins; no artwork gutter is reserved. */
 [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-content] {
-  --dxl-scene-gutter: clamp(220px, calc(var(--dsh-conversation-column-width) * 0.28), 340px);
-  --dsh-chat-content-width: min(var(--dsh-chat-user-width, 760px), calc(var(--dsh-conversation-column-width) - var(--dxl-scene-gutter) - 48px));
+  --dsh-chat-content-width: min(var(--dsh-chat-user-width, 960px), calc(var(--dsh-conversation-column-width) - 48px));
   --dsh-composer-card-max-width: calc(var(--dsh-chat-content-width) + 32px);
 }
 
 [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-scroll] {
   width: auto;
   min-width: 0;
-  margin-right: var(--dxl-scene-gutter);
-  background-color: #F7F3EB;
-  background-image: url("/dongxuelian-theme/assets/paper.webp");
-  background-repeat: repeat;
-  background-size: 640px 640px;
+  margin-inline: 0;
+  background: transparent;
 }
 
 [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-scroll] pre {
   background-color: #FFFDF8;
-}
-
-@container dxl-reading (max-width: 900px) {
-  [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-content] {
-    --dxl-scene-gutter: clamp(160px, calc(var(--dsh-conversation-column-width) * 0.26), 220px);
-  }
 }
 
 @container dxl-reading (max-width: 760px) {
@@ -204,19 +204,11 @@ window.__ModuleLoader__.load({
   }
 }
 
-/* Wide (>=1100px) composition uses a 1920px shared stage. The hero composer
-   grows from its 500px narrow-column width with an 880px cap. The scene is a
-   single root layer; pseudo-elements use the same actual-column query as the
-   reading surface. */
-@container dxl-reading (min-width: 1100px) {
-  [data-slot="main.conversation"] > div[data-phase="hero"] [data-chain-overlay-fallback="conversation.composer"] > div {
-    --dsh-composer-card-max-width: clamp(500px, calc(500px + (var(--dsh-conversation-column-width) - 1100px) * .34), 880px);
-    margin-inline: calc(clamp(24px, 4cqi, 48px) + max(0px, (100cqi - 1920px) / 2)) auto;
-  }
-
-  /* The reading seat is about 56% of the host's published pixel column, with
-     the shared 1920px stage still centred. No opaque surface and no bridge:
-     the artwork behind the text keeps its own paper and natural flower edge. */
+/* From 900px the active conversation reuses the full-screen left reading seat
+   and right figure composition. The scroll itself stays the full, transparent
+   column; only the official session and composer seats are narrowed. The 768px
+   seat floor leaves the 640px host drag minimum usable. */
+@container dxl-reading (min-width: 900px) {
   [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-content] {
     --dxl-stage-inset: max(0px, (var(--dsh-conversation-column-width) - 1920px) / 2);
     --dxl-reading-seat: max(768px, calc(min(var(--dsh-conversation-column-width), 1920px) * .56));
@@ -228,19 +220,12 @@ window.__ModuleLoader__.load({
     --dsh-composer-card-max-width: calc(var(--dsh-chat-content-width) + 32px);
   }
 
-  [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-scroll] {
-    width: auto;
-    margin-left: 0;
-    margin-right: 0;
-    min-width: 0;
-    background: transparent;
-  }
-
   /* Keep the native scrollbar at the window edge. Only its official content
      and composer seats are narrowed; the whole scroll viewport stays wide. */
   [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-scroll] > [data-slot="conversation.session"] > div,
   [data-slot="main.conversation"] > div[data-phase="active"] [data-composer-seat] {
     width: var(--dxl-reading-seat);
+    max-width: 100%;
     margin-left: var(--dxl-stage-inset);
     margin-right: 0;
   }
@@ -248,7 +233,7 @@ window.__ModuleLoader__.load({
   /* The example's input paper card extends beyond the transcript column. */
   [data-slot="main.conversation"] > div[data-phase="active"] [data-composer-seat] {
     --dsh-composer-card-max-width: calc(var(--dsh-chat-content-width) + 160px);
-    width: calc(var(--dsh-chat-content-width) + 224px);
+    width: min(calc(var(--dsh-chat-content-width) + 224px), 100%);
   }
 
   /* Match the official width handles to the shifted reading centre. The
@@ -260,6 +245,37 @@ window.__ModuleLoader__.load({
 
   [data-slot="main.conversation"] > div[data-phase="active"] [data-width-handle="right"] {
     left: calc(var(--dxl-stage-inset) + (var(--dxl-reading-seat) + var(--dsh-chat-content-width)) / 2 + 24px);
+  }
+}
+
+/* Windowed conversations use the same proportional artwork and soft edge as
+   full-screen ones. The root paper stays continuous beneath the reading seat. */
+@container dxl-reading (min-width: 900px) and (max-width: 1099.98px) {
+  [data-slot="main.conversation"] > div[data-phase="active"]::before {
+    inset: auto;
+    top: 50%;
+    right: -144px;
+    width: auto;
+    height: min(calc(100% - 32px), 1280px);
+    aspect-ratio: 3 / 2;
+    transform: translateY(-50%);
+    background-position: center;
+    background-size: 100% 100%;
+    mask-image:
+      linear-gradient(90deg, transparent 42%, rgb(0 0 0 / .12) 50%, #000 65%, #000 calc(100% - 64px), transparent),
+      linear-gradient(180deg, transparent, #000 32px, #000 calc(100% - 32px), transparent);
+    mask-composite: intersect;
+  }
+}
+
+/* Wide (>=1100px) hero composition uses a 1920px shared stage. The hero
+   composer grows from its 500px narrow-column width with an 880px cap. The
+   scene is a single root layer; pseudo-elements use the same actual-column
+   query as the reading surface. */
+@container dxl-reading (min-width: 1100px) {
+  [data-slot="main.conversation"] > div[data-phase="hero"] [data-chain-overlay-fallback="conversation.composer"] > div {
+    --dsh-composer-card-max-width: clamp(500px, calc(500px + (var(--dsh-conversation-column-width) - 1100px) * .34), 880px);
+    margin-inline: calc(clamp(24px, 4cqi, 48px) + max(0px, (100cqi - 1920px) / 2)) auto;
   }
 
   /* A lighter resting shadow only. Focus, outline, borders and button states
@@ -300,10 +316,16 @@ window.__ModuleLoader__.load({
   }
 }
 
-/* At large zoom or a very narrow column, reading takes the full width. */
+/* At the narrowest columns the illustration yields almost completely to the
+   copy. The root paper tile still shows through; only this layer is softened. */
 @container dxl-reading (max-width: 640px) {
-  [data-slot="main.conversation"] > div[data-phase="active"] [data-conversation-content] {
-    --dxl-scene-gutter: 0px;
+  [data-slot="main.conversation"] > div[data-phase="active"]::before {
+    background-size: auto 50%;
+    background-position: right -84px center;
+    mask-image:
+      linear-gradient(90deg, transparent 68%, rgb(0 0 0 / .02) 82%, rgb(0 0 0 / .08) 94%, rgb(0 0 0 / .20)),
+      linear-gradient(transparent, #000 48px, #000 calc(100% - 48px), transparent);
+    mask-composite: intersect;
   }
 }
 `

@@ -81,3 +81,7 @@ P3 拆为资源 Host 白名单路由与 Slot 两步，先检查小尺寸/裁切�
 ## P11部署接续（2026-10-20）
 
 用户明确要求安装DSH并推送GitHub后，Codex接续已完成的DSH P11-A实现与实窗修正，负责版本/归档/隔离安装/desktop备份安装/上传。不重复派发已完成实现；15文件安装核对、18/18/check及配置保留证据见[P11部署](../validation/P11-DEPLOYMENT.md)。
+
+## P12窗口模式（2026-10-20至21）
+
+DSH按[P12-A](P12-A-task.md)只修改SCENE_CSS与首稿说明，headless退出0。Codex先复现小窗口实底/gutter，后将首稿过淡场景改为等比盒和右偏移144px，完成实窗与preview.6安装。日志dsh-p12-a.*只留.research；字号按用户明确要求延期。证据见[P12](../validation/P12.md)。
